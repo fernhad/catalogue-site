@@ -1,0 +1,644 @@
+/* Reset and Base Styles */
+/* Ensures consistent spacing and box model across browsers */
+* {
+    margin: 0; /* Removes default margins */
+    padding: 0; /* Removes default padding */
+    box-sizing: border-box; /* Includes padding/border in element width/height */
+}
+
+/* Base styling for the body element */
+body {
+    font-family: 'Roboto', sans-serif; /* Uses Google Font 'Roboto' - change in HTML link if desired */
+    line-height: 1.6; /* Improves readability with increased line spacing */
+    color: #333; /* Default text color (dark gray) - adjust for contrast */
+    background-color: #f4f4f4; /* Light gray background - change for your theme */
+    scroll-behavior: smooth; /* Smooth scrolling for anchor links (e.g., nav clicks) */
+}
+
+/* Navbar Styling */
+/* Styles the fixed navigation bar at the top */
+.navbar {
+    display: flex; /* Flexbox for horizontal layout */
+    justify-content: space-between; /* Spreads logo, links, and toggle apart */
+    align-items: center; /* Vertically centers content */
+    padding: 1rem 2rem; /* Top/bottom 1rem, left/right 2rem padding */
+    background-color: #fff; /* White background - customize for your theme */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    position: fixed; /* Sticks navbar to top of viewport */
+    width: 100%; /* Full width */
+    top: 0; /* Aligns to top edge */
+    z-index: 1000; /* Ensures navbar stays above other content */
+}
+
+/* Logo styling within navbar */
+.logo h1 {
+    font-size: 1.5rem; /* Logo text size - adjust for prominence */
+}
+
+/* Highlights part of the logo (e.g., first name) */
+.logo span {
+    color: #007bff; /* Blue accent - replace with your brand color */
+}
+
+/* Navigation links container */
+.nav-links {
+    display: flex; /* Horizontal list layout */
+    list-style: none; /* Removes default list bullets */
+}
+
+/* Spacing between nav items */
+.nav-links li {
+    margin-left: 2rem; /* Space between links - adjust for density */
+}
+
+/* Individual nav link styling */
+.nav-links a {
+    text-decoration: none; /* Removes underline */
+    color: #333; /* Dark gray text - match body color or customize */
+    font-weight: 500; /* Medium bold - adjust for emphasis */
+    transition: color 0.3s; /* Smooth color change on hover */
+}
+
+/* Hover effect for nav links */
+.nav-links a:hover {
+    color: #007bff; /* Blue on hover - match your accent color */
+}
+
+/* Hamburger Menu (for mobile) */
+/* Hidden by default on desktop, shown on mobile via media query */
+.menu-toggle {
+    display: none; /* Hidden initially */
+    flex-direction: column; /* Stacks lines vertically */
+    cursor: pointer; /* Hand cursor on hover */
+}
+
+/* Each line in the hamburger icon */
+.menu-toggle span {
+    width: 25px; /* Width of hamburger lines */
+    height: 3px; /* Thickness of lines */
+    background-color: #333; /* Dark gray - match nav text or customize */
+    margin: 2px 0; /* Spacing between lines */
+    transition: all 0.3s; /* Smooth animation for toggle effect (needs JS) */
+}
+.menu-toggle.active span:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+}
+
+.menu-toggle.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.menu-toggle.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(7px, -7px);
+}
+
+/* Theme Toggle Switch */
+/* Container for dark mode toggle */
+.theme-toggle {
+    margin-left: 1rem; /* Space from nav links */
+}
+
+/* Hides the checkbox but keeps it functional */
+.theme-toggle input {
+    display: none; /* Hidden, controlled via label */
+}
+
+/* Toggle switch background */
+.theme-toggle label {
+    width: 40px; /* Switch width */
+    height: 20px; /* Switch height */
+    background-color: #ccc; /* Gray when off - customize */
+    display: block; /* Block element for styling */
+    border-radius: 20px; /* Fully rounded ends */
+    position: relative; /* For positioning the circle */
+    cursor: pointer; /* Hand cursor */
+}
+
+/* Circle inside the toggle switch */
+.theme-toggle label::after {
+    content: ''; /* Empty pseudo-element */
+    width: 16px; /* Circle diameter */
+    height: 16px; /* Circle height */
+    background-color: #fff; /* White circle - customize */
+    border-radius: 50%; /* Circular shape */
+    position: absolute; /* Positioned within label */
+    top: 2px; /* Centered vertically */
+    left: 2px; /* Starting position (left when off) */
+    transition: transform 0.3s; /* Smooth slide animation */
+}
+
+/* Switch background when checked (dark mode on) */
+.theme-toggle input:checked + label {
+    background-color: #007bff; /* Blue when on - match accent */
+}
+
+/* Moves circle to right when checked */
+.theme-toggle input:checked + label::after {
+    transform: translateX(20px); /* Slides right - adjust if width changes */
+}
+
+/* Dark Mode Styles */
+/* Applied when 'dark-mode' class is added to body via JS */
+body.dark-mode {
+    background-color: #121212; /* Dark background - customize */
+    color: #f4f4f4; /* Light text - adjust for readability */
+}
+
+body.dark-mode .navbar {
+    background-color: #2c2c2c; /* Darker navbar - match your theme */
+}
+
+body.dark-mode .nav-links a {
+    color: #f4f4f4; /* Light links in dark mode */
+}
+
+/* Hero Section */
+/* Full-screen hero with gradient background */
+.hero {
+    height: 100vh; /* Full viewport height */
+    display: flex; /* Centers content */
+    align-items: center; /* Vertical centering */
+    justify-content: center; /* Horizontal centering */
+    text-align: center; /* Centers text */
+    background: linear-gradient(135deg, #007bff, #00c4cc); /* Blue to teal gradient - customize colors */
+    color: #fff; /* White text for contrast */
+    padding: 2rem; /* Padding for smaller screens */
+}
+
+/* Main heading in hero */
+.hero-content h1 {
+    font-size: 3rem; /* Large heading - adjust for impact */
+    margin-bottom: 1rem; /* Space below */
+    animation: fadeInUp 1s ease-out; /* Fade-in animation */
+}
+
+/* Subtitle below heading */
+.hero-content .subtitle {
+    font-size: 1.5rem; /* Smaller text - adjust size */
+    margin-bottom: 2rem; /* Space before buttons */
+}
+
+/* General button styling */
+.btn {
+    display: inline-block; /* Inline with block properties */
+    padding: 0.8rem 1.5rem; /* Vertical/horizontal padding */
+    text-decoration: none; /* No underline */
+    border-radius: 5px; /* Rounded corners */
+    transition: background-color 0.3s; /* Smooth hover effect */
+}
+
+/* Primary button (solid) */
+.primary-btn {
+    background-color: #fff; /* White background */
+    color: #007bff; /* Blue text - match accent */
+}
+
+/* Hover effect for primary button */
+.primary-btn:hover {
+    background-color: #f0f0f0; /* Light gray on hover */
+}
+
+/* Secondary button (outline) */
+.secondary-btn {
+    background-color: transparent; /* No fill */
+    color: #fff; /* White text */
+    border: 2px solid #fff; /* White border */
+    margin-left: 1rem; /* Space from primary button */
+}
+
+/* Hover effect for secondary button */
+.secondary-btn:hover {
+    background-color: rgba(255, 255, 255, 0.1); /* Slight white fill */
+}
+
+/* General Section Styling */
+/* Applies to all sections (about, skills, etc.) */
+.section {
+    padding: 5rem 2rem; /* Top/bottom 5rem, left/right 2rem */
+    max-width: 1200px; /* Limits content width */
+    margin: 0 auto; /* Centers section */
+}
+
+/* Section headings */
+.section h2 {
+    font-size: 2.5rem; /* Large heading - adjust size */
+    text-align: center; /* Centered */
+    margin-bottom: 3rem; /* Space below */
+}
+
+/* About Section */
+/* Flex container for text and image */
+.about-content {
+    display: flex; /* Side-by-side layout */
+    align-items: center; /* Vertically aligns items */
+    gap: 2rem; /* Space between text and image */
+}
+
+/* Text area in about section */
+.about-text {
+    flex: 1; /* Takes available space */
+}
+
+/* Image styling in about section */
+.about-image img {
+    max-width: 300px; /* Limits image size - adjust as needed */
+    border-radius: 10px; /* Rounded corners */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Shadow for depth */
+}
+
+/* Skills Section */
+/* Grid layout for skill cards */
+.skills-grid {
+    display: grid; /* Grid layout */
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Responsive columns */
+    gap: 2rem; /* Space between cards */
+}
+
+/* Individual skill card */
+.skill-card {
+    text-align: center; /* Centers content */
+    padding: 1.5rem; /* Internal spacing */
+    background-color: #fff; /* White background - customize */
+    border-radius: 10px; /* Rounded corners */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+
+/* Skill icon (Font Awesome) */
+.skill-card i {
+    font-size: 2.5rem; /* Large icon - adjust size */
+    margin-bottom: 1rem; /* Space below */
+    color: #007bff; /* Blue - match accent color */
+}
+
+/* Progress bar container */
+.progress-bar {
+    height: 10px; /* Bar height */
+    background-color: #e0e0e0; /* Light gray background */
+    border-radius: 5px; /* Rounded ends */
+    overflow: hidden; /* Hides excess progress */
+}
+
+/* Filled portion of progress bar */
+.progress {
+    height: 100%; /* Fills container height */
+    background-color: #007bff; /* Blue fill - customize */
+    transition: width 1s ease-in-out; /* Smooth width animation (optional JS trigger) */
+}
+
+/* Projects Section */
+/* Grid layout for project cards */
+.projects-grid {
+    display: grid; /* Grid layout */
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Responsive columns */
+    gap: 2rem; /* Space between cards */
+}
+
+/* Individual project card */
+.project-card {
+    background-color: #fff; /* White background - customize */
+    border-radius: 10px; /* Rounded corners */
+    overflow: hidden; /* Clips image/content */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    transition: transform 0.3s; /* Smooth lift on hover */
+}
+
+/* Hover effect for project card */
+.project-card:hover {
+    transform: translateY(-5px) scale(1.02);
+    box-shadow: 0 0 8px rgba(0, 255, 170, 0.4);
+}
+
+/* Project image */
+.project-card img {
+    width: 100%; /* Full card width */
+    height: 200px; /* Fixed height - adjust to match your images */
+    object-fit: cover; /* Crops image to fit */
+}
+
+/* Project details */
+.project-info {
+    padding: 1.5rem; /* Internal spacing */
+}
+
+/* Project links (Live Demo, GitHub) */
+.project-link {
+    display: inline-block; /* Inline with spacing */
+    margin-right: 1rem; /* Space between links */
+    color: #007bff; /* Blue - match accent */
+    text-decoration: none; /* No underline */
+}
+
+/* Contact Section */
+/* Centers and limits form width */
+.contact-form {
+    max-width: 600px; /* Form width - adjust as needed */
+    margin: 0 auto; /* Centers form */
+}
+
+/* Form field container */
+.form-group {
+    margin-bottom: 1.5rem; /* Space between fields */
+}
+
+/* Form labels */
+.form-group label {
+    display: block; /* Stacks label above input */
+    margin-bottom: 0.5rem; /* Space below label */
+}
+
+/* Form inputs and textarea */
+.form-group input,
+.form-group textarea {
+    width: 100%; /* Full width */
+    padding: 0.8rem; /* Internal spacing */
+    border: 1px solid #ccc; /* Light gray border - customize */
+    border-radius: 5px; /* Rounded corners */
+    font-size: 1rem; /* Text size */
+}
+
+/* Submit button */
+.submit-btn {
+    background-color: #007bff; /* Blue - match accent */
+    color: #fff; /* White text */
+    border: none; /* No border */
+    cursor: pointer; /* Hand cursor */
+}
+
+/* Hover effect for submit button */
+.submit-btn:hover {
+    background-color: #0056b3; /* Darker blue - adjust shade */
+}
+
+/* FAQ Section (New) */
+/* Container for FAQ items */
+.faq-container {
+    max-width: 800px; /* Limits width for readability */
+    margin: 0 auto; /* Centers container */
+}
+
+/* Individual FAQ item using <details> */
+.faq-item {
+    margin-bottom: 1rem; /* Space between items */
+    background-color: #fff; /* White background for contrast */
+    border-radius: 5px; /* Rounded corners */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    overflow: hidden; /* Ensures content stays within rounded borders */
+}
+
+/* FAQ question (summary) */
+.faq-item summary {
+    padding: 1rem; /* Internal spacing */
+    font-weight: 500; /* Slightly bold for emphasis */
+    cursor: pointer; /* Hand cursor for interactivity */
+    background-color: #f9f9f9; /* Light gray background */
+    transition: background-color 0.3s; /* Smooth hover effect */
+}
+
+/* Hover effect for summary */
+.faq-item summary:hover {
+    background-color: #f0f0f0; /* Slightly darker on hover */
+}
+
+/* FAQ answer (content inside details) */
+.faq-item p {
+    padding: 1rem; /* Internal spacing */
+    background-color: #fff; /* Matches card background */
+}
+
+/* Dark mode adjustments for FAQ */
+body.dark-mode .faq-item {
+    background-color: #2c2c2c; /* Darker background */
+}
+
+body.dark-mode .faq-item summary {
+    background-color: #3a3a3a; /* Darker gray for summary */
+}
+
+body.dark-mode .faq-item summary:hover {
+    background-color: #4a4a4a; /* Slightly lighter on hover */
+}
+
+body.dark-mode .faq-item p {
+    background-color: #2c2c2c; /* Matches dark card */
+}
+
+/* Testimonials Section (New) */
+/* Grid layout for testimonial cards */
+.testimonials-grid {
+    display: grid; /* Grid layout */
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Responsive columns */
+    gap: 2rem; /* Space between cards */
+}
+
+/* Individual testimonial card */
+.testimonial-card {
+    background-color: #fff; /* White background */
+    border-radius: 10px; /* Rounded corners */
+    padding: 2rem; /* Internal spacing */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    transition: transform 0.3s; /* Smooth lift on hover */
+}
+
+/* Hover effect for testimonial card */
+.testimonial-card:hover {
+    transform: translateY(-5px); /* Lifts card slightly */
+}
+
+/* Testimonial text */
+.testimonial-card p {
+    font-style: italic; /* Italicized for quotes */
+    margin-bottom: 1rem; /* Space before cite */
+}
+
+/* Testimonial attribution */
+.testimonial-card cite {
+    display: block; /* Separate line */
+    font-style: normal; /* Normal text */
+    color: #007bff; /* Blue accent */
+}
+
+/* Dark mode adjustments for testimonials */
+body.dark-mode .testimonial-card {
+    background-color: #2c2c2c; /* Darker background */
+}
+
+/* Legal Section (New) */
+/* Container for legal content */
+.legal-content {
+    max-width: 800px; /* Limits width for readability */
+    margin: 0 auto; /* Centers content */
+    background-color: #fff; /* White background */
+    padding: 2rem; /* Internal spacing */
+    border-radius: 10px; /* Rounded corners */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+
+/* Legal section headings */
+.legal-content h3 {
+    font-size: 1.5rem; /* Slightly smaller than section h2 */
+    margin-bottom: 1rem; /* Space before paragraph */
+}
+
+/* Legal section paragraphs */
+.legal-content p {
+    margin-bottom: 1.5rem; /* Space between paragraphs */
+}
+
+/* Dark mode adjustments */
+body.dark-mode {
+    background-color: #0a0a0a;
+    color: #00ffcc;
+}
+
+body.dark-mode .legal-content {
+    background-color: #2c2c2c; /* Darker background */
+}
+
+body.dark-mode .btn,
+body.dark-mode .skill-card {
+    background-color: #1a1a1a;
+    color: #00ffcc;
+    border-color: #00ffcc;
+}
+
+body.dark-mode .progress {
+    background-color: #00ffcc;
+}
+
+/* Footer */
+/* Footer styling */
+footer {
+    text-align: center; /* Centers content */
+    padding: 2rem; /* Internal spacing */
+    background-color: #333; /* Dark gray - customize */
+    color: #fff; /* White text */
+}
+
+/* Social media icons */
+.social-links a {
+    color: #fff; /* White icons */
+    font-size: 1.5rem; /* Icon size - adjust */
+    margin: 0 1rem; /* Spacing between icons */
+    transition: color 0.3s; /* Smooth color change */
+}
+
+/* Hover effect for social links */
+.social-links a:hover {
+    color: #007bff; /* Blue - match accent */
+}
+
+/* Animations */
+/* Fade-in animation for hero text */
+@keyframes fadeInUp {
+    from {
+        opacity: 0; /* Starts invisible */
+        transform: translateY(20px); /* Starts 20px below */
+    }
+    to {
+        opacity: 1; /* Fully visible */
+        transform: translateY(0); /* At normal position */
+    }
+}
+
+/* Responsive Design */
+/* Media query for screens 768px and below (tablets/phones) */
+@media (max-width: 768px) {
+    /* Adjust navbar for mobile */
+    .navbar {
+        flex-wrap: wrap; /* Allows items to wrap */
+    }
+
+    /* Show hamburger menu */
+    .menu-toggle {
+        display: flex; /* Visible on mobile */
+    }
+
+    /* Hide nav links by default */
+    .nav-links {
+        display: none; /* Hidden until toggled */
+        width: 100%; /* Full width below navbar */
+        flex-direction: column; /* Vertical stack */
+        text-align: center; /* Centers links */
+    }
+
+    /* Show nav links when active (via JS) */
+    .nav-links.active {
+        display: flex; /* Visible when toggled */
+    }
+
+    /* Spacing for mobile nav items */
+    .nav-links li {
+        margin: 1rem 0; /* Vertical spacing */
+    }
+
+    /* Stack about section vertically */
+    .about-content {
+        flex-direction: column; /* Vertical layout */
+        text-align: center; /* Centers text */
+    }
+
+    /* Reduce hero text size */
+    .hero-content h1 {
+        font-size: 2rem; /* Smaller heading */
+    }
+    .hero-content pre.animate-text {
+        font-family: 'Courier New', monospace;
+        font-size: 1.2rem;
+        color: #00ffcc;
+        background-color: #000;
+        padding: 1.2rem;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0,255,200,0.3);
+        white-space: pre-wrap;
+        animation: flicker 1.5s infinite alternate;
+    }
+
+    @keyframes flicker {
+         0%   { opacity: 1; }
+         45%  { opacity: 0.85; }
+        70%  { opacity: 0.5; }
+        100% { opacity: 1; }
+    }
+    /* Adjust FAQ for mobile */
+    .faq-item summary {
+        padding: 0.8rem; /* Slightly less padding */
+    }
+
+    .faq-item p {
+        padding: 0.8rem;
+    }
+
+    /* Adjust testimonials for mobile */
+    .testimonial-card {
+        padding: 1.5rem; /* Slightly less padding */
+    }
+
+    /* Adjust legal for mobile */
+    .legal-content {
+        padding: 1.5rem; /* Slightly less padding */
+    }
+    #terminal-output {
+         font-family: 'Courier New', monospace;
+         font-size: 1.2rem;
+         color: #00ffcc;
+         background-color: #000;
+         padding: 1.2rem;
+         border-radius: 10px;
+         box-shadow: 0 0 10px rgba(0,255,200,0.3);
+         white-space: pre-wrap;
+         min-height: 130px;
+    }
+    @keyframes blink {
+        0%   { opacity: 1; }
+        50%  { opacity: 0; }
+        100% { opacity: 1; }
+    }
+}
+
+body::-webkit-scrollbar {
+    width: 8px;
+}
+body::-webkit-scrollbar-thumb {
+    background: #007bff;
+    border-radius: 10px;
+}
