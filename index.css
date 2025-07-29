@@ -1,22 +1,18 @@
 /* Reset and Base Styles */
-/* Ensures consistent spacing and box model across browsers */
 * {
     margin: 0; /* Removes default margins */
     padding: 0; /* Removes default padding */
     box-sizing: border-box; /* Includes padding/border in element width/height */
 }
 
-/* Base styling for the body element */
 body {
     font-family: 'Roboto', sans-serif; /* Uses Google Font 'Roboto' - change in HTML link if desired */
     line-height: 1.6; /* Improves readability with increased line spacing */
-    color: #333; /* Default text color (dark gray) - adjust for contrast */
-    background-color: #f4f4f4; /* Light gray background - change for your theme */
-    scroll-behavior: smooth; /* Smooth scrolling for anchor links (e.g., nav clicks) */
+    color: #333; 
+    background-color: #f4f4f4; 
+    scroll-behavior: smooth; 
 }
 
-/* Navbar Styling */
-/* Styles the fixed navigation bar at the top */
 .navbar {
     display: flex; /* Flexbox for horizontal layout */
     justify-content: space-between; /* Spreads logo, links, and toggle apart */
@@ -136,23 +132,27 @@ body {
     transform: translateX(20px); /* Slides right - adjust if width changes */
 }
 
+body {
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
 /* Dark Mode Styles */
-/* Applied when 'dark-mode' class is added to body via JS */
+
 body.dark-mode {
-    background-color: #121212; /* Dark background - customize */
-    color: #f4f4f4; /* Light text - adjust for readability */
+    background-color: #121212; 
+    color: #f4f4f4; 
 }
 
 body.dark-mode .navbar {
-    background-color: #2c2c2c; /* Darker navbar - match your theme */
+    background-color: #2c2c2c; 
 }
 
 body.dark-mode .nav-links a {
-    color: #f4f4f4; /* Light links in dark mode */
+    color: #f4f4f4; 
 }
 
 /* Hero Section */
-/* Full-screen hero with gradient background */
+
 .hero {
     height: 100vh; /* Full viewport height */
     display: flex; /* Centers content */
@@ -162,6 +162,11 @@ body.dark-mode .nav-links a {
     background: linear-gradient(135deg, #007bff, #00c4cc); /* Blue to teal gradient - customize colors */
     color: #fff; /* White text for contrast */
     padding: 2rem; /* Padding for smaller screens */
+}
+.profile-photo:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 12px rgba(0, 255, 255, 0.6);
+  transition: all 0.3s ease;
 }
 
 /* Main heading in hero */
