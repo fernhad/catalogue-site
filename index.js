@@ -1,7 +1,6 @@
 /*!
  * accepts
- * Copyright(c) 2014 Jonathan Ong
- * Copyright(c) 2015 Douglas Christopher Wilson
+ * Copyright(c) 2025 Murire T E
  * MIT Licensed
  */
 
