@@ -1,237 +1,153 @@
-/*!
- * accepts
- * Copyright(c) 2025 Murire T E
- * MIT Licensed
- */
+// === OASIS | Cyberfunction_Emmanuel Scripts === //
+document.addEventListener('DOMContentLoaded', () => {
+    // === DOM Element References === //
+    const body = document.body;
+    const menuToggle = document.querySelector('.menu-toggle');
+    const navLinks = document.querySelector('.nav-links');
+    const darkModeToggle = document.querySelector('#dark-mode-toggle');
+    const skillCards = document.querySelectorAll('.skill-card');
+    const terminalOutput = document.querySelector('#terminal-output');
+    const button = document.getElementById('clickMeBtn');
+    const form = document.getElementById('contactForm');
 
-'use strict'
+    // === Backend Contact Form Submission === //
+    if (form) {
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const name = document.getElementById('nameInput')?.value;
+            const email = document.getElementById('emailInput')?.value;
+            const message = document.getElementById('messageInput')?.value;
 
-/**
- * Module dependencies.
- * @private
- */
-
-var Negotiator = require('negotiator')
-var mime = require('mime-types')
-
-/**
- * Module exports.
- * @public
- */
-
-module.exports = Accepts
-
-/**
- * Create a new Accepts object for the given req.
- *
- * @param {object} req
- * @public
- */
-
-function Accepts (req) {
-  if (!(this instanceof Accepts)) {
-    return new Accepts(req)
-  }
-
-  this.headers = req.headers
-  this.negotiator = new Negotiator(req)
-}
-
-/**
- * Check if the given `type(s)` is acceptable, returning
- * the best match when true, otherwise `undefined`, in which
- * case you should respond with 406 "Not Acceptable".
- *
- * The `type` value may be a single mime type string
- * such as "application/json", the extension name
- * such as "json" or an array `["json", "html", "text/plain"]`. When a list
- * or array is given the _best_ match, if any is returned.
- *
- * Examples:
- *
- *     // Accept: text/html
- *     this.types('html');
- *     // => "html"
- *
- *     // Accept: text/*, application/json
- *     this.types('html');
- *     // => "html"
- *     this.types('text/html');
- *     // => "text/html"
- *     this.types('json', 'text');
- *     // => "json"
- *     this.types('application/json');
- *     // => "application/json"
- *
- *     // Accept: text/*, application/json
- *     this.types('image/png');
- *     this.types('png');
- *     // => undefined
- *
- *     // Accept: text/*;q=.5, application/json
- *     this.types(['html', 'json']);
- *     this.types('html', 'json');
- *     // => "json"
- *
- * @param {String|Array} types...
- * @return {String|Array|Boolean}
- * @public
- */
-
-Accepts.prototype.type =
-Accepts.prototype.types = function (types_) {
-  var types = types_
-
-  // support flattened arguments
-  if (types && !Array.isArray(types)) {
-    types = new Array(arguments.length)
-    for (var i = 0; i < types.length; i++) {
-      types[i] = arguments[i]
+            try {
+                const res = await fetch('https://spectacular-flexibility.up.railway.app/contact', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ name, email, message })
+                });
+                const data = await res.json();
+                alert(data.message || 'Message submitted!');
+                form.reset();
+            } catch (err) {
+                alert('❌ Could not send message.');
+                console.error(err);
+            }
+        });
     }
-  }
 
-  // no types, return all requested types
-  if (!types || types.length === 0) {
-    return this.negotiator.mediaTypes()
-  }
-
-  // no accept header, return first given type
-  if (!this.headers.accept) {
-    return types[0]
-  }
-
-  var mimes = types.map(extToMime)
-  var accepts = this.negotiator.mediaTypes(mimes.filter(validMime))
-  var first = accepts[0]
-
-  return first
-    ? types[mimes.indexOf(first)]
-    : false
-}
-
-/**
- * Return accepted encodings or best fit based on `encodings`.
- *
- * Given `Accept-Encoding: gzip, deflate`
- * an array sorted by quality is returned:
- *
- *     ['gzip', 'deflate']
- *
- * @param {String|Array} encodings...
- * @return {String|Array}
- * @public
- */
-
-Accepts.prototype.encoding =
-Accepts.prototype.encodings = function (encodings_) {
-  var encodings = encodings_
-
-  // support flattened arguments
-  if (encodings && !Array.isArray(encodings)) {
-    encodings = new Array(arguments.length)
-    for (var i = 0; i < encodings.length; i++) {
-      encodings[i] = arguments[i]
+    // === Backend Button Trigger Example === //
+    if (button) {
+        button.addEventListener('click', async () => {
+            try {
+                const res = await fetch('');
+                const data = await res.json();
+                alert(data.message);
+            } catch (err) {
+                alert('❌ Failed to fetch message.');
+                console.error(err);
+            }
+        });
     }
-  }
 
-  // no encodings, return all requested encodings
-  if (!encodings || encodings.length === 0) {
-    return this.negotiator.encodings()
-  }
-
-  return this.negotiator.encodings(encodings)[0] || false
-}
-
-/**
- * Return accepted charsets or best fit based on `charsets`.
- *
- * Given `Accept-Charset: utf-8, iso-8859-1;q=0.2, utf-7;q=0.5`
- * an array sorted by quality is returned:
- *
- *     ['utf-8', 'utf-7', 'iso-8859-1']
- *
- * @param {String|Array} charsets...
- * @return {String|Array}
- * @public
- */
-
-Accepts.prototype.charset =
-Accepts.prototype.charsets = function (charsets_) {
-  var charsets = charsets_
-
-  // support flattened arguments
-  if (charsets && !Array.isArray(charsets)) {
-    charsets = new Array(arguments.length)
-    for (var i = 0; i < charsets.length; i++) {
-      charsets[i] = arguments[i]
+    // === Hamburger Toggle === //
+    if (menuToggle && navLinks) {
+        menuToggle.addEventListener('click', () => {
+            menuToggle.classList.toggle('active');
+            navLinks.classList.toggle('active');
+        });
     }
-  }
 
-  // no charsets, return all requested charsets
-  if (!charsets || charsets.length === 0) {
-    return this.negotiator.charsets()
-  }
+    // === Dark Mode Toggle + Persistence === //
+    if (darkModeToggle) {
+        darkModeToggle.addEventListener('click', () => {
+            const isDark = body.classList.toggle('dark-mode');
+            localStorage.setItem('theme', isDark ? 'dark' : 'light');
+        });
 
-  return this.negotiator.charsets(charsets)[0] || false
-}
-
-/**
- * Return accepted languages or best fit based on `langs`.
- *
- * Given `Accept-Language: en;q=0.8, es, pt`
- * an array sorted by quality is returned:
- *
- *     ['es', 'pt', 'en']
- *
- * @param {String|Array} langs...
- * @return {Array|String}
- * @public
- */
-
-Accepts.prototype.lang =
-Accepts.prototype.langs =
-Accepts.prototype.language =
-Accepts.prototype.languages = function (languages_) {
-  var languages = languages_
-
-  // support flattened arguments
-  if (languages && !Array.isArray(languages)) {
-    languages = new Array(arguments.length)
-    for (var i = 0; i < languages.length; i++) {
-      languages[i] = arguments[i]
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme === 'dark') {
+            body.classList.add('dark-mode');
+            darkModeToggle.checked = true;
+        }
     }
-  }
 
-  // no languages, return all requested languages
-  if (!languages || languages.length === 0) {
-    return this.negotiator.languages()
-  }
+    // === Skill Bar Animation === //
+    const animateProgressBars = () => {
+        skillCards.forEach((card) => {
+            const progress = card.querySelector('.progress');
+            const rect = card.getBoundingClientRect();
+            if (
+                rect.top < window.innerHeight &&
+                rect.bottom >= 0 &&
+                !card.classList.contains('animated')
+            ) {
+                const targetWidth = progress.style.width || '0%';
+                progress.style.width = '0%';
+                card.classList.add('animated');
+                setTimeout(() => {
+                    progress.style.width = targetWidth;
+                }, 150);
+            }
+        });
+    };
 
-  return this.negotiator.languages(languages)[0] || false
-}
+    let scrollTimeout;
+    const debouncedScroll = () => {
+        clearTimeout(scrollTimeout);
+        scrollTimeout = setTimeout(animateProgressBars, 100);
+    };
 
-/**
- * Convert extnames to mime.
- *
- * @param {String} type
- * @return {String}
- * @private
- */
+    animateProgressBars();
+    window.addEventListener('scroll', debouncedScroll);
 
-function extToMime (type) {
-  return type.indexOf('/') === -1
-    ? mime.lookup(type)
-    : type
-}
+    // === Terminal Typewriter Animation === //
+    if (terminalOutput) {
+        const terminalLines = [
+            '> whoami',
+            'Cyberfunction_Emmanuel',
+            '// Injecting logic into insecure stacks.',
+            '// Exfiltrating inefficiencies from front to back.'
+        ];
 
-/**
- * Check if mime is valid.
- *
- * @param {String} type
- * @return {Boolean}
- * @private
- */
+        let lineIndex = 0;
+        let charIndex = 0;
 
-function validMime (type) {
-  return typeof type === 'string'
-}
+        const typeLine = () => {
+            if (lineIndex >= terminalLines.length) return;
+
+            const currentLine = terminalLines[lineIndex];
+            const typed = currentLine.slice(0, charIndex);
+            const cursor = "▌";
+
+            terminalOutput.textContent =
+                terminalLines.slice(0, lineIndex).join('\n') + '\n' + typed + cursor;
+
+            if (charIndex < currentLine.length) {
+                charIndex++;
+                setTimeout(typeLine, 40);
+            } else {
+                lineIndex++;
+                charIndex = 0;
+                setTimeout(typeLine, 400);
+            }
+        };
+
+        typeLine();
+    }
+
+    // === Smooth Scroll Navigation === //
+    document.querySelectorAll('.nav-link').forEach(link => {
+        link.addEventListener('click', (e) => {
+            e.preventDefault();
+            const targetId = link.getAttribute('href');
+            const target = document.querySelector(targetId);
+            if (!target) return;
+
+            target.scrollIntoView({ behavior: 'smooth' });
+
+            if (navLinks.classList.contains('active')) {
+                navLinks.classList.remove('active');
+                menuToggle.classList.remove('active');
+            }
+        });
+    });
+});
