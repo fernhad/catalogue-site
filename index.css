@@ -95,12 +95,11 @@ body {
 /* Theme Toggle Switch */
 /* Container for dark mode toggle */
 .theme-toggle {
-    margin-left: 1rem; /* Space from nav links */
+    margin-left: 1rem; 
 }
 
-/* Hides the checkbox but keeps it functional */
 .theme-toggle input {
-    display: none; /* Hidden, controlled via label */
+    display: none; 
 }
 
 /* Toggle switch background */
@@ -110,8 +109,8 @@ body {
     background-color: #ccc; /* Gray when off - customize */
     display: block; /* Block element for styling */
     border-radius: 20px; /* Fully rounded ends */
-    position: relative; /* For positioning the circle */
-    cursor: pointer; /* Hand cursor */
+    position: relative; 
+    cursor: pointer; /
 }
 
 /* Circle inside the toggle switch */
@@ -209,6 +208,14 @@ body.dark-mode .nav-links a {
 /* Hover effect for secondary button */
 .secondary-btn:hover {
     background-color: rgba(255, 255, 255, 0.1); /* Slight white fill */
+}
+.profile-photo {
+    width: 960x;
+    height: 1280x;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
 }
 
 /* General Section Styling */
