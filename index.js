@@ -5,8 +5,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const menuToggle = document.querySelector('.menu-toggle');
     const navLinks = document.querySelector('.nav-links');
     const darkModeToggle = document.querySelector('#dark-mode-toggle');
+    const themeToggle = document.querySelector('.theme-toggle');
+    const hero = document.querySelector('.hero');
     const skillCards = document.querySelectorAll('.skill-card');
     const terminalOutput = document.querySelector('#terminal-output');
+    const terminal = document.getElementById('#terminal-output');
     const button = document.getElementById('clickMeBtn');
     const form = document.getElementById('contactForm');
 
@@ -106,6 +109,10 @@ document.addEventListener('DOMContentLoaded', () => {
             'Cyberfunction_Emmanuel',
             '// Injecting logic into insecure stacks.',
             '// Exfiltrating inefficiencies from front to back.'
+            "~ sudo Code Crafter and crawler",
+            "|Exfiltrating inefficiencies with precision.",
+            "$ root@cyber-oasis:~$ Web Defense Architect",
+            " // Intrusion Detection Evangelist // Full-Stack Hacker",
         ];
 
         let lineIndex = 0;
