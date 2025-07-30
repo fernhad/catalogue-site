@@ -1,80 +1,78 @@
 /* Reset and Base Styles */
 * {
-    margin: 0; /* Removes default margins */
-    padding: 0; /* Removes default padding */
-    box-sizing: border-box; /* Includes padding/border in element width/height */
+    margin: 0; 
+    padding: 0; 
+    box-sizing: border-box;
 }
 
 body {
-    font-family: 'Roboto', sans-serif; /* Uses Google Font 'Roboto' - change in HTML link if desired */
-    line-height: 1.6; /* Improves readability with increased line spacing */
+    font-family: 'Roboto', sans-serif; 
+    line-height: 1.6; 
     color: #333; 
     background-color: #f4f4f4; 
     scroll-behavior: smooth; 
 }
 
 .navbar {
-    display: flex; /* Flexbox for horizontal layout */
-    justify-content: space-between; /* Spreads logo, links, and toggle apart */
-    align-items: center; /* Vertically centers content */
-    padding: 1rem 2rem; /* Top/bottom 1rem, left/right 2rem padding */
-    background-color: #fff; /* White background - customize for your theme */
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
-    position: fixed; /* Sticks navbar to top of viewport */
-    width: 100%; /* Full width */
-    top: 0; /* Aligns to top edge */
-    z-index: 1000; /* Ensures navbar stays above other content */
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
+    padding: 1rem 2rem; 
+    background-color: #fff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    position: fixed; 
+    width: 100%;
+    top: 0; 
+    z-index: 1000; 
 }
 
 /* Logo styling within navbar */
 .logo h1 {
-    font-size: 1.5rem; /* Logo text size - adjust for prominence */
+    font-size: 1.5rem;
 }
 
-/* Highlights part of the logo (e.g., first name) */
 .logo span {
-    color: #007bff; /* Blue accent - replace with your brand color */
+    color: #007bff; 
 }
 
 /* Navigation links container */
 .nav-links {
-    display: flex; /* Horizontal list layout */
-    list-style: none; /* Removes default list bullets */
+    display: flex; 
+    list-style: none; 
 }
 
-/* Spacing between nav items */
 .nav-links li {
-    margin-left: 2rem; /* Space between links - adjust for density */
+    margin-left: 2rem; 
 }
 
 /* Individual nav link styling */
 .nav-links a {
-    text-decoration: none; /* Removes underline */
-    color: #333; /* Dark gray text - match body color or customize */
-    font-weight: 500; /* Medium bold - adjust for emphasis */
-    transition: color 0.3s; /* Smooth color change on hover */
+    text-decoration: none;
+    color: #333; 
+    font-weight: 500; 
+    transition: color 0.3s; 
 }
 
 /* Hover effect for nav links */
 .nav-links a:hover {
-    color: #007bff; /* Blue on hover - match your accent color */
+    color: #007bff;
 }
 
 /* Hamburger Menu (for mobile) */
 /* Hidden by default on desktop, shown on mobile via media query */
 .menu-toggle {
-    display: none; /* Hidden initially */
-    flex-direction: column; /* Stacks lines vertically */
-    cursor: pointer; /* Hand cursor on hover */
+    display: none;
+    flex-direction: column; 
+    cursor: pointer; 
 }
 
-/* Each line in the hamburger icon */
+
 .menu-toggle span {
-    width: 25px; /* Width of hamburger lines */
-    height: 3px; /* Thickness of lines */
-    background-color: #333; /* Dark gray - match nav text or customize */
-    margin: 2px 0; /* Spacing between lines */
-    transition: all 0.3s; /* Smooth animation for toggle effect (needs JS) */
+    width: 25px; 
+    height: 3px; 
+    background-color: #333; 
+    margin: 2px 0; 
+    transition: all 0.3s; 
 }
 .menu-toggle.active span:nth-child(1) {
     transform: rotate(45deg) translate(5px, 5px);
@@ -98,45 +96,39 @@ body {
     display: none; 
 }
 
-/* Toggle switch background */
 .theme-toggle label {
-    width: 40px; /* Switch width */
-    height: 20px; /* Switch height */
-    background-color: #ccc; /* Gray when off - customize */
-    display: block; /* Block element for styling */
-    border-radius: 20px; /* Fully rounded ends */
+    width: 40px; 
+    height: 20px; 
+    background-color: #ccc; 
+    display: block;
+    border-radius: 20px; 
     position: relative; 
     cursor: pointer; /
 }
 
-/* Circle inside the toggle switch */
 .theme-toggle label::after {
-    content: ''; /* Empty pseudo-element */
-    width: 16px; /* Circle diameter */
-    height: 16px; /* Circle height */
-    background-color: #fff; /* White circle - customize */
-    border-radius: 50%; /* Circular shape */
-    position: absolute; /* Positioned within label */
-    top: 2px; /* Centered vertically */
-    left: 2px; /* Starting position (left when off) */
-    transition: transform 0.3s; /* Smooth slide animation */
+    content: ''; 
+    width: 16px;
+    height: 16px; 
+    background-color: #fff; 
+    border-radius: 50%;
+    position: absolute; 
+    top: 2px;
+    left: 2px; 
+    transition: transform 0.3s; 
 }
 
-/* Switch background when checked (dark mode on) */
 .theme-toggle input:checked + label {
-    background-color: #007bff; /* Blue when on - match accent */
+    background-color: #007bff; 
 }
 
-/* Moves circle to right when checked */
 .theme-toggle input:checked + label::after {
-    transform: translateX(20px); /* Slides right - adjust if width changes */
+    transform: translateX(20px); 
 }
 
 body {
     transition: background-color 0.3s ease, color 0.3s ease;
 }
-
-/* Dark Mode Styles */
 
 body.dark-mode {
     background-color: #121212; 
@@ -154,14 +146,14 @@ body.dark-mode .nav-links a {
 /* Hero Section */
 
 .hero {
-    height: 100vh; /* Full viewport height */
-    display: flex; /* Centers content */
-    align-items: center; /* Vertical centering */
-    justify-content: center; /* Horizontal centering */
-    text-align: center; /* Centers text */
-    background: linear-gradient(135deg, #007bff, #00c4cc); /* Blue to teal gradient - customize colors */
-    color: #fff; /* White text for contrast */
-    padding: 2rem; /* Padding for smaller screens */
+    height: 100vh; 
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+    text-align: center; 
+    background: linear-gradient(135deg, #007bff, #00c4cc);
+    color: #fff; 
+    padding: 2rem; 
 }
 .profile-photo:hover {
   transform: scale(1.05);
@@ -171,48 +163,43 @@ body.dark-mode .nav-links a {
 
 /* Main heading in hero */
 .hero-content h1 {
-    font-size: 3rem; /* Large heading - adjust for impact */
-    margin-bottom: 1rem; /* Space below */
-    animation: fadeInUp 1s ease-out; /* Fade-in animation */
+    font-size: 3rem; 
+    margin-bottom: 1rem; 
+    animation: fadeInUp 1s ease-out; 
 }
 
 /* Subtitle below heading */
 .hero-content .subtitle {
-    font-size: 1.5rem; /* Smaller text - adjust size */
-    margin-bottom: 2rem; /* Space before buttons */
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
 }
 
-/* General button styling */
 .btn {
-    display: inline-block; /* Inline with block properties */
-    padding: 0.8rem 1.5rem; /* Vertical/horizontal padding */
-    text-decoration: none; /* No underline */
-    border-radius: 5px; /* Rounded corners */
-    transition: background-color 0.3s; /* Smooth hover effect */
+    display: inline-block; 
+    padding: 0.8rem 1.5rem;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s;
 }
 
-/* Primary button (solid) */
 .primary-btn {
-    background-color: #fff; /* White background */
-    color: #007bff; /* Blue text - match accent */
+    background-color: #fff;
+    color: #007bff; 
 }
 
-/* Hover effect for primary button */
 .primary-btn:hover {
-    background-color: #f0f0f0; /* Light gray on hover */
+    background-color: #f0f0f0; 
 }
 
-/* Secondary button (outline) */
 .secondary-btn {
-    background-color: transparent; /* No fill */
-    color: #fff; /* White text */
-    border: 2px solid #fff; /* White border */
-    margin-left: 1rem; /* Space from primary button */
+    background-color: transparent;
+    color: #fff;
+    border: 2px solid #fff;
+    margin-left: 1rem;
 }
 
-/* Hover effect for secondary button */
 .secondary-btn:hover {
-    background-color: rgba(255, 255, 255, 0.1); /* Slight white fill */
+    background-color: rgba(255, 255, 255, 0.1);
 }
 .profile-photo {
     width: 960x;
@@ -224,168 +211,146 @@ body.dark-mode .nav-links a {
 }
 
 /* General Section Styling */
-/* Applies to all sections (about, skills, etc.) */
 .section {
-    padding: 5rem 2rem; /* Top/bottom 5rem, left/right 2rem */
-    max-width: 1200px; /* Limits content width */
-    margin: 0 auto; /* Centers section */
+    padding: 5rem 2rem; 
+    max-width: 1200px; 
+    margin: 0 auto; 
 }
 
-/* Section headings */
+
 .section h2 {
-    font-size: 2.5rem; /* Large heading - adjust size */
-    text-align: center; /* Centered */
-    margin-bottom: 3rem; /* Space below */
+    font-size: 2.5rem; 
+    text-align: center; 
+    margin-bottom: 3rem;
 }
 
 /* About Section */
-/* Flex container for text and image */
 .about-content {
-    display: flex; /* Side-by-side layout */
-    align-items: center; /* Vertically aligns items */
-    gap: 2rem; /* Space between text and image */
+    display: flex;
+    align-items: center;
+    gap: 2rem;
 }
 
-/* Text area in about section */
 .about-text {
-    flex: 1; /* Takes available space */
+    flex: 1;
 }
 
-/* Image styling in about section */
 .about-image img {
-    max-width: 300px; /* Limits image size - adjust as needed */
-    border-radius: 10px; /* Rounded corners */
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Shadow for depth */
+    max-width: 300px; 
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
 /* Skills Section */
-/* Grid layout for skill cards */
 .skills-grid {
-    display: grid; /* Grid layout */
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Responsive columns */
-    gap: 2rem; /* Space between cards */
+    display: grid; 
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); 
+    gap: 2rem; 
 }
 
-/* Individual skill card */
 .skill-card {
-    text-align: center; /* Centers content */
-    padding: 1.5rem; /* Internal spacing */
-    background-color: #fff; /* White background - customize */
-    border-radius: 10px; /* Rounded corners */
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    text-align: center; 
+    padding: 1.5rem; 
+    background-color: #fff; 
+    border-radius: 10px; 
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); 
 }
 
-/* Skill icon (Font Awesome) */
 .skill-card i {
-    font-size: 2.5rem; /* Large icon - adjust size */
-    margin-bottom: 1rem; /* Space below */
-    color: #007bff; /* Blue - match accent color */
+    font-size: 2.5rem; 
+    margin-bottom: 1rem; 
+    color: #007bff;
 }
 
-/* Progress bar container */
 .progress-bar {
-    height: 10px; /* Bar height */
-    background-color: #e0e0e0; /* Light gray background */
-    border-radius: 5px; /* Rounded ends */
-    overflow: hidden; /* Hides excess progress */
+    height: 10px;
+    background-color: #e0e0e0;
+    border-radius: 5px; 
+    overflow: hidden; 
 }
 
-/* Filled portion of progress bar */
 .progress {
-    height: 100%; /* Fills container height */
-    background-color: #007bff; /* Blue fill - customize */
-    transition: width 1s ease-in-out; /* Smooth width animation (optional JS trigger) */
-}
+    height: 100%; 
+    background-color: #007bff; 
+    transition: width 1s ease-in-out; 
 
 /* Projects Section */
-/* Grid layout for project cards */
 .projects-grid {
-    display: grid; /* Grid layout */
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Responsive columns */
-    gap: 2rem; /* Space between cards */
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+    gap: 2rem; 
 }
 
-/* Individual project card */
 .project-card {
-    background-color: #fff; /* White background - customize */
-    border-radius: 10px; /* Rounded corners */
-    overflow: hidden; /* Clips image/content */
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow */
-    transition: transform 0.3s; /* Smooth lift on hover */
+    background-color: #fff; 
+    border-radius: 10px; 
+    overflow: hidden; 
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); 
+    transition: transform 0.3s; 
 }
 
-/* Hover effect for project card */
 .project-card:hover {
     transform: translateY(-5px) scale(1.02);
     box-shadow: 0 0 8px rgba(0, 255, 170, 0.4);
 }
 
-/* Project image */
 .project-card img {
-    width: 100%; /* Full card width */
-    height: 200px; /* Fixed height - adjust to match your images */
-    object-fit: cover; /* Crops image to fit */
+    width: 100%; 
+    height: 200px; 
+    object-fit: cover; 
 }
 
-/* Project details */
 .project-info {
-    padding: 1.5rem; /* Internal spacing */
+    padding: 1.5rem; 
 }
 
-/* Project links (Live Demo, GitHub) */
 .project-link {
-    display: inline-block; /* Inline with spacing */
-    margin-right: 1rem; /* Space between links */
-    color: #007bff; /* Blue - match accent */
-    text-decoration: none; /* No underline */
+    display: inline-block; 
+    margin-right: 1rem; 
+    color: #007bff; 
+    text-decoration: none; 
 }
 
 /* Contact Section */
-/* Centers and limits form width */
 .contact-form {
-    max-width: 600px; /* Form width - adjust as needed */
-    margin: 0 auto; /* Centers form */
+    max-width: 600px;
+    margin: 0 auto;
 }
 
-/* Form field container */
 .form-group {
-    margin-bottom: 1.5rem; /* Space between fields */
+    margin-bottom: 1.5rem; 
 }
 
-/* Form labels */
 .form-group label {
-    display: block; /* Stacks label above input */
-    margin-bottom: 0.5rem; /* Space below label */
+    display: block; 
+    margin-bottom: 0.5rem; 
 }
 
-/* Form inputs and textarea */
 .form-group input,
 .form-group textarea {
-    width: 100%; /* Full width */
-    padding: 0.8rem; /* Internal spacing */
-    border: 1px solid #ccc; /* Light gray border - customize */
-    border-radius: 5px; /* Rounded corners */
-    font-size: 1rem; /* Text size */
+    width: 100%; 
+    padding: 0.8rem; 
+    border: 1px solid #ccc; 
+    border-radius: 5px; 
+    font-size: 1rem; 
 }
 
-/* Submit button */
 .submit-btn {
-    background-color: #007bff; /* Blue - match accent */
-    color: #fff; /* White text */
-    border: none; /* No border */
-    cursor: pointer; /* Hand cursor */
+    background-color: #007bff; 
+    color: #fff; 
+    border: none; 
+    cursor: pointer; 
 }
 
-/* Hover effect for submit button */
+
 .submit-btn:hover {
-    background-color: #0056b3; /* Darker blue - adjust shade */
+    background-color: #0056b3; 
 }
 
-/* FAQ Section (New) */
 /* Container for FAQ items */
 .faq-container {
-    max-width: 800px; /* Limits width for readability */
-    margin: 0 auto; /* Centers container */
+    max-width: 800px; 
+    margin: 0 auto; 
 }
 
 /* Individual FAQ item using <details> */
@@ -614,14 +579,17 @@ footer {
     }
     #terminal-output {
          font-family: 'Courier New', monospace;
-         font-size: 1.2rem;
+         font-size: 1rem;
          color: #00ffcc;
          background-color: #000;
-         padding: 1.2rem;
+         padding: 1rem;
          border-radius: 10px;
          box-shadow: 0 0 10px rgba(0,255,200,0.3);
          white-space: pre-wrap;
          min-height: 130px;
+         max-width: 100%;
+         word-wrap: break-word;
+        
     }
     @keyframes blink {
         0%   { opacity: 1; }
