@@ -971,23 +971,22 @@ fieldset {
   text-align: center;
   white-space: nowrap;
 } **/
-    @import url("https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300..900;1,300..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+   @import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
 
 /** Variables **/
 
 :root {
-  --color-background: #e7e7e7;
-  --color-background-alt: #888888;
-  --color-border-active: #da7105;
-  --color-border-default: #d1d1d1;
-  --color-highlight: #fdcf4c;
-  --color-primary: #b64e08;
-  --color-primary-active: #79320e;
-  --color-text-default: #262626;
-  --color-text-muted: #4f4f4f;
+  --color-background: #cbd5e1;
+  --color-background-alt: #64748b;
+  --color-border-active: #64748b;
+  --color-border-default: #94a3b8;
+  --color-highlight: #cbd5e1;
+  --color-primary: #1e293b;
+  --color-primary-active: #090f1d;
+  --color-text-default: #0f172a;
+  --color-text-muted: #475569;
 
-  --font-family-body: "Figtree", system-ui, sans-serif;
-  --font-family-display: "Poppins", system-ui, sans-serif;
+  --font-family-body: "Inter", sans-serif;
 }
 
 /** Base **/
@@ -1070,6 +1069,7 @@ fieldset {
   color: var(--color-text-default);
   font-family: var(--font-family-display);
   font-size: 1.25rem;
+  font-weight: 500;
   line-height: 1.75rem;
   margin-bottom: 1.5rem;
   grid-column: 1 / -1;
@@ -1078,21 +1078,22 @@ fieldset {
 .fs-field {
   display: flex;
   flex-direction: column;
-  row-gap: 0.5rem;
+  row-gap: 0.375rem;
 }
 
 .fs-label {
   color: var(--color-text-default);
   display: block;
   font-family: var(--font-family-display);
-  font-size: 1rem;
+  font-size: 0.875rem;
+  font-weight: 500;
   line-height: 1.25rem;
 }
 
 .fs-description {
   color: var(--color-text-muted);
   display: block;
-  font-size: 1rem;
+  font-size: 0.875rem;
   line-height: 1.25rem;
 }
 
@@ -1108,13 +1109,13 @@ fieldset {
 
 .fs-button {
   background-color: var(--color-primary);
-  border-radius: 9999px;
+  border-radius: 0.375rem;
   color: white;
   cursor: pointer;
-  font-size: 1.125rem;
-  font-weight: 600;
-  line-height: 1.5rem;
-  padding: 0.75rem 2rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  line-height: 1rem;
+  padding: 1rem 2rem;
   transition-duration: 200ms;
   transition-property: background-color;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
@@ -1126,27 +1127,29 @@ fieldset {
 
 .fs-button:focus-visible {
   background-color: var(--color-primary-active);
-  outline: 4px solid var(--color-highlight);
+  outline: 3px solid var(--color-highlight);
 }
 
 .fs-input,
 .fs-select {
   appearance: none;
-  border-radius: 9999px;
+  border-radius: 0.375rem;
   border-width: 0;
   box-shadow: var(--color-border-default) 0 0 0 1px inset;
   color: var(--color-text-default);
   font-size: 1rem;
-  height: 3rem;
+  height: 2.5rem;
   line-height: 1.5rem;
   outline: none;
-  padding-left: 1rem;
-  padding-right: 1rem;
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
 }
 
 .fs-input:focus-visible,
 .fs-select:focus-visible {
-  box-shadow: var(--color-border-active) 0 0 0 1px inset;
+  box-shadow: var(--color-border-active) 0 0 0 1.5px inset;
+  outline: 3px solid var(--color-highlight);
+  outline-offset: 0;
 }
 
 .fs-input::placeholder {
@@ -1157,7 +1160,7 @@ fieldset {
 .fs-radio-group {
   display: flex;
   flex-direction: column;
-  row-gap: 1rem;
+  row-gap: 0.5rem;
 }
 
 .fs-checkbox-field,
@@ -1167,7 +1170,7 @@ fieldset {
 }
 
 :is(.fs-checkbox-field, .fs-radio-field) .fs-label + .fs-description {
-  margin-top: 0.25rem;
+  margin-top: 0.125rem;
 }
 
 .fs-checkbox-wrapper,
@@ -1180,9 +1183,9 @@ fieldset {
 .fs-checkbox,
 .fs-radio {
   background-color: #fff;
-  border: 1px solid var(--color-border-default);
-  height: 1.25rem;
-  width: 1.25rem;
+  border: 1px solid var(--color-text-default);
+  height: 1rem;
+  width: 1rem;
 }
 
 .fs-checkbox {
@@ -1212,23 +1215,17 @@ fieldset {
 
 .fs-checkbox:focus-visible,
 .fs-radio:focus-visible {
-  border-color: var(--color-border-active);
-  outline: 4px solid var(--color-highlight);
+  outline: 3px solid var(--color-highlight);
   outline-offset: 0;
-}
-
-.fs-checkbox:checked:focus-visible,
-.fs-radio:checked:focus-visible {
-  border-color: transparent;
 }
 
 .fs-select {
   background-color: #fff;
   background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");
-  background-position: right 0.75rem center;
+  background-position: right 0.5rem center;
   background-repeat: no-repeat;
-  background-size: 1.625em 1.625em;
-  padding-right: 2.875rem;
+  background-size: 1.5em 1.5em;
+  padding-right: 2.5rem;
 }
 
 .fs-slider {
@@ -1279,16 +1276,16 @@ fieldset {
 
 .fs-switch {
   background-color: var(--color-background-alt);
-  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='2.75' fill='white'/%3e%3c/svg%3e");
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='3' fill='white'/%3e%3c/svg%3e");
   background-position: left center;
   background-repeat: no-repeat;
-  border-radius: 1.25rem;
+  border-radius: 1.5rem;
   cursor: pointer;
-  height: 1.25rem;
+  height: 1.5rem;
   transition-duration: 200ms;
   transition-property: background-color, background-position;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-  width: 2.5rem;
+  width: 2.75rem;
 }
 
 .fs-switch:checked {
@@ -1297,16 +1294,16 @@ fieldset {
 }
 
 .fs-switch:focus-visible {
-  outline: 4px solid var(--color-highlight);
+  outline: 3px solid var(--color-highlight);
   outline-offset: 0;
 }
 
 .fs-textarea {
   appearance: none;
-  border-radius: 0.75rem;
+  border-radius: 0.375rem;
   border-width: 0;
   box-shadow: var(--color-border-default) 0 0 0 1px inset;
-  color: var(--color-text-default);
+  color: var(--color-primary);
   font-size: 1rem;
   line-height: 1.5rem;
   outline: none;
@@ -1315,7 +1312,9 @@ fieldset {
 }
 
 .fs-textarea:focus-visible {
-  box-shadow: var(--color-border-active) 0 0 0 1px inset;
+  box-shadow: var(--color-border-active) 0 0 0 1.5px inset;
+  outline: 3px solid var(--color-highlight);
+  outline-offset: 0;
 }
 
 .fs-textarea::placeholder {
@@ -1346,10 +1345,6 @@ fieldset {
   white-space: nowrap;
 }
 
-
-body::-webkit-scrollbar {
-    width: 8px;
-}
 body::-webkit-scrollbar-thumb {
     background: #007bff;
     border-radius: 10px;
