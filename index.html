@@ -198,6 +198,88 @@
     <!-- Contact Section -->
     <h3>This section is still under development !!</h3>
     <!--form
+    <form 
+      action="https://formspree.io/f/mvzqwqkb" 
+      method="POST" 
+      class="contact-form"
+    >
+      <!-- Formspree hidden fields -->
+      <input type="hidden" name="_subject" value="New message from your portfolio">
+      <input type="hidden" name="_replyto" value="%email%">
+      <input type="text" name="_gotcha" style="display:none">
+      
+      <div class="form-row">
+        <div class="form-group">
+          <div class="input-container">
+            <input 
+              type="text" 
+              id="full-name" 
+              name="full-name" 
+              class="form-input"
+              required
+            >
+            <label for="full-name" class="form-label">
+              <span class="label-text">Your Name</span>
+              <span class="required">*</span>
+            </label>
+            <div class="input-underline"></div>
+          </div>
+        </div>
+        
+        <div class="form-group">
+          <div class="input-container">
+            <input 
+              type="email" 
+              id="email" 
+              name="email" 
+              class="form-input"
+              required
+            >
+            <label for="email" class="form-label">
+              <span class="label-text">Email Address</span>
+              <span class="required">*</span>
+            </label>
+            <div class="input-underline"></div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="form-group">
+        <div class="input-container">
+          <textarea 
+            id="message" 
+            name="message" 
+            class="form-textarea"
+            rows="5"
+            required
+          ></textarea>
+          <label for="message" class="form-label">
+            <span class="label-text">Your Message</span>
+            <span class="required">*</span>
+          </label>
+          <div class="textarea-underline"></div>
+        </div>
+      </div>
+      
+      <div class="form-submit">
+        <button type="submit" class="submit-button">
+          <span class="button-text">Send Message</span>
+          <span class="button-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+              <path d="M22 2L11 13" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              <path d="M22 2L15 22L11 13L2 9L22 2Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </span>
+        </button>
+        
+        <p class="form-note">I'll respond within 24 hours</p>
+      </div>
+      
+      <!-- Success/Error message container -->
+      <div id="form-message" class="form-message" style="display: none;"></div>
+    </form>
+
+    
   action="https://formspree.io/f/{FORM_ID}"
   class="fs-form"
   target="_top"
@@ -350,18 +432,20 @@
             <success/Error Messages ->
             <div id="form-status" style="display:none; margin-top: 20px; padding: 10px; border-radius: 5px;"></div>
     </form-->
+
+    <!--
     <form
   action="https://formspree.io/f/mvzqwqkb"
   class="fs-form"
   target="_top"
   method="POST"
 >
-  <!-- Hidden fields for Formspree configuration -->
+  <!-- Hidden fields for Formspree configuration --
   <input type="hidden" name="_subject" value="New message from your website">
   <input type="hidden" name="_replyto" value="%email%">
   <input type="text" name="_gotcha" style="display:none">
   
-  <!-- Visible form fields -->
+  <!-- Visible form fields --
   <div class="fs-field">
     <label class="fs-label" for="full-name">Full Name</label>
     <input class="fs-input" id="full-name" name="full-name" required>
@@ -380,7 +464,7 @@
   <div class="fs-button-group">
     <button class="fs-button" type="submit">Send Message</button>
   </div>
-</form>
+</form>-->
     
     
     </section>
@@ -501,6 +585,7 @@ document.getElementById('contact-form').addEventListener('submit', async functio
 
 </body>
 </html>
+
 
 
 
