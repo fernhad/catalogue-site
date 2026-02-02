@@ -1340,7 +1340,7 @@ fieldset {
   text-align: center;
   white-space: nowrap;
 } **/
-   @import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap");
 
 /** Variables **/
 
@@ -1355,7 +1355,8 @@ fieldset {
   --color-text-default: #0f172a;
   --color-text-muted: #475569;
 
-  --font-family-body: "Inter", sans-serif;
+  --font-family-body: "Work Sans", system-ui, sans-serif;
+  --font-family-display: "IBM Plex Serif", system-ui, sans-serif;
 }
 
 /** Base **/
@@ -1713,6 +1714,8 @@ fieldset {
   text-align: center;
   white-space: nowrap;
 }
+
+  
 
 body::-webkit-scrollbar-thumb {
     background: #007bff;
