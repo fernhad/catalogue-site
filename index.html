@@ -286,8 +286,38 @@ document.addEventListener('DOMContentLoaded', function() {
 
     <!-- Contact Section -->
     <h3>This section is still under development !!</h3>
-    <!--form--
-    <form 
+    <!--form-->
+    <form
+  action="https://formspree.io/f/mvzqwqkb"
+  class="fs-form"
+  target="_top"
+  method="POST"
+>
+  <!-- Hidden fields for Formspree configuration -->
+  <input type="hidden" name="_subject" value="New message from your website">
+  <input type="text" name="_gotcha" style="display:none">
+  
+  <!-- Visible form fields -->
+  <div class="fs-field">
+    <label class="fs-label" for="full-name">Full Name</label>
+    <input class="fs-input" id="full-name" name="full-name" required>
+  </div>
+  
+  <div class="fs-field">
+    <label class="fs-label" for="email">Email Address</label>
+    <input class="fs-input" id="email" name="email" type="email" required>
+  </div>
+  
+  <div class="fs-field">
+    <label class="fs-label" for="message">Your Message</label>
+    <textarea class="fs-textarea" id="message" name="message" required></textarea>
+  </div>
+  
+  <div class="fs-button-group">
+    <button class="fs-button" type="submit">Send Message</button>
+  </div>
+</form>
+    <!--form 
       action="https://formspree.io/f/mvzqwqkb" 
       method="POST" 
       class="contact-form"
@@ -401,19 +431,19 @@ document.addEventListener('DOMContentLoaded', function() {
     </form-->
 
 
-    <!--form-->
+    <!--form--
 <form
   action="https://formspree.io/f/mvzqwqkb"
   class="fs-form"
   target="_top"
   method="POST"
 >
-  <!-- Hidden fields for Formspree configuration -->
+  <!-- Hidden fields for Formspree configuration --
   <input type="hidden" name="_subject" value="New message from your website">
   <input type="hidden" name="_replyto" value="%email%">
   <input type="text" name="_gotcha" style="display:none">
   
-  <!-- Visible form fields -->
+  <!-- Visible form fields --
   <div class="fs-field">
     <label class="fs-label" for="full-name">Full Name</label>
     <input class="fs-input" id="full-name" name="full-name" required>
@@ -555,6 +585,7 @@ document.getElementById('contact-form').addEventListener('submit', async functio
 
 </body>
 </html>
+
 
 
 
