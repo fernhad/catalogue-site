@@ -3,53 +3,81 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- SEO Optimization -->
-    <meta name="description" content="Cyberfunction_Emmanuel - BlackHat enthusiast & DevSecOps Engineer | Securing Tomorrow's Web, One Stack at a Time">
-    <meta name="keywords" content="cybersecurity, penetration testing, DevSecOps, full-stack development, IoT, ethical hacking">
+    <meta name="description" content="Cyberfunction_Emmanuel - Elite Security Specialist | Penetration Testing | DevSecOps | IoT Security">
+    <meta name="keywords" content="cybersecurity, pentesting, ethical hacking, DevSecOps, IoT security, full-stack development">
     <meta name="author" content="Murire Thembinkosi Emmanuel">
-    <!-- Open Graph for social sharing -->
-    <meta property="og:title" content="Cyberfunction_Emmanuel | BlackHat Enthusiast">
-    <meta property="og:description" content="Cyber-Ready. Code-Steady. Securing Tomorrow's Web, One Stack at a Time">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://yourportfolio.com">
     
-    <title>MURIRE THEMBINKOSI EMMANUEL | Cyber Security Specialist & DevSecOps Engineer</title>
+    <!-- Open Graph -->
+    <meta property="og:title" content="Cyberfunction_Emmanuel | BlackHat Operations">
+    <meta property="og:description" content="Securing digital frontiers with elite cybersecurity expertise">
+    <meta property="og:image" content="https://images.unsplash.com/photo-1550751827-4bd374c3f58b">
+    <meta property="og:url" content="https://cyberfunction.dev">
     
-    <!-- Base URL -->
-    <base href="../../">
+    <!-- PWA Support -->
+    <link rel="manifest" href="/manifest.json">
+    <meta name="theme-color" content="#0f172a">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
     
-    <!-- CSS Files -->
+    <title>CYBERFUNCTION_EMMANUEL | Security Operations Center</title>
+    
+    <!-- Base & Icons -->
+    <base href="https://cyberfunction.dev/">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚡</text></svg>">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Three.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    
+    <!-- GSAP (Animation Library) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/ScrollTrigger.min.js"></script>
+    
+    <!-- CSS -->
     <link rel="stylesheet" href="./index.css">
     
-    <!-- Advanced CSS for new features -->
+    <!-- Inline Critical CSS -->
     <style>
-        /* Advanced Features CSS */
-        #cyber-terminal-3d {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 1;
-            pointer-events: none;
+        :root {
+            --cyber-primary: #00ff88;
+            --cyber-secondary: #0088ff;
+            --cyber-accent: #ff0066;
+            --cyber-dark: #0a0a0f;
+            --cyber-darker: #050508;
+            --cyber-gray: #1a1a2e;
+            --cyber-light: #e6f1ff;
+            --cyber-neon: #00d9ff;
+            --matrix-green: #00ff41;
+            --terminal-bg: rgba(10, 10, 15, 0.95);
+            --glass-bg: rgba(255, 255, 255, 0.05);
+            --glass-border: rgba(0, 255, 136, 0.1);
+            --grid-color: rgba(0, 255, 136, 0.03);
         }
         
+        /* Cyber Cursor */
         .cyber-cursor {
-            width: 20px;
-            height: 20px;
-            border: 2px solid #6366f1;
+            width: 24px;
+            height: 24px;
+            border: 2px solid var(--cyber-primary);
             border-radius: 50%;
             position: fixed;
             pointer-events: none;
             z-index: 10000;
             mix-blend-mode: difference;
-            transition: transform 0.1s;
+            filter: drop-shadow(0 0 8px var(--cyber-primary));
+            transition: transform 0.15s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
         
-        .cyber-cursor-trail {
-            width: 40px;
-            height: 40px;
-            border: 1px solid rgba(99, 102, 241, 0.5);
+        .cursor-ring {
+            width: 48px;
+            height: 48px;
+            border: 1px solid rgba(0, 255, 136, 0.3);
             border-radius: 50%;
             position: fixed;
             pointer-events: none;
@@ -57,797 +85,776 @@
             transition: all 0.3s ease;
         }
         
-        .scroll-progress {
+        .cursor-dot {
+            width: 4px;
+            height: 4px;
+            background: var(--cyber-accent);
+            border-radius: 50%;
+            position: fixed;
+            pointer-events: none;
+            z-index: 10001;
+            filter: blur(1px);
+        }
+        
+        /* Matrix Background */
+        #matrix-bg {
             position: fixed;
             top: 0;
             left: 0;
-            height: 3px;
-            background: linear-gradient(90deg, #6366f1, #8b5cf6);
-            z-index: 10001;
-            width: 0%;
-            transition: width 0.1s ease;
+            width: 100%;
+            height: 100%;
+            z-index: -2;
+            opacity: 0.05;
+            pointer-events: none;
         }
         
-        #quantum-mode {
+        /* Grid Overlay */
+        .grid-overlay {
             position: fixed;
-            bottom: 100px;
-            right: 30px;
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, #0ea5e9, #06b6d4);
-            border: none;
-            color: white;
-            font-size: 20px;
-            cursor: pointer;
-            z-index: 10000;
-            box-shadow: 0 10px 30px rgba(14, 165, 233, 0.4);
-            transition: all 0.3s ease;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                linear-gradient(var(--grid-color) 1px, transparent 1px),
+                linear-gradient(90deg, var(--grid-color) 1px, transparent 1px);
+            background-size: 50px 50px;
+            z-index: -1;
+            pointer-events: none;
+            opacity: 0.3;
         }
         
-        #cyber-assistant {
+        /* Loading Screen */
+        #loading-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--cyber-darker);
+            z-index: 99999;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            transition: opacity 0.8s ease;
+        }
+        
+        .loading-terminal {
+            font-family: 'JetBrains Mono', monospace;
+            color: var(--cyber-primary);
+            font-size: 1.2rem;
+            margin-top: 2rem;
+        }
+        
+        .cyber-loader {
+            width: 200px;
+            height: 4px;
+            background: var(--cyber-gray);
+            border-radius: 2px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .cyber-loader::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 30%;
+            background: linear-gradient(90deg, transparent, var(--cyber-primary), transparent);
+            animation: scanning 2s infinite linear;
+        }
+        
+        @keyframes scanning {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(300%); }
+        }
+        
+        /* Initial state */
+        body.loading {
+            overflow: hidden;
+        }
+        
+        body.loaded #loading-screen {
+            opacity: 0;
+            pointer-events: none;
+        }
+        
+        /* Glitch Effects */
+        .glitch-text {
+            position: relative;
+            display: inline-block;
+        }
+        
+        .glitch-text::before,
+        .glitch-text::after {
+            content: attr(data-text);
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            clip: rect(0, 0, 0, 0);
+        }
+        
+        .glitch-text:hover::before {
+            animation: glitch-anim-1 0.5s infinite linear alternate-reverse;
+        }
+        
+        .glitch-text:hover::after {
+            animation: glitch-anim-2 0.5s infinite linear alternate-reverse;
+        }
+        
+        @keyframes glitch-anim-1 {
+            0% { clip: rect(42px, 9999px, 44px, 0); }
+            5% { clip: rect(12px, 9999px, 59px, 0); }
+            10% { clip: rect(48px, 9999px, 29px, 0); }
+            15% { clip: rect(42px, 9999px, 73px, 0); }
+            20% { clip: rect(63px, 9999px, 27px, 0); }
+            25% { clip: rect(34px, 9999px, 55px, 0); }
+            30% { clip: rect(86px, 9999px, 73px, 0); }
+            35% { clip: rect(20px, 9999px, 20px, 0); }
+            40% { clip: rect(26px, 9999px, 60px, 0); }
+            45% { clip: rect(25px, 9999px, 66px, 0); }
+            50% { clip: rect(57px, 9999px, 98px, 0); }
+            55% { clip: rect(5px, 9999px, 46px, 0); }
+            60% { clip: rect(82px, 9999px, 31px, 0); }
+            65% { clip: rect(54px, 9999px, 27px, 0); }
+            70% { clip: rect(28px, 9999px, 99px, 0); }
+            75% { clip: rect(45px, 9999px, 69px, 0); }
+            80% { clip: rect(23px, 9999px, 85px, 0); }
+            85% { clip: rect(54px, 9999px, 84px, 0); }
+            90% { clip: rect(45px, 9999px, 47px, 0); }
+            95% { clip: rect(37px, 9999px, 20px, 0); }
+            100% { clip: rect(4px, 9999px, 91px, 0); }
+        }
+        
+        @keyframes glitch-anim-2 {
+            0% { clip: rect(65px, 9999px, 100px, 0); }
+            5% { clip: rect(52px, 9999px, 74px, 0); }
+            10% { clip: rect(79px, 9999px, 85px, 0); }
+            15% { clip: rect(75px, 9999px, 5px, 0); }
+            20% { clip: rect(67px, 9999px, 61px, 0); }
+            25% { clip: rect(14px, 9999px, 79px, 0); }
+            30% { clip: rect(1px, 9999px, 66px, 0); }
+            35% { clip: rect(86px, 9999px, 30px, 0); }
+            40% { clip: rect(23px, 9999px, 98px, 0); }
+            45% { clip: rect(85px, 9999px, 72px, 0); }
+            50% { clip: rect(71px, 9999px, 75px, 0); }
+            55% { clip: rect(2px, 9999px, 48px, 0); }
+            60% { clip: rect(30px, 9999px, 16px, 0); }
+            65% { clip: rect(59px, 9999px, 50px, 0); }
+            70% { clip: rect(41px, 9999px, 62px, 0); }
+            75% { clip: rect(2px, 9999px, 82px, 0); }
+            80% { clip: rect(47px, 9999px, 73px, 0); }
+            85% { clip: rect(3px, 9999px, 27px, 0); }
+            90% { clip: rect(40px, 9999px, 86px, 0); }
+            95% { clip: rect(45px, 9999px, 78px, 0); }
+            100% { clip: rect(19px, 9999px, 70px, 0); }
+        }
+        
+        /* Terminal Glow */
+        .terminal-glow {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at center, 
+                rgba(0, 255, 136, 0.1) 0%,
+                rgba(0, 255, 136, 0.05) 25%,
+                transparent 70%);
+            z-index: -1;
+            filter: blur(20px);
+            pointer-events: none;
+        }
+        
+        /* Quick Access Bar */
+        .quick-access {
             position: fixed;
             bottom: 30px;
-            right: 30px;
-            width: 60px;
-            height: 60px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 15px;
+            z-index: 1000;
+            background: rgba(10, 10, 15, 0.8);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(0, 255, 136, 0.2);
+            border-radius: 50px;
+            padding: 12px 24px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+        }
+        
+        .quick-btn {
+            width: 45px;
+            height: 45px;
             border-radius: 50%;
-            background: linear-gradient(135deg, #6366f1, #8b5cf6);
+            background: rgba(0, 136, 255, 0.1);
+            border: 1px solid rgba(0, 136, 255, 0.3);
+            color: var(--cyber-light);
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .quick-btn:hover {
+            background: rgba(0, 136, 255, 0.3);
+            border-color: var(--cyber-secondary);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 136, 255, 0.2);
+        }
+        
+        /* Particle Container */
+        .particles-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            pointer-events: none;
+        }
+        
+        /* Scroll Indicator */
+        .scroll-indicator {
+            position: fixed;
+            right: 30px;
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+            z-index: 1000;
+        }
+        
+        .scroll-dots {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        
+        .scroll-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(0, 255, 136, 0.3);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .scroll-dot.active {
+            background: var(--cyber-primary);
+            box-shadow: 0 0 15px var(--cyber-primary);
+            transform: scale(1.3);
+        }
+        
+        .scroll-label {
+            writing-mode: vertical-rl;
+            text-orientation: mixed;
+            color: var(--cyber-primary);
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.8rem;
+            letter-spacing: 3px;
+            opacity: 0.7;
+        }
+        
+        /* Notification System */
+        .cyber-notification {
+            position: fixed;
+            top: 30px;
+            right: 30px;
+            background: rgba(10, 10, 15, 0.95);
+            border: 1px solid var(--cyber-primary);
+            border-left: 4px solid var(--cyber-primary);
+            padding: 20px;
+            border-radius: 8px;
+            color: white;
+            font-family: 'JetBrains Mono', monospace;
+            z-index: 10000;
+            transform: translateX(120%);
+            transition: transform 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            max-width: 300px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+        
+        .cyber-notification.show {
+            transform: translateX(0);
+        }
+        
+        .notification-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        
+        .notification-title {
+            color: var(--cyber-primary);
+            font-weight: bold;
+            font-size: 0.9rem;
+        }
+        
+        .notification-close {
+            background: none;
             border: none;
             color: white;
-            font-size: 24px;
             cursor: pointer;
-            z-index: 10000;
-            box-shadow: 0 10px 30px rgba(99, 102, 241, 0.4);
-            transition: all 0.3s ease;
+            font-size: 1.2rem;
+            opacity: 0.7;
+            transition: opacity 0.3s ease;
         }
         
-        /* Network Visualization Area */
-        .skills-section {
-            position: relative;
-            overflow: hidden;
-            min-height: 600px;
+        .notification-close:hover {
+            opacity: 1;
         }
         
-        /* Animation Keyframes */
-        @keyframes cyberPulse {
-            0%, 100% { 
-                box-shadow: 0 0 20px rgba(99, 102, 241, 0.5),
-                           0 0 40px rgba(139, 92, 246, 0.3);
-            }
-            50% { 
-                box-shadow: 0 0 30px rgba(99, 102, 241, 0.8),
-                           0 0 60px rgba(139, 92, 246, 0.5),
-                           0 0 80px rgba(236, 72, 153, 0.3);
-            }
+        /* Audio Visualizer */
+        .audio-visualizer {
+            position: fixed;
+            bottom: 120px;
+            right: 30px;
+            width: 200px;
+            height: 60px;
+            z-index: 1000;
+            background: rgba(10, 10, 15, 0.8);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(0, 255, 136, 0.2);
+            border-radius: 10px;
+            padding: 15px;
+            display: none;
         }
         
-        @keyframes quantumPulse {
-            from {
-                box-shadow: 0 0 20px rgba(236, 72, 153, 0.6),
-                           0 0 40px rgba(236, 72, 153, 0.4),
-                           0 0 60px rgba(236, 72, 153, 0.2);
-            }
-            to {
-                box-shadow: 0 0 30px rgba(236, 72, 153, 0.8),
-                           0 0 60px rgba(236, 72, 153, 0.6),
-                           0 0 90px rgba(236, 72, 153, 0.3);
-            }
+        .visualizer-bars {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            height: 100%;
+            gap: 3px;
         }
         
-        @keyframes scan {
-            0% { transform: translateX(-100%); }
-            100% { transform: translateX(100%); }
-        }
-        
-        @keyframes pulse {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.7; }
-        }
-        
-        @keyframes metricUpdate {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.1); }
-            100% { transform: scale(1); }
+        .visualizer-bar {
+            flex: 1;
+            background: linear-gradient(to top, var(--cyber-primary), var(--cyber-secondary));
+            border-radius: 2px;
+            min-height: 3px;
         }
     </style>
-    
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
-    <!-- Favicon -->
-    <link rel="icon" href="favicon.ico" type="image/x-icon">
-    
-    <!-- Three.js CDN for 3D effects -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 </head>
 
-<body>
-    <!-- Quantum Canvas (Hidden by default) -->
-    <canvas id="quantum-canvas" style="display: none;"></canvas>
+<body class="loading">
+    <!-- Loading Screen -->
+    <div id="loading-screen">
+        <div class="cyber-logo">
+            <svg width="200" height="200" viewBox="0 0 200 200">
+                <path d="M100,20 L180,70 L180,130 L100,180 L20,130 L20,70 Z" fill="none" stroke="var(--cyber-primary)" stroke-width="2">
+                    <animate attributeName="stroke-dasharray" values="0,500;500,0" dur="2s" fill="freeze" />
+                </path>
+                <text x="100" y="110" text-anchor="middle" fill="var(--cyber-primary)" font-family="Orbitron" font-size="24">OASIS</text>
+                <text x="100" y="130" text-anchor="middle" fill="var(--cyber-secondary)" font-family="JetBrains Mono" font-size="12">INITIALIZING...</text>
+            </svg>
+        </div>
+        <div class="cyber-loader"></div>
+        <div class="loading-terminal">
+            <span id="loading-text">>_ BOOTING CYBER SYSTEMS...</span>
+        </div>
+    </div>
     
-    <!-- Cyber Cursor -->
+    <!-- Matrix Background -->
+    <canvas id="matrix-bg"></canvas>
+    
+    <!-- Grid Overlay -->
+    <div class="grid-overlay"></div>
+    
+    <!-- Cyber Cursor System -->
     <div class="cyber-cursor" id="cyber-cursor"></div>
-    <div class="cyber-cursor-trail" id="cyber-cursor-trail"></div>
+    <div class="cursor-ring" id="cursor-ring"></div>
+    <div class="cursor-dot" id="cursor-dot"></div>
     
-    <!-- Scroll Progress -->
-    <div class="scroll-progress"></div>
+    <!-- Particles Container -->
+    <div class="particles-container" id="particles"></div>
+    
+    <!-- Scroll Indicator -->
+    <div class="scroll-indicator">
+        <div class="scroll-label">NAV</div>
+        <div class="scroll-dots">
+            <div class="scroll-dot" data-section="home"></div>
+            <div class="scroll-dot" data-section="about"></div>
+            <div class="scroll-dot" data-section="skills"></div>
+            <div class="scroll-dot" data-section="projects"></div>
+            <div class="scroll-dot" data-section="contact"></div>
+        </div>
+    </div>
+    
+    <!-- Quick Access Bar -->
+    <div class="quick-access">
+        <button class="quick-btn" id="quantum-mode" title="Quantum Mode">
+            <i class="fas fa-atom"></i>
+        </button>
+        <button class="quick-btn" id="cyber-assistant" title="Voice Assistant">
+            <i class="fas fa-robot"></i>
+        </button>
+        <button class="quick-btn" id="matrix-mode" title="Matrix View">
+            <i class="fas fa-matrix"></i>
+        </button>
+        <button class="quick-btn" id="music-toggle" title="Cyber Soundtrack">
+            <i class="fas fa-music"></i>
+        </button>
+        <button class="quick-btn" id="debug-mode" title="Debug Console">
+            <i class="fas fa-terminal"></i>
+        </button>
+    </div>
+    
+    <!-- Audio Visualizer -->
+    <div class="audio-visualizer" id="audio-visualizer">
+        <div class="visualizer-bars"></div>
+    </div>
+    
+    <!-- Notification Container -->
+    <div id="notification-container"></div>
     
     <!-- Navigation -->
-    <header>
-        <nav class="navbar">
-            <div class="logo">
-                <h1>OASIS</h1>
-                <span class="logo-subtitle">// Cyber Operations</span>
+    <header class="cyber-header">
+        <nav class="cyber-nav">
+            <div class="nav-logo">
+                <span class="logo-glitch" data-text="OASIS">OASIS</span>
+                <span class="logo-sub">// SECURITY OPERATIONS</span>
             </div>
             
-            <!-- Hamburger menu -->
-            <div class="menu-toggle" aria-label="Toggle menu">
+            <div class="nav-hamburger" id="nav-toggle">
                 <span></span>
                 <span></span>
                 <span></span>
             </div>
             
-            <!-- Navigation Links -->
-            <ul class="nav-links">
-                <li><a href="#home" class="nav-link"><i class="fas fa-home"></i> Home</a></li>
-                <li><a href="#about" class="nav-link"><i class="fas fa-user-secret"></i> About</a></li>
-                <li><a href="#skills" class="nav-link"><i class="fas fa-terminal"></i> Arsenal</a></li>
-                <li><a href="#projects" class="nav-link"><i class="fas fa-code-branch"></i> Projects</a></li>
-                <li><a href="#contact" class="nav-link"><i class="fas fa-satellite-dish"></i> Contact</a></li>
-                <li><a href="#faq" class="nav-link"><i class="fas fa-question-circle"></i> FAQ</a></li>
-                <li><a href="#testimonials" class="nav-link"><i class="fas fa-comments"></i> Testimonials</a></li>
-                <li><a href="#legal" class="nav-link"><i class="fas fa-shield-alt"></i> Legal</a></li>
+            <ul class="nav-menu">
+                <li><a href="#home" class="nav-link active"><i class="fas fa-home"></i> <span>HOME</span></a></li>
+                <li><a href="#about" class="nav-link"><i class="fas fa-user-secret"></i> <span>IDENTITY</span></a></li>
+                <li><a href="#skills" class="nav-link"><i class="fas fa-terminal"></i> <span>ARSENAL</span></a></li>
+                <li><a href="#projects" class="nav-link"><i class="fas fa-code-branch"></i> <span>OPERATIONS</span></a></li>
+                <li><a href="#contact" class="nav-link"><i class="fas fa-satellite"></i> <span>CONTACT</span></a></li>
+                <li class="nav-theme">
+                    <div class="theme-switch">
+                        <input type="checkbox" id="theme-toggle">
+                        <label for="theme-toggle">
+                            <i class="fas fa-sun"></i>
+                            <i class="fas fa-moon"></i>
+                            <span class="theme-ball"></span>
+                        </label>
+                    </div>
+                </li>
             </ul>
-            
-            <!-- Theme toggle -->
-            <div class="theme-toggle">
-                <input type="checkbox" id="dark-mode-toggle" aria-label="Toggle dark mode">
-                <label for="dark-mode-toggle">
-                    <i class="fas fa-moon"></i>
-                    <i class="fas fa-sun"></i>
-                </label>
-            </div>
         </nav>
     </header>
-
-    <!-- Hero Section with 3D Terminal -->
-    <section id="home" class="hero">
-        <!-- 3D Terminal Container -->
-        <div id="cyber-terminal-3d"></div>
+    
+    <!-- Hero Section -->
+    <section id="home" class="cyber-hero">
+        <div class="terminal-glow"></div>
         
-        <div class="hero-content">
-            <!-- Terminal Output -->
-            <div class="terminal-container">
-                <div class="terminal-header">
-                    <div class="terminal-dots">
-                        <span class="dot red"></span>
-                        <span class="dot yellow"></span>
-                        <span class="dot green"></span>
+        <div class="hero-grid">
+            <!-- Left Column - 3D Terminal -->
+            <div class="hero-terminal">
+                <div class="terminal-wrapper">
+                    <div class="terminal-header">
+                        <div class="terminal-dots">
+                            <span class="dot red"></span>
+                            <span class="dot yellow"></span>
+                            <span class="dot green"></span>
+                        </div>
+                        <div class="terminal-title">root@cyber-oasis:~</div>
                     </div>
-                    <div class="terminal-title">cyber-oasis@root:~</div>
+                    <div class="terminal-body">
+                        <pre id="terminal-output"></pre>
+                        <div class="terminal-input">
+                            <span class="prompt">></span>
+                            <span class="cursor">▌</span>
+                        </div>
+                    </div>
                 </div>
-                <pre id="terminal-output" class="animate-text"></pre>
             </div>
             
-            <!-- Hero Text -->
-            <div class="hero-text">
-                <h1 class="cyber-title">
-                    <span class="cyber-glitch">Cyberfunction</span>
-                    <span class="cyber-subtitle">_Emmanuel</span>
+            <!-- Right Column - Hero Content -->
+            <div class="hero-content">
+                <div class="hero-badge">
+                    <span class="badge-icon">⚡</span>
+                    <span class="badge-text">ELITE CYBER OPERATIVE</span>
+                </div>
+                
+                <h1 class="hero-title">
+                    <span class="title-line">CYBERFUNCTION</span>
+                    <span class="title-line accent">_EMMANUEL</span>
                 </h1>
-                <p class="subtitle">DevSecOps, BlackHat enthusiast & IoT Creative Technologist</p>
-                <div class="cta-buttons">
-                    <a href="#projects" class="btn primary-btn cyber-btn">
-                        <i class="fas fa-eye"></i> View Projects
+                
+                <div class="hero-subtitle">
+                    <span class="subtitle-text">DevSecOps Engineer | BlackHat Enthusiast</span>
+                    <span class="subtitle-text">IoT Security Architect | Penetration Tester</span>
+                </div>
+                
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <div class="stat-value" data-count="150">0</div>
+                        <div class="stat-label">SECURED SYSTEMS</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value" data-count="42">0</div>
+                        <div class="stat-label">VULNERABILITIES FOUND</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value" data-count="99">0</div>
+                        <div class="stat-label">SUCCESS RATE</div>
+                    </div>
+                </div>
+                
+                <div class="hero-cta">
+                    <a href="#projects" class="cyber-btn primary">
+                        <i class="fas fa-eye"></i>
+                        <span>VIEW OPERATIONS</span>
                     </a>
-                    <a href="#contact" class="btn secondary-btn cyber-btn">
-                        <i class="fas fa-satellite"></i> Establish Contact
+                    <a href="#contact" class="cyber-btn secondary">
+                        <i class="fas fa-satellite-dish"></i>
+                        <span>ESTABLISH CONTACT</span>
                     </a>
-                    <button id="quantum-mode" class="btn tertiary-btn">
-                        <i class="fas fa-atom"></i>
-                    </button>
                 </div>
             </div>
         </div>
         
-        <!-- Scroll Indicator -->
-        <div class="scroll-indicator">
-            <div class="mouse">
-                <div class="wheel"></div>
-            </div>
-            <span>SCROLL TO INFILTRATE</span>
-        </div>
+        <!-- Hero Scan Line -->
+        <div class="scan-line"></div>
+        
+        <!-- Hero Particles -->
+        <div class="hero-particles"></div>
     </section>
-
+    
     <!-- About Section -->
-    <section id="about" class="section">
+    <section id="about" class="cyber-section">
         <div class="section-header">
-            <h2 class="section-title">About <span class="highlight">The Operator</span></h2>
-            <p class="section-subtitle">Behind the terminal, beyond the code</p>
-        </div>
-        
-        <div class="about-content">
-            <div class="about-text">
-                <div class="cyber-badge">
-                    <i class="fas fa-shield-alt"></i> SECURITY CLEARANCE: LEVEL 5
-                </div>
-                
-                <p>🧬 <strong>Cybersecurity Operations:</strong> Specializing in penetration testing labs, Python-based SSH servers, packet sniffing, and exploit sandboxing. Building secure systems from the ground up.</p>
-                
-                <p>📡 <strong>IoT & Communication Protocols:</strong> Former intern at National Institution of Technology, led E-Warn Pvt intrusion detection systems team. Expert in smart surveillance and secure IoT architectures.</p>
-                
-                <p>🚀 <strong>Mission Statement:</strong> Beyond the shell prompts and codebases, I'm driven by a vision: to engineer secure, accessible technology while empowering underserved communities through ethical hacking and education.</p>
-                
-                <div class="about-stats">
-                    <div class="stat">
-                        <div class="stat-number" data-count="50">0</div>
-                        <div class="stat-label">Projects Secured</div>
-                    </div>
-                    <div class="stat">
-                        <div class="stat-number" data-count="1000">0</div>
-                        <div class="stat-label">Lines of Defense</div>
-                    </div>
-                    <div class="stat">
-                        <div class="stat-number" data-count="24">0</div>
-                        <div class="stat-label">Response Time (hrs)</div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="about-visual">
-                <!-- Network Visualization will be injected here -->
-                <div id="network-visualization"></div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Skills Section with Network Visualization -->
-    <section id="skills" class="section skills-section">
-        <div class="section-header">
-            <h2 class="section-title"><i class="fas fa-terminal"></i> Arsenal & <span class="highlight">Stack</span></h2>
-            <p class="section-subtitle">Tools, technologies, and tactical expertise</p>
-        </div>
-        
-        <!-- Network Visualization Canvas -->
-        <canvas id="network-canvas"></canvas>
-        
-        <!-- Skills Grid -->
-        <div class="skills-grid">
-            <!-- HTML5 -->
-            <div class="skill-card" data-skill="html">
-                <i class="fab fa-html5"></i>
-                <h3>HTML5</h3>
-                <div class="progress-bar">
-                    <div class="progress" style="width: 90%"></div>
-                </div>
-            </div>
-
-            <!-- CSS3 -->
-            <div class="skill-card" data-skill="css">
-                <i class="fab fa-css3-alt"></i>
-                <h3>CSS3 / SCSS</h3>
-                <div class="progress-bar">
-                    <div class="progress" style="width: 90%"></div>
-                </div>
-            </div>
-
-            <!-- JavaScript -->
-            <div class="skill-card" data-skill="js">
-                <i class="fab fa-js"></i>
-                <h3>JavaScript (ES6+)</h3>
-                <div class="progress-bar">
-                    <div class="progress" style="width: 85%"></div>
-                </div>
-            </div>
-
-            <!-- Python -->
-            <div class="skill-card" data-skill="python">
-                <i class="fab fa-python"></i>
-                <h3>Python (Tools & Exploit Dev)</h3>
-                <div class="progress-bar">
-                    <div class="progress" style="width: 88%"></div>
-                </div>
-            </div>
-
-            <!-- PenTesting -->
-            <div class="skill-card" data-skill="cyber">
-                <i class="fas fa-user-secret"></i>
-                <h3>Pen Testing / Protocols</h3>
-                <div class="progress-bar">
-                    <div class="progress" style="width: 83%"></div>
-                </div>
-            </div>
-
-            <!-- Cloud Security -->
-            <div class="skill-card" data-skill="cloud">
-                <i class="fas fa-cloud"></i>
-                <h3>Cloud Security</h3>
-                <div class="progress-bar">
-                    <div class="progress" style="width: 75%"></div>
-                </div>
-            </div>
-
-            <!-- Incident Response -->
-            <div class="skill-card" data-skill="incident">
-                <i class="fas fa-first-aid"></i>
-                <h3>Incident Response</h3>
-                <div class="progress-bar">
-                    <div class="progress" style="width: 80%"></div>
-                </div>
-            </div>
-
-            <!-- C Programming -->
-            <div class="skill-card" data-skill="c">
-                <i class="fas fa-c"></i>
-                <h3>C Programming</h3>
-                <div class="progress-bar">
-                    <div class="progress" style="width: 70%"></div>
-                </div>
+            <h2 class="section-title">
+                <span class="title-number">01</span>
+                <span class="title-text">OPERATOR <span class="accent">IDENTITY</span></span>
+            </h2>
+            <div class="section-subtitle">
+                BEHIND THE ENCRYPTION | BEYOND THE CODE
             </div>
         </div>
         
-        <!-- Skills Legend -->
-        <div class="skills-legend">
-            <div class="legend-item">
-                <span class="legend-color" style="background: #6366f1;"></span>
-                <span>Web Security</span>
-            </div>
-            <div class="legend-item">
-                <span class="legend-color" style="background: #10b981;"></span>
-                <span>Network Defense</span>
-            </div>
-            <div class="legend-item">
-                <span class="legend-color" style="background: #8b5cf6;"></span>
-                <span>Exploit Development</span>
-            </div>
-            <div class="legend-item">
-                <span class="legend-color" style="background: #f59e0b;"></span>
-                <span>IoT Security</span>
-            </div>
-        </div>
-    </section>
-
-    <!-- Projects Section -->
-    <section id="projects" class="section projects-section">
-        <div class="section-header">
-            <h2 class="section-title">Featured <span class="highlight">Operations</span></h2>
-            <p class="section-subtitle">Classified missions and deployed solutions</p>
-        </div>
-        
-        <div class="projects-grid">
-            <!-- Project Card 1 -->
-            <article class="project-card">
-                <div class="project-image-container">
-                    <div class="project-tag">Top Secret</div>
-                    <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" 
-                         alt="Code editor showing React components" 
-                         class="project-image"
-                         loading="lazy">
-                    <div class="project-overlay"></div>
+        <div class="about-grid">
+            <!-- Bio Card -->
+            <div class="bio-card">
+                <div class="card-header">
+                    <h3><i class="fas fa-fingerprint"></i> BIO-METRICS</h3>
+                    <span class="clearance-badge">CLEARANCE: TOP SECRET</span>
                 </div>
                 
-                <div class="project-content">
-                    <div class="project-meta">
-                        <span class="project-date">2024</span>
-                        <span class="project-category">Full Stack</span>
-                        <span class="project-classification"><i class="fas fa-lock"></i> CLASSIFIED</span>
-                    </div>
-                    
-                    <h3 class="project-title">Project Oasis Beta 1.0.0</h3>
-                    
-                    <p class="project-description">
-                        As a passionate supporter of the open-source community, I dedicated 
-                        significant time to developing this catalog platform. It showcases 
-                        modern web development practices while serving as a portfolio 
-                        for my technical skills.
+                <div class="card-body">
+                    <p class="bio-text">
+                        Specializing in <span class="highlight">penetration testing</span>, Python-based security tools, and 
+                        <span class="highlight">IoT security architecture</span>. Former team lead for intrusion detection 
+                        systems at E-Warn Pvt, with hands-on experience in national-level security infrastructure.
                     </p>
                     
-                    <div class="tech-stack">
-                        <span class="tech-tag">HTML5</span>
-                        <span class="tech-tag">CSS3</span>
-                        <span class="tech-tag">JavaScript</span>
-                        <span class="tech-tag">GitHub Pages</span>
-                    </div>
-                    
-                    <div class="project-links">
-                        <a href="#" class="project-link primary-link">
-                            <i class="fas fa-external-link-alt"></i> Live Demo
-                        </a>
-                        <a href="#" class="project-link secondary-link">
-                            <i class="fab fa-github"></i> View Code
-                        </a>
-                    </div>
-                </div>
-            </article>
-            
-            <!-- Add more project cards here -->
-        </div>
-        
-        <!-- Project Controls -->
-        <div class="project-controls">
-            <button class="control-btn prev-btn">
-                <i class="fas fa-chevron-left"></i>
-            </button>
-            <button class="control-btn next-btn">
-                <i class="fas fa-chevron-right"></i>
-            </button>
-        </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section id="contact" class="section contact-section">
-        <div class="section-header">
-            <h2 class="section-title">Establish <span class="highlight">Contact</span></h2>
-            <p class="section-subtitle">Secure channel established. Ready for transmission.</p>
-        </div>
-        
-        <div class="contact-container">
-            <div class="contact-info">
-                <div class="contact-card">
-                    <div class="contact-icon">
-                        <i class="fas fa-paper-plane"></i>
-                    </div>
-                    <h3>Quick Response</h3>
-                    <p>I aim to respond within 1-2 business days</p>
-                </div>
-                
-                <div class="contact-card">
-                    <div class="contact-icon">
-                        <i class="fas fa-handshake"></i>
-                    </div>
-                    <h3>Open for Collaboration</h3>
-                    <p>Interested in open-source projects and partnerships</p>
-                </div>
-                
-                <div class="contact-card">
-                    <div class="contact-icon">
-                        <i class="fas fa-code"></i>
-                    </div>
-                    <h3>Tech Discussions</h3>
-                    <p>Let's talk about development, security, and innovation</p>
-                </div>
-            </div>
-            
-            <div class="contact-form-container">
-                <form action="https://formspree.io/f/mpqlybgj" method="POST" class="modern-form">
-                    <div class="form-header">
-                        <h3>Encrypted Message</h3>
-                        <p>Fill out the form below. Transmission is secure.</p>
-                    </div>
-                    
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="name">
-                                <i class="fas fa-user"></i> Call Sign
-                            </label>
-                            <input type="text" id="name" name="name" placeholder="Enter your identifier" required>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="email">
-                                <i class="fas fa-envelope"></i> Contact Frequency
-                            </label>
-                            <input type="email" id="email" name="email" placeholder="secure@channel.com" required>
-                        </div>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="message">
-                            <i class="fas fa-comment-alt"></i> Message Payload
-                        </label>
-                        <textarea id="message" name="message" rows="5" 
-                                  placeholder="Transmission begins here..." required></textarea>
-                    </div>
-                    
-                    <div class="form-footer">
-                        <p class="response-time">
-                            <i class="fas fa-clock"></i> Typically responds within 1-2 business days
+                    <div class="bio-mission">
+                        <h4><i class="fas fa-bullseye"></i> MISSION STATEMENT</h4>
+                        <p>
+                            To engineer <span class="highlight">secure, accessible technology</span> while empowering underserved 
+                            communities through <span class="highlight">ethical hacking education</span> and security awareness.
                         </p>
-                        <button type="submit" class="submit-btn">
-                            <span>Initiate Transmission</span>
-                            <i class="fas fa-satellite"></i>
-                        </button>
                     </div>
-                </form>
-            </div>
-        </div>
-    </section>
-
-    <!-- FAQ Section -->
-    <section id="faq" class="section">
-        <div class="section-header">
-            <h2 class="section-title">Frequently Asked <span class="highlight">Queries</span></h2>
-            <p class="section-subtitle">Common questions, classified answers</p>
-        </div>
-        
-        <div class="faq-container">
-            <div class="faq-item">
-                <div class="faq-question">
-                    <h3>What services do you offer?</h3>
-                    <button class="faq-toggle">
-                        <i class="fas fa-chevron-down"></i>
-                    </button>
-                </div>
-                <div class="faq-answer">
-                    <p>I provide comprehensive cybersecurity services including penetration testing, vulnerability assessments, secure code reviews, incident response, and security architecture design. Additionally, I offer full-stack development with a security-first approach.</p>
-                </div>
-            </div>
-            
-            <div class="faq-item">
-                <div class="faq-question">
-                    <h3>Are you available for freelance work?</h3>
-                    <button class="faq-toggle">
-                        <i class="fas fa-chevron-down"></i>
-                    </button>
-                </div>
-                <div class="faq-answer">
-                    <p>Yes, I'm available for select freelance engagements, particularly in cybersecurity consulting, secure application development, and security training. Contact me to discuss your specific requirements.</p>
-                </div>
-            </div>
-            
-            <!-- Add more FAQ items -->
-        </div>
-    </section>
-
-    <!-- Testimonials Section -->
-    <section id="testimonials" class="section">
-        <div class="section-header">
-            <h2 class="section-title">Field <span class="highlight">Reports</span></h2>
-            <p class="section-subtitle">What allies say about joint operations</p>
-        </div>
-        
-        <div class="testimonials-grid">
-            <article class="testimonial-card">
-                <div class="testimonial-header">
-                    <div class="testimonial-rating">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
+                    
+                    <div class="bio-tags">
+                        <span class="bio-tag"><i class="fas fa-shield-alt"></i> Security-First Mindset</span>
+                        <span class="bio-tag"><i class="fas fa-code"></i> Full-Stack Expertise</span>
+                        <span class="bio-tag"><i class="fas fa-network-wired"></i> Network Defense</span>
+                        <span class="bio-tag"><i class="fas fa-user-secret"></i> Ethical Hacking</span>
                     </div>
-                    <span class="testimonial-date">2024-03-15</span>
                 </div>
-                <p>"Exceptional security assessment that identified critical vulnerabilities our team had missed. Professional, thorough, and delivered ahead of schedule."</p>
-                <cite>- Security Director, FinTech Company</cite>
-            </article>
+            </div>
             
-            <article class="testimonial-card">
-                <div class="testimonial-header">
-                    <div class="testimonial-rating">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star-half-alt"></i>
+            <!-- Timeline -->
+            <div class="timeline-card">
+                <div class="card-header">
+                    <h3><i class="fas fa-history"></i> OPERATIONAL TIMELINE</h3>
+                </div>
+                
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-date">2024 - PRESENT</div>
+                        <div class="timeline-content">
+                            <h4>FREELANCE SECURITY CONSULTANT</h4>
+                            <p>Providing cybersecurity assessments and secure development consulting for various clients.</p>
+                        </div>
                     </div>
-                    <span class="testimonial-date">2024-02-28</span>
-                </div>
-                <p>"Developed a secure IoT infrastructure for our smart city project. Technical expertise and attention to security details were outstanding."</p>
-                <cite>- CTO, UrbanTech Solutions</cite>
-            </article>
-        </div>
-    </section>
-
-    <!-- Legal Section -->
-    <section id="legal" class="section">
-        <div class="section-header">
-            <h2 class="section-title"><i class="fas fa-user-secret"></i> Operational <span class="highlight">Disclosure</span></h2>
-            <p class="section-subtitle">Rules of engagement and privacy protocols</p>
-        </div>
-        
-        <div class="legal-content">
-            <div class="legal-card">
-                <h3><i class="fas fa-shield-alt"></i> Privacy Recon Protocol</h3>
-                <p>No cookies, no scripts, no trails — unless the payload demands it. Any data intercepted is strictly for handshake authentication and mission-critical transmissions. I don't sell signals or leak vectors.</p>
-            </div>
-            
-            <div class="legal-card">
-                <h3><i class="fas fa-file-contract"></i> Engagement Terms</h3>
-                <p>All contracted ops follow pre-negotiated engagement rules (RoE). This includes deployment phases, payload delivery windows, and agreed compensation channels. Terms may self-destruct upon breach.</p>
-            </div>
-            
-            <div class="legal-card">
-                <h3><i class="fas fa-exclamation-triangle"></i> Disclaimer</h3>
-                <p>This domain operates in white-hat territory. Any resemblance to rogue operations is purely rhetorical. By navigating this node, you agree to respect operational boundaries.</p>
-            </div>
-            
-            <div class="legal-card">
-                <h3><i class="fas fa-balance-scale"></i> Compliance</h3>
-                <p>All operations comply with international cybersecurity laws and ethical hacking guidelines. Unauthorized access attempts will be logged and reported.</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer>
-        <div class="footer-content">
-            <div class="footer-section">
-                <h3>OASIS Operations</h3>
-                <p>Cyber-Ready. Code-Steady. Securing Tomorrow's Web.</p>
-                <div class="social-links">
-                    <a href="https://github.com/fernhad" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
-                        <i class="fab fa-github"></i>
-                    </a>
-                    <a href="https://www.linkedin.com/in/murire-thembikosi-482014320" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
-                        <i class="fab fa-linkedin"></i>
-                    </a>
-                    <a href="https://x.com/ETMurireXL" target="_blank" rel="noopener noreferrer" aria-label="Twitter">
-                        <i class="fab fa-twitter"></i>
-                    </a>
-                    <a href="#" id="cyber-assistant" aria-label="Voice Assistant">
-                        <i class="fas fa-microphone"></i>
-                    </a>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-date">2023</div>
+                        <div class="timeline-content">
+                            <h4>E-WARN PVT | SECURITY TEAM LEAD</h4>
+                            <p>Led intrusion detection system development and deployment for national infrastructure.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-date">2022</div>
+                        <div class="timeline-content">
+                            <h4>NATIONAL INSTITUTE OF TECHNOLOGY | INTERN</h4>
+                            <p>Specialized in IoT communication protocols and smart surveillance systems.</p>
+                        </div>
+                    </div>
                 </div>
             </div>
             
-            <div class="footer-section">
-                <h3>Quick Links</h3>
-                <ul>
-                    <li><a href="#home">Home</a></li>
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#skills">Skills</a></li>
-                    <li><a href="#projects">Projects</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                </ul>
-            </div>
-            
-            <div class="footer-section">
-                <h3>Services</h3>
-                <ul>
-                    <li>Penetration Testing</li>
-                    <li>Secure Development</li>
-                    <li>Incident Response</li>
-                    <li>Security Training</li>
-                </ul>
+            <!-- Skills Preview -->
+            <div class="skills-preview">
+                <div class="skill-meter">
+                    <div class="skill-info">
+                        <span>PENETRATION TESTING</span>
+                        <span>92%</span>
+                    </div>
+                    <div class="meter-bar">
+                        <div class="meter-fill" style="width: 92%"></div>
+                    </div>
+                </div>
+                
+                <div class="skill-meter">
+                    <div class="skill-info">
+                        <span>WEB APPLICATION SECURITY</span>
+                        <span>88%</span>
+                    </div>
+                    <div class="meter-bar">
+                        <div class="meter-fill" style="width: 88%"></div>
+                    </div>
+                </div>
+                
+                <div class="skill-meter">
+                    <div class="skill-info">
+                        <span>NETWORK DEFENSE</span>
+                        <span>85%</span>
+                    </div>
+                    <div class="meter-bar">
+                        <div class="meter-fill" style="width: 85%"></div>
+                    </div>
+                </div>
+                
+                <div class="skill-meter">
+                    <div class="skill-info">
+                        <span>INCIDENT RESPONSE</span>
+                        <span>90%</span>
+                    </div>
+                    <div class="meter-bar">
+                        <div class="meter-fill" style="width: 90%"></div>
+                    </div>
+                </div>
             </div>
         </div>
-        
-        <div class="footer-bottom">
-            <p>© 2025 OASIS Operations. All rights reserved. | <span id="cyber-clock"></span></p>
-            <p class="footer-note">This site is protected by advanced encryption protocols.</p>
-        </div>
-    </footer>
-
-    <!-- Scripts -->
-    <script src="./index.js"></script>
+    </section>
     
-    <!-- Advanced Features Script -->
-    <script>
-        // Initialize advanced features when DOM is loaded
-        document.addEventListener('DOMContentLoaded', () => {
-            // Load advanced modules
-            loadAdvancedFeatures();
-            
-            // Initialize cyber clock
-            initCyberClock();
-            
-            // Initialize animated statistics
-            initAnimatedStats();
-        });
+    <!-- Skills Section -->
+    <section id="skills" class="cyber-section">
+        <div class="section-header">
+            <h2 class="section-title">
+                <span class="title-number">02</span>
+                <span class="title-text">TACTICAL <span class="accent">ARSENAL</span></span>
+            </h2>
+            <div class="section-subtitle">
+                TOOLS, TECHNIQUES & TECHNOLOGIES
+            </div>
+        </div>
         
-        function loadAdvancedFeatures() {
-            console.log('🚀 Loading advanced cyber features...');
+        <div class="skills-container">
+            <!-- Network Visualization -->
+            <div class="network-viz" id="network-viz"></div>
             
-            // Check for Three.js availability
-            if (typeof THREE !== 'undefined') {
-                console.log('✅ Three.js detected - 3D features enabled');
-            }
-            
-            // Check for Web Speech API
-            if ('webkitSpeechRecognition' in window || 'SpeechRecognition' in window) {
-                console.log('✅ Speech Recognition available');
-            }
-            
-            // Check for WebGL
-            const canvas = document.createElement('canvas');
-            const gl = canvas.getContext('webgl') || canvas.getContext('experimental-webgl');
-            if (gl && gl instanceof WebGLRenderingContext) {
-                console.log('✅ WebGL supported - Advanced graphics enabled');
-            }
-        }
+            <!-- Skills Grid -->
+            <div class="skills-grid">
+                <!-- Skill cards will be injected here by JavaScript -->
+            </div>
+        </div>
+    </section>
+    
+    <!-- Projects Section -->
+    <section id="projects" class="cyber-section">
+        <div class="section-header">
+            <h2 class="section-title">
+                <span class="title-number">03</span>
+                <span class="title-text">CLASSIFIED <span class="accent">OPERATIONS</span></span>
+            </h2>
+            <div class="section-subtitle">
+                DEPLOYED SOLUTIONS & SECRET MISSIONS
+            </div>
+        </div>
         
-        function initCyberClock() {
-            function updateClock() {
-                const now = new Date();
-                const options = { 
-                    timeZone: 'UTC',
-                    hour12: false,
-                    hour: '2-digit',
-                    minute: '2-digit',
-                    second: '2-digit'
-                };
-                const timeStr = now.toLocaleTimeString('en-US', options);
-                const cyberClock = document.getElementById('cyber-clock');
-                if (cyberClock) {
-                    cyberClock.textContent = `TIME: ${timeStr} UTC`;
-                }
-            }
+        <div class="projects-slider">
+            <div class="slider-container" id="projects-slider">
+                <!-- Project slides will be injected here -->
+            </div>
             
-            updateClock();
-            setInterval(updateClock, 1000);
-        }
+            <div class="slider-controls">
+                <button class="slider-btn prev" id="prev-project">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <div class="slider-dots" id="slider-dots"></div>
+                <button class="slider-btn next" id="next-project">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Contact Section -->
+    <section id="contact" class="cyber-section">
+        <div class="section-header">
+            <h2 class="section-title">
+                <span class="title-number">04</span>
+                <span class="title-text">ESTABLISH <span class="accent">CONTACT</span></span>
+            </h2>
+            <div class="section-subtitle">
+                SECURE CHANNEL ACTIVATED
+            </div>
+        </div>
         
-        function initAnimatedStats() {
-            const statNumbers = document.querySelectorAll('.stat-number');
-            
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        const stat = entry.target;
-                        const target = parseInt(stat.getAttribute('data-count'));
-                        const duration = 2000; // 2 seconds
-                        const steps = 60;
-                        const increment = target / steps;
-                        let current = 0;
-                        
-                        const timer = setInterval(() => {
-                            current += increment;
-                            if (current >= target) {
-                                stat.textContent = target;
-                                clearInterval(timer);
-                            } else {
-                                stat.textContent = Math.floor(current);
-                            }
-                        }, duration / steps);
-                        
-                        observer.unobserve(stat);
-                    }
-                });
-            }, { threshold: 0.5 });
-            
-            statNumbers.forEach(stat => observer.observe(stat));
-        }
-        
-        // Enhanced cursor effects
-        const cursor = document.getElementById('cyber-cursor');
-        const cursorTrail = document.getElementById('cyber-cursor-trail');
-        
-        if (cursor && cursorTrail) {
-            let mouseX = 0, mouseY = 0;
-            let trailX = 0, trailY = 0;
-            
-            document.addEventListener('mousemove', (e) => {
-                mouseX = e.clientX;
-                mouseY = e.clientY;
-            });
-            
-            function animateCursor() {
-                // Main cursor
-                cursor.style.left = `${mouseX - 10}px`;
-                cursor.style.top = `${mouseY - 10}px`;
+        <div class="contact-grid">
+            <!-- Contact Methods -->
+            <div class="contact-methods">
+                <div class="contact-card">
+                    <div class="contact-icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <h3>ENCRYPTED MAIL</h3>
+                    <p>Secure end-to-end encrypted communication</p>
+                    <a href="mailto:secure@cyberfunction.dev" class="contact-link">
+                        <i class="fas fa-external-link-alt"></i> INITIATE
+                    </a>
+                </div>
                 
-                // Trail with delay
-                trailX += (mouseX - trailX) * 0.1;
-                trailY += (mouseY - trailY) * 0.1;
+                <div class="contact-card">
+                    <div class="contact-icon">
+                        <i class="fas fa-satellite"></i>
+                    </div>
+                    <h3>DIRECT TRANSMISSION</h3>
+                    <p>Real-time secure messaging</p>
+                    <a href="#" class="contact-link" id="direct-chat">
+                        <i class="fas fa-comment-dots"></i> OPEN CHANNEL
+                    </a>
+                </div>
                 
-                cursorTrail.style.left = `${trailX - 20}px`;
-                cursorTrail.style.top = `${trailY - 20}px`;
-                
-                requestAnimationFrame(animateCursor);
-            }
+                <div class="contact-card">
+                    <div class="contact-icon">
+                        <i class="fas fa-file-contract"></i>
+                    </div>
+                    <h3>CONTRACT OPS</h3>
+                    <p>For classified operations and partnerships</p>
+                    <a href="#" class="contact-link">
+                        <i class="fas fa-handshake"></i> REQUEST BRIEF
+                    </a>
+                </div>
+            </div>
             
-            animateCursor();
-            
-            // Interactive cursor effects
-            const interactiveElements = document.querySelectorAll('a, button, .skill-card, .project-card');
-            
-            interactiveElements.forEach(el => {
-                el.addEventListener('mouseenter', () => {
-                    cursor.style.transform = 'scale(1.5)';
-                    cursor.style.borderColor = '#8b5cf6';
-                });
-                
-                el.addEventListener('mouseleave', () => {
-                    cursor.style.transform = 'scale(1)';
-                    cursor.style.borderColor = '#6366f1';
-                });
-            });
-        }
-    </script>
-</body>
-</html>
+            <!-- Contact Form -->
+            <div class="contact-form-wrapper">
+                <form id="cyber-form" class="cyber-form">
+                    <div class="form-header">
+                        <h3><i class="fas fa-key"></i> SECURE MESSAGE TRANSMISSION</h3
