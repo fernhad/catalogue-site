@@ -3,109 +3,103 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Cyberfunction_Emmanuel - Elite Security Specialist | Penetration Testing | DevSecOps | IoT Security">
-    <meta name="keywords" content="cybersecurity, pentesting, ethical hacking, DevSecOps, IoT security, full-stack development">
-    <meta name="author" content="Murire Thembinkosi Emmanuel">
-    
-    <!-- Open Graph -->
-    <meta property="og:title" content="Cyberfunction_Emmanuel | BlackHat Operations">
-    <meta property="og:description" content="Securing digital frontiers with elite cybersecurity expertise">
-    <meta property="og:image" content="https://images.unsplash.com/photo-1550751827-4bd374c3f58b">
-    <meta property="og:url" content="https://cyberfunction.dev">
-    
-    <!-- PWA Support -->
-    <link rel="manifest" href="/manifest.json">
-    <meta name="theme-color" content="#0f172a">
-    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-    
-    <title>CYBERFUNCTION_EMMANUEL | Security Operations Center</title>
-    
-    <!-- Base & Icons -->
-    <base href="https://cyberfunction.dev/">
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚡</text></svg>">
+    <title>CYBERFUNCTION | Security Architect & DevSecOps Engineer</title>
     
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
     <!-- Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
-    <!-- Three.js -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-    
-    <!-- GSAP (Animation Library) -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/ScrollTrigger.min.js"></script>
-    
-    <!-- CSS -->
-    <link rel="stylesheet" href="./index.css">
-    
-    <!-- Inline Critical CSS -->
     <style>
+        /* ============================================
+           MODERN CYBER PORTFOLIO - VISUAL REDESIGN
+           Professional, Clean, Visually Stunning
+           ============================================ */
+        
         :root {
-            --cyber-primary: #00ff88;
-            --cyber-secondary: #0088ff;
-            --cyber-accent: #ff0066;
-            --cyber-dark: #0a0a0f;
-            --cyber-darker: #050508;
-            --cyber-gray: #1a1a2e;
-            --cyber-light: #e6f1ff;
-            --cyber-neon: #00d9ff;
-            --matrix-green: #00ff41;
-            --terminal-bg: rgba(10, 10, 15, 0.95);
-            --glass-bg: rgba(255, 255, 255, 0.05);
-            --glass-border: rgba(0, 255, 136, 0.1);
-            --grid-color: rgba(0, 255, 136, 0.03);
+            /* Professional Color Palette */
+            --primary: #2563eb;
+            --primary-light: #3b82f6;
+            --primary-dark: #1d4ed8;
+            --secondary: #7c3aed;
+            --accent: #06b6d4;
+            --success: #10b981;
+            --danger: #ef4444;
+            --warning: #f59e0b;
+            
+            /* Neutral Colors */
+            --dark: #0f172a;
+            --dark-light: #1e293b;
+            --gray: #64748b;
+            --gray-light: #cbd5e1;
+            --light: #f8fafc;
+            --white: #ffffff;
+            
+            /* Glass Morphism */
+            --glass-bg: rgba(255, 255, 255, 0.03);
+            --glass-border: rgba(255, 255, 255, 0.08);
+            --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            
+            /* Gradients */
+            --gradient-primary: linear-gradient(135deg, #2563eb 0%, #7c3aed 100%);
+            --gradient-dark: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            --gradient-accent: linear-gradient(135deg, #06b6d4 0%, #10b981 100%);
+            
+            /* Typography */
+            --font-primary: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            --font-mono: 'JetBrains Mono', 'Courier New', monospace;
+            
+            /* Spacing */
+            --space-xs: 0.5rem;
+            --space-sm: 1rem;
+            --space-md: 2rem;
+            --space-lg: 4rem;
+            --space-xl: 8rem;
+            
+            /* Shadows */
+            --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.08);
+            --shadow-lg: 0 10px 30px rgba(0, 0, 0, 0.12);
+            --shadow-xl: 0 20px 60px rgba(0, 0, 0, 0.15);
+            --shadow-glow: 0 0 40px rgba(37, 99, 235, 0.15);
         }
         
-        /* Cyber Cursor */
-        .cyber-cursor {
-            width: 24px;
-            height: 24px;
-            border: 2px solid var(--cyber-primary);
-            border-radius: 50%;
-            position: fixed;
-            pointer-events: none;
-            z-index: 10000;
-            mix-blend-mode: difference;
-            filter: drop-shadow(0 0 8px var(--cyber-primary));
-            transition: transform 0.15s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
         
-        .cursor-ring {
-            width: 48px;
-            height: 48px;
-            border: 1px solid rgba(0, 255, 136, 0.3);
-            border-radius: 50%;
-            position: fixed;
-            pointer-events: none;
-            z-index: 9999;
-            transition: all 0.3s ease;
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 80px;
         }
         
-        .cursor-dot {
-            width: 4px;
-            height: 4px;
-            background: var(--cyber-accent);
-            border-radius: 50%;
-            position: fixed;
-            pointer-events: none;
-            z-index: 10001;
-            filter: blur(1px);
+        body {
+            font-family: var(--font-primary);
+            background: var(--dark);
+            color: var(--light);
+            line-height: 1.6;
+            overflow-x: hidden;
+            position: relative;
         }
         
-        /* Matrix Background */
-        #matrix-bg {
+        /* Background Pattern */
+        body::before {
+            content: '';
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
+            background-image: 
+                radial-gradient(circle at 15% 50%, rgba(37, 99, 235, 0.03) 0%, transparent 50%),
+                radial-gradient(circle at 85% 30%, rgba(124, 58, 237, 0.03) 0%, transparent 50%),
+                linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
             z-index: -2;
-            opacity: 0.05;
-            pointer-events: none;
         }
         
         /* Grid Overlay */
@@ -116,636 +110,1088 @@
             width: 100%;
             height: 100%;
             background-image: 
-                linear-gradient(var(--grid-color) 1px, transparent 1px),
-                linear-gradient(90deg, var(--grid-color) 1px, transparent 1px);
+                linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
             background-size: 50px 50px;
             z-index: -1;
             pointer-events: none;
-            opacity: 0.3;
+            opacity: 0.5;
         }
         
-        /* Loading Screen */
-        #loading-screen {
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 var(--space-md);
+        }
+        
+        /* Buttons */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.875rem 2rem;
+            font-family: var(--font-primary);
+            font-weight: 600;
+            font-size: 0.95rem;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+            outline: none;
+        }
+        
+        .btn-primary {
+            background: var(--gradient-primary);
+            color: var(--white);
+            box-shadow: var(--shadow-md);
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .btn-secondary {
+            background: transparent;
+            color: var(--primary-light);
+            border: 2px solid var(--primary);
+        }
+        
+        .btn-secondary:hover {
+            background: rgba(37, 99, 235, 0.1);
+            transform: translateY(-2px);
+        }
+        
+        .btn-outline {
+            background: transparent;
+            color: var(--gray-light);
+            border: 1px solid var(--gray);
+        }
+        
+        .btn-outline:hover {
+            border-color: var(--primary);
+            color: var(--primary-light);
+        }
+        
+        /* Section Styles */
+        .section {
+            padding: var(--space-xl) 0;
+            position: relative;
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: var(--space-lg);
+        }
+        
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: var(--space-sm);
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .section-subtitle {
+            font-size: 1.1rem;
+            color: var(--gray);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .section-number {
+            font-family: var(--font-mono);
+            font-size: 0.875rem;
+            color: var(--primary);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: var(--space-xs);
+            display: block;
+        }
+        
+        /* Card Styles */
+        .card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--glass-border);
+            border-radius: 16px;
+            padding: var(--space-md);
+            transition: all 0.3s ease;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary);
+            box-shadow: var(--shadow-xl), var(--shadow-glow);
+        }
+        
+        /* Navigation */
+        .navbar {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
-            height: 100%;
-            background: var(--cyber-darker);
-            z-index: 99999;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            transition: opacity 0.8s ease;
+            background: rgba(15, 23, 42, 0.9);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--glass-border);
+            z-index: 1000;
+            padding: 1rem 0;
         }
         
-        .loading-terminal {
-            font-family: 'JetBrains Mono', monospace;
-            color: var(--cyber-primary);
-            font-size: 1.2rem;
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            text-decoration: none;
+        }
+        
+        .logo-icon {
+            width: 36px;
+            height: 36px;
+            background: var(--gradient-primary);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-weight: 700;
+            font-size: 1.25rem;
+        }
+        
+        .logo-text {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--white);
+        }
+        
+        .logo-text span {
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+        
+        .nav-link {
+            color: var(--gray-light);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: color 0.3s ease;
+            position: relative;
+            padding: 0.5rem 0;
+        }
+        
+        .nav-link:hover,
+        .nav-link.active {
+            color: var(--white);
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--gradient-primary);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover::after,
+        .nav-link.active::after {
+            width: 100%;
+        }
+        
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        
+        .theme-toggle {
+            width: 48px;
+            height: 28px;
+            background: var(--dark-light);
+            border-radius: 14px;
+            position: relative;
+            cursor: pointer;
+            border: 1px solid var(--glass-border);
+        }
+        
+        .theme-toggle::before {
+            content: '';
+            position: absolute;
+            top: 2px;
+            left: 2px;
+            width: 22px;
+            height: 22px;
+            background: var(--white);
+            border-radius: 50%;
+            transition: transform 0.3s ease;
+        }
+        
+        .theme-toggle.active::before {
+            transform: translateX(20px);
+        }
+        
+        .mobile-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 4px;
+            cursor: pointer;
+        }
+        
+        .mobile-toggle span {
+            width: 24px;
+            height: 2px;
+            background: var(--white);
+            transition: 0.3s;
+        }
+        
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding-top: 80px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+        
+        .hero-bg-shape {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(60px);
+            opacity: 0.15;
+        }
+        
+        .hero-bg-1 {
+            width: 600px;
+            height: 600px;
+            background: var(--primary);
+            top: -300px;
+            right: -200px;
+        }
+        
+        .hero-bg-2 {
+            width: 400px;
+            height: 400px;
+            background: var(--secondary);
+            bottom: -200px;
+            left: -100px;
+        }
+        
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--space-lg);
+            align-items: center;
+        }
+        
+        .hero-text {
+            max-width: 600px;
+        }
+        
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(37, 99, 235, 0.1);
+            color: var(--primary-light);
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            font-size: 0.875rem;
+            font-weight: 500;
+            margin-bottom: 1.5rem;
+            border: 1px solid rgba(37, 99, 235, 0.2);
+        }
+        
+        .hero-title {
+            font-size: 3.5rem;
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            color: var(--white);
+        }
+        
+        .hero-title span {
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .hero-description {
+            font-size: 1.125rem;
+            color: var(--gray-light);
+            margin-bottom: 2.5rem;
+            line-height: 1.7;
+        }
+        
+        .hero-actions {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 3rem;
+        }
+        
+        .hero-stats {
+            display: flex;
+            gap: 3rem;
+        }
+        
+        .stat {
+            text-align: center;
+        }
+        
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--white);
+            margin-bottom: 0.25rem;
+            font-family: var(--font-mono);
+        }
+        
+        .stat-label {
+            font-size: 0.875rem;
+            color: var(--gray);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .hero-visual {
+            position: relative;
+        }
+        
+        .terminal {
+            background: var(--dark-light);
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: var(--shadow-xl);
+            border: 1px solid var(--glass-border);
+        }
+        
+        .terminal-header {
+            display: flex;
+            align-items: center;
+            padding: 1rem;
+            background: rgba(0, 0, 0, 0.2);
+            border-bottom: 1px solid var(--glass-border);
+        }
+        
+        .terminal-dots {
+            display: flex;
+            gap: 0.5rem;
+        }
+        
+        .terminal-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+        
+        .dot-red { background: #ef4444; }
+        .dot-yellow { background: #f59e0b; }
+        .dot-green { background: #10b981; }
+        
+        .terminal-title {
+            flex: 1;
+            text-align: center;
+            font-family: var(--font-mono);
+            font-size: 0.875rem;
+            color: var(--gray);
+        }
+        
+        .terminal-body {
+            padding: 1.5rem;
+            min-height: 300px;
+        }
+        
+        .terminal-line {
+            font-family: var(--font-mono);
+            font-size: 0.95rem;
+            color: var(--gray-light);
+            margin-bottom: 0.75rem;
+            opacity: 0;
+            animation: fadeIn 0.5s ease forwards;
+        }
+        
+        @keyframes fadeIn {
+            to { opacity: 1; }
+        }
+        
+        .terminal-line.command {
+            color: var(--primary-light);
+        }
+        
+        .terminal-line.response {
+            color: var(--success);
+        }
+        
+        .terminal-cursor {
+            display: inline-block;
+            width: 8px;
+            height: 20px;
+            background: var(--primary-light);
+            animation: blink 1s infinite;
+        }
+        
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+        
+        /* About Section */
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--space-lg);
+            align-items: center;
+        }
+        
+        .about-image {
+            position: relative;
+        }
+        
+        .image-wrapper {
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: var(--shadow-xl);
+        }
+        
+        .image-wrapper img {
+            width: 100%;
+            height: auto;
+            display: block;
+            filter: grayscale(20%);
+            transition: transform 0.5s ease;
+        }
+        
+        .image-wrapper:hover img {
+            transform: scale(1.05);
+        }
+        
+        .image-badge {
+            position: absolute;
+            bottom: -20px;
+            right: -20px;
+            background: var(--gradient-primary);
+            color: var(--white);
+            padding: 1rem 1.5rem;
+            border-radius: 12px;
+            font-weight: 600;
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .about-text {
+            padding-right: 2rem;
+        }
+        
+        .about-text h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--white);
+        }
+        
+        .about-text p {
+            color: var(--gray-light);
+            margin-bottom: 1.5rem;
+            line-height: 1.7;
+        }
+        
+        .about-features {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
             margin-top: 2rem;
         }
         
-        .cyber-loader {
-            width: 200px;
-            height: 4px;
-            background: var(--cyber-gray);
-            border-radius: 2px;
-            overflow: hidden;
-            position: relative;
-        }
-        
-        .cyber-loader::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            height: 100%;
-            width: 30%;
-            background: linear-gradient(90deg, transparent, var(--cyber-primary), transparent);
-            animation: scanning 2s infinite linear;
-        }
-        
-        @keyframes scanning {
-            0% { transform: translateX(-100%); }
-            100% { transform: translateX(300%); }
-        }
-        
-        /* Initial state */
-        body.loading {
-            overflow: hidden;
-        }
-        
-        body.loaded #loading-screen {
-            opacity: 0;
-            pointer-events: none;
-        }
-        
-        /* Glitch Effects */
-        .glitch-text {
-            position: relative;
-            display: inline-block;
-        }
-        
-        .glitch-text::before,
-        .glitch-text::after {
-            content: attr(data-text);
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            clip: rect(0, 0, 0, 0);
-        }
-        
-        .glitch-text:hover::before {
-            animation: glitch-anim-1 0.5s infinite linear alternate-reverse;
-        }
-        
-        .glitch-text:hover::after {
-            animation: glitch-anim-2 0.5s infinite linear alternate-reverse;
-        }
-        
-        @keyframes glitch-anim-1 {
-            0% { clip: rect(42px, 9999px, 44px, 0); }
-            5% { clip: rect(12px, 9999px, 59px, 0); }
-            10% { clip: rect(48px, 9999px, 29px, 0); }
-            15% { clip: rect(42px, 9999px, 73px, 0); }
-            20% { clip: rect(63px, 9999px, 27px, 0); }
-            25% { clip: rect(34px, 9999px, 55px, 0); }
-            30% { clip: rect(86px, 9999px, 73px, 0); }
-            35% { clip: rect(20px, 9999px, 20px, 0); }
-            40% { clip: rect(26px, 9999px, 60px, 0); }
-            45% { clip: rect(25px, 9999px, 66px, 0); }
-            50% { clip: rect(57px, 9999px, 98px, 0); }
-            55% { clip: rect(5px, 9999px, 46px, 0); }
-            60% { clip: rect(82px, 9999px, 31px, 0); }
-            65% { clip: rect(54px, 9999px, 27px, 0); }
-            70% { clip: rect(28px, 9999px, 99px, 0); }
-            75% { clip: rect(45px, 9999px, 69px, 0); }
-            80% { clip: rect(23px, 9999px, 85px, 0); }
-            85% { clip: rect(54px, 9999px, 84px, 0); }
-            90% { clip: rect(45px, 9999px, 47px, 0); }
-            95% { clip: rect(37px, 9999px, 20px, 0); }
-            100% { clip: rect(4px, 9999px, 91px, 0); }
-        }
-        
-        @keyframes glitch-anim-2 {
-            0% { clip: rect(65px, 9999px, 100px, 0); }
-            5% { clip: rect(52px, 9999px, 74px, 0); }
-            10% { clip: rect(79px, 9999px, 85px, 0); }
-            15% { clip: rect(75px, 9999px, 5px, 0); }
-            20% { clip: rect(67px, 9999px, 61px, 0); }
-            25% { clip: rect(14px, 9999px, 79px, 0); }
-            30% { clip: rect(1px, 9999px, 66px, 0); }
-            35% { clip: rect(86px, 9999px, 30px, 0); }
-            40% { clip: rect(23px, 9999px, 98px, 0); }
-            45% { clip: rect(85px, 9999px, 72px, 0); }
-            50% { clip: rect(71px, 9999px, 75px, 0); }
-            55% { clip: rect(2px, 9999px, 48px, 0); }
-            60% { clip: rect(30px, 9999px, 16px, 0); }
-            65% { clip: rect(59px, 9999px, 50px, 0); }
-            70% { clip: rect(41px, 9999px, 62px, 0); }
-            75% { clip: rect(2px, 9999px, 82px, 0); }
-            80% { clip: rect(47px, 9999px, 73px, 0); }
-            85% { clip: rect(3px, 9999px, 27px, 0); }
-            90% { clip: rect(40px, 9999px, 86px, 0); }
-            95% { clip: rect(45px, 9999px, 78px, 0); }
-            100% { clip: rect(19px, 9999px, 70px, 0); }
-        }
-        
-        /* Terminal Glow */
-        .terminal-glow {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(circle at center, 
-                rgba(0, 255, 136, 0.1) 0%,
-                rgba(0, 255, 136, 0.05) 25%,
-                transparent 70%);
-            z-index: -1;
-            filter: blur(20px);
-            pointer-events: none;
-        }
-        
-        /* Quick Access Bar */
-        .quick-access {
-            position: fixed;
-            bottom: 30px;
-            left: 50%;
-            transform: translateX(-50%);
+        .feature {
             display: flex;
-            gap: 15px;
-            z-index: 1000;
-            background: rgba(10, 10, 15, 0.8);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(0, 255, 136, 0.2);
-            border-radius: 50px;
-            padding: 12px 24px;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+            align-items: center;
+            gap: 0.75rem;
+            padding: 1rem;
+            background: var(--glass-bg);
+            border-radius: 12px;
+            border: 1px solid var(--glass-border);
         }
         
-        .quick-btn {
-            width: 45px;
-            height: 45px;
-            border-radius: 50%;
-            background: rgba(0, 136, 255, 0.1);
-            border: 1px solid rgba(0, 136, 255, 0.3);
-            color: var(--cyber-light);
-            font-size: 1.2rem;
-            cursor: pointer;
+        .feature i {
+            color: var(--primary);
+            font-size: 1.25rem;
+        }
+        
+        .feature span {
+            font-weight: 500;
+            color: var(--white);
+        }
+        
+        /* Skills Section */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .skill-category {
+            margin-bottom: 2rem;
+        }
+        
+        .skill-category h4 {
+            font-size: 1.25rem;
+            margin-bottom: 1rem;
+            color: var(--white);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .skill-category h4 i {
+            color: var(--primary);
+        }
+        
+        .skill-item {
+            margin-bottom: 1.5rem;
+        }
+        
+        .skill-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+        }
+        
+        .skill-name {
+            font-weight: 500;
+            color: var(--white);
+        }
+        
+        .skill-percentage {
+            font-family: var(--font-mono);
+            color: var(--primary);
+            font-weight: 600;
+        }
+        
+        .skill-bar {
+            height: 8px;
+            background: var(--dark-light);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+        
+        .skill-progress {
+            height: 100%;
+            background: var(--gradient-primary);
+            border-radius: 4px;
+            width: 0;
+            transition: width 1s ease;
+        }
+        
+        /* Projects Section */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+        
+        .project-card {
+            position: relative;
+            overflow: hidden;
+            border-radius: 20px;
+            background: var(--dark-light);
+            transition: all 0.4s ease;
+        }
+        
+        .project-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .project-card:hover .project-image {
+            transform: scale(1.1);
+        }
+        
+        .project-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, transparent 40%, rgba(15, 23, 42, 0.95));
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 2rem;
+        }
+        
+        .project-badge {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: var(--gradient-primary);
+            color: var(--white);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+        
+        .project-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--white);
+            margin-bottom: 0.75rem;
+        }
+        
+        .project-description {
+            color: var(--gray-light);
+            font-size: 0.95rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+        
+        .project-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .tech-tag {
+            background: rgba(37, 99, 235, 0.1);
+            color: var(--primary-light);
+            padding: 0.375rem 0.875rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 500;
+            border: 1px solid rgba(37, 99, 235, 0.2);
+        }
+        
+        .project-links {
+            display: flex;
+            gap: 1rem;
+        }
+        
+        /* Contact Section */
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: var(--space-lg);
+        }
+        
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+        
+        .contact-method {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1.5rem;
+            background: var(--glass-bg);
+            border-radius: 12px;
+            border: 1px solid var(--glass-border);
             transition: all 0.3s ease;
+        }
+        
+        .contact-method:hover {
+            border-color: var(--primary);
+            transform: translateX(5px);
+        }
+        
+        .contact-icon {
+            width: 48px;
+            height: 48px;
+            background: var(--gradient-primary);
+            border-radius: 12px;
             display: flex;
             align-items: center;
             justify-content: center;
+            color: var(--white);
+            font-size: 1.25rem;
         }
         
-        .quick-btn:hover {
-            background: rgba(0, 136, 255, 0.3);
-            border-color: var(--cyber-secondary);
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0, 136, 255, 0.2);
+        .contact-details h4 {
+            font-size: 1.125rem;
+            color: var(--white);
+            margin-bottom: 0.25rem;
         }
         
-        /* Particle Container */
-        .particles-container {
-            position: fixed;
-            top: 0;
-            left: 0;
+        .contact-details p {
+            color: var(--gray);
+            font-size: 0.95rem;
+        }
+        
+        .contact-form {
+            background: var(--dark-light);
+            border-radius: 20px;
+            padding: 2.5rem;
+            border: 1px solid var(--glass-border);
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: var(--white);
+        }
+        
+        .form-control {
             width: 100%;
-            height: 100%;
-            z-index: -1;
-            pointer-events: none;
-        }
-        
-        /* Scroll Indicator */
-        .scroll-indicator {
-            position: fixed;
-            right: 30px;
-            top: 50%;
-            transform: translateY(-50%);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 10px;
-            z-index: 1000;
-        }
-        
-        .scroll-dots {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-        }
-        
-        .scroll-dot {
-            width: 10px;
-            height: 10px;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.1);
-            border: 1px solid rgba(0, 255, 136, 0.3);
-            transition: all 0.3s ease;
-            cursor: pointer;
-        }
-        
-        .scroll-dot.active {
-            background: var(--cyber-primary);
-            box-shadow: 0 0 15px var(--cyber-primary);
-            transform: scale(1.3);
-        }
-        
-        .scroll-label {
-            writing-mode: vertical-rl;
-            text-orientation: mixed;
-            color: var(--cyber-primary);
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.8rem;
-            letter-spacing: 3px;
-            opacity: 0.7;
-        }
-        
-        /* Notification System */
-        .cyber-notification {
-            position: fixed;
-            top: 30px;
-            right: 30px;
-            background: rgba(10, 10, 15, 0.95);
-            border: 1px solid var(--cyber-primary);
-            border-left: 4px solid var(--cyber-primary);
-            padding: 20px;
+            padding: 1rem;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--glass-border);
             border-radius: 8px;
-            color: white;
-            font-family: 'JetBrains Mono', monospace;
-            z-index: 10000;
-            transform: translateX(120%);
-            transition: transform 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-            max-width: 300px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            color: var(--white);
+            font-family: var(--font-primary);
+            font-size: 1rem;
+            transition: all 0.3s ease;
         }
         
-        .cyber-notification.show {
-            transform: translateX(0);
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
         }
         
-        .notification-header {
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+        
+        textarea.form-control {
+            min-height: 150px;
+            resize: vertical;
+        }
+        
+        /* Footer */
+        .footer {
+            background: var(--dark-light);
+            padding: 4rem 0 2rem;
+            border-top: 1px solid var(--glass-border);
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 4rem;
+            margin-bottom: 3rem;
+        }
+        
+        .footer-logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--white);
+            margin-bottom: 1rem;
+        }
+        
+        .footer-description {
+            color: var(--gray);
+            margin-bottom: 1.5rem;
+            max-width: 400px;
+        }
+        
+        .social-links {
             display: flex;
-            justify-content: space-between;
+            gap: 1rem;
+        }
+        
+        .social-link {
+            width: 40px;
+            height: 40px;
+            background: var(--glass-bg);
+            border-radius: 8px;
+            display: flex;
             align-items: center;
-            margin-bottom: 10px;
+            justify-content: center;
+            color: var(--white);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border: 1px solid var(--glass-border);
         }
         
-        .notification-title {
-            color: var(--cyber-primary);
-            font-weight: bold;
-            font-size: 0.9rem;
+        .social-link:hover {
+            background: var(--primary);
+            transform: translateY(-3px);
         }
         
-        .notification-close {
-            background: none;
-            border: none;
-            color: white;
-            cursor: pointer;
-            font-size: 1.2rem;
-            opacity: 0.7;
-            transition: opacity 0.3s ease;
+        .footer-links h4,
+        .footer-services h4 {
+            font-size: 1.125rem;
+            color: var(--white);
+            margin-bottom: 1.5rem;
         }
         
-        .notification-close:hover {
-            opacity: 1;
+        .footer-links ul,
+        .footer-services ul {
+            list-style: none;
         }
         
-        /* Audio Visualizer */
-        .audio-visualizer {
-            position: fixed;
-            bottom: 120px;
-            right: 30px;
-            width: 200px;
-            height: 60px;
-            z-index: 1000;
-            background: rgba(10, 10, 15, 0.8);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(0, 255, 136, 0.2);
-            border-radius: 10px;
-            padding: 15px;
-            display: none;
+        .footer-links li,
+        .footer-services li {
+            margin-bottom: 0.75rem;
         }
         
-        .visualizer-bars {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-end;
-            height: 100%;
-            gap: 3px;
+        .footer-links a,
+        .footer-services li {
+            color: var(--gray);
+            text-decoration: none;
+            transition: color 0.3s ease;
         }
         
-        .visualizer-bar {
-            flex: 1;
-            background: linear-gradient(to top, var(--cyber-primary), var(--cyber-secondary));
-            border-radius: 2px;
-            min-height: 3px;
+        .footer-links a:hover {
+            color: var(--white);
+        }
+        
+        .footer-bottom {
+            padding-top: 2rem;
+            border-top: 1px solid var(--glass-border);
+            text-align: center;
+            color: var(--gray);
+            font-size: 0.875rem;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .hero-content,
+            .about-content,
+            .contact-container {
+                grid-template-columns: 1fr;
+                gap: var(--space-md);
+            }
+            
+            .hero-visual {
+                order: -1;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .hero-title {
+                font-size: 2.5rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .nav-links,
+            .nav-actions {
+                display: none;
+            }
+            
+            .mobile-toggle {
+                display: flex;
+            }
+            
+            .mobile-menu.active {
+                display: block;
+            }
+            
+            .hero-actions {
+                flex-direction: column;
+            }
+            
+            .hero-stats {
+                flex-direction: column;
+                gap: 2rem;
+            }
+            
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .form-row {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
-
-<body class="loading">
-    <!-- Loading Screen -->
-    <div id="loading-screen">
-        <div class="cyber-logo">
-            <svg width="200" height="200" viewBox="0 0 200 200">
-                <path d="M100,20 L180,70 L180,130 L100,180 L20,130 L20,70 Z" fill="none" stroke="var(--cyber-primary)" stroke-width="2">
-                    <animate attributeName="stroke-dasharray" values="0,500;500,0" dur="2s" fill="freeze" />
-                </path>
-                <text x="100" y="110" text-anchor="middle" fill="var(--cyber-primary)" font-family="Orbitron" font-size="24">OASIS</text>
-                <text x="100" y="130" text-anchor="middle" fill="var(--cyber-secondary)" font-family="JetBrains Mono" font-size="12">INITIALIZING...</text>
-            </svg>
-        </div>
-        <div class="cyber-loader"></div>
-        <div class="loading-terminal">
-            <span id="loading-text">>_ BOOTING CYBER SYSTEMS...</span>
-        </div>
-    </div>
-    
-    <!-- Matrix Background -->
-    <canvas id="matrix-bg"></canvas>
-    
-    <!-- Grid Overlay -->
+<body>
     <div class="grid-overlay"></div>
     
-    <!-- Cyber Cursor System -->
-    <div class="cyber-cursor" id="cyber-cursor"></div>
-    <div class="cursor-ring" id="cursor-ring"></div>
-    <div class="cursor-dot" id="cursor-dot"></div>
-    
-    <!-- Particles Container -->
-    <div class="particles-container" id="particles"></div>
-    
-    <!-- Scroll Indicator -->
-    <div class="scroll-indicator">
-        <div class="scroll-label">NAV</div>
-        <div class="scroll-dots">
-            <div class="scroll-dot" data-section="home"></div>
-            <div class="scroll-dot" data-section="about"></div>
-            <div class="scroll-dot" data-section="skills"></div>
-            <div class="scroll-dot" data-section="projects"></div>
-            <div class="scroll-dot" data-section="contact"></div>
-        </div>
-    </div>
-    
-    <!-- Quick Access Bar -->
-    <div class="quick-access">
-        <button class="quick-btn" id="quantum-mode" title="Quantum Mode">
-            <i class="fas fa-atom"></i>
-        </button>
-        <button class="quick-btn" id="cyber-assistant" title="Voice Assistant">
-            <i class="fas fa-robot"></i>
-        </button>
-        <button class="quick-btn" id="matrix-mode" title="Matrix View">
-            <i class="fas fa-matrix"></i>
-        </button>
-        <button class="quick-btn" id="music-toggle" title="Cyber Soundtrack">
-            <i class="fas fa-music"></i>
-        </button>
-        <button class="quick-btn" id="debug-mode" title="Debug Console">
-            <i class="fas fa-terminal"></i>
-        </button>
-    </div>
-    
-    <!-- Audio Visualizer -->
-    <div class="audio-visualizer" id="audio-visualizer">
-        <div class="visualizer-bars"></div>
-    </div>
-    
-    <!-- Notification Container -->
-    <div id="notification-container"></div>
-    
     <!-- Navigation -->
-    <header class="cyber-header">
-        <nav class="cyber-nav">
-            <div class="nav-logo">
-                <span class="logo-glitch" data-text="OASIS">OASIS</span>
-                <span class="logo-sub">// SECURITY OPERATIONS</span>
-            </div>
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="#" class="logo">
+                <div class="logo-icon">C</div>
+                <div class="logo-text">CYBER<span>FUNCTION</span></div>
+            </a>
             
-            <div class="nav-hamburger" id="nav-toggle">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
-            
-            <ul class="nav-menu">
-                <li><a href="#home" class="nav-link active"><i class="fas fa-home"></i> <span>HOME</span></a></li>
-                <li><a href="#about" class="nav-link"><i class="fas fa-user-secret"></i> <span>IDENTITY</span></a></li>
-                <li><a href="#skills" class="nav-link"><i class="fas fa-terminal"></i> <span>ARSENAL</span></a></li>
-                <li><a href="#projects" class="nav-link"><i class="fas fa-code-branch"></i> <span>OPERATIONS</span></a></li>
-                <li><a href="#contact" class="nav-link"><i class="fas fa-satellite"></i> <span>CONTACT</span></a></li>
-                <li class="nav-theme">
-                    <div class="theme-switch">
-                        <input type="checkbox" id="theme-toggle">
-                        <label for="theme-toggle">
-                            <i class="fas fa-sun"></i>
-                            <i class="fas fa-moon"></i>
-                            <span class="theme-ball"></span>
-                        </label>
-                    </div>
-                </li>
+            <ul class="nav-links">
+                <li><a href="#home" class="nav-link active">Home</a></li>
+                <li><a href="#about" class="nav-link">About</a></li>
+                <li><a href="#skills" class="nav-link">Skills</a></li>
+                <li><a href="#projects" class="nav-link">Projects</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
             </ul>
-        </nav>
-    </header>
+            
+            <div class="nav-actions">
+                <div class="theme-toggle active" id="theme-toggle"></div>
+                <div class="mobile-toggle" id="mobile-toggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </div>
+    </nav>
     
     <!-- Hero Section -->
-    <section id="home" class="cyber-hero">
-        <div class="terminal-glow"></div>
+    <section id="home" class="section hero">
+        <div class="hero-background">
+            <div class="hero-bg-shape hero-bg-1"></div>
+            <div class="hero-bg-shape hero-bg-2"></div>
+        </div>
         
-        <div class="hero-grid">
-            <!-- Left Column - 3D Terminal -->
-            <div class="hero-terminal">
-                <div class="terminal-wrapper">
-                    <div class="terminal-header">
-                        <div class="terminal-dots">
-                            <span class="dot red"></span>
-                            <span class="dot yellow"></span>
-                            <span class="dot green"></span>
-                        </div>
-                        <div class="terminal-title">root@cyber-oasis:~</div>
-                    </div>
-                    <div class="terminal-body">
-                        <pre id="terminal-output"></pre>
-                        <div class="terminal-input">
-                            <span class="prompt">></span>
-                            <span class="cursor">▌</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Right Column - Hero Content -->
+        <div class="container">
             <div class="hero-content">
-                <div class="hero-badge">
-                    <span class="badge-icon">⚡</span>
-                    <span class="badge-text">ELITE CYBER OPERATIVE</span>
+                <div class="hero-text">
+                    <div class="hero-badge">
+                        <i class="fas fa-shield-alt"></i>
+                        Elite Security Specialist
+                    </div>
+                    
+                    <h1 class="hero-title">
+                        Securing Digital <span>Frontiers</span> with Advanced Cyber Defense
+                    </h1>
+                    
+                    <p class="hero-description">
+                        I'm a dedicated DevSecOps Engineer and Security Architect specializing in building resilient systems, 
+                        penetration testing, and securing enterprise applications. With expertise across the full security stack.
+                    </p>
+                    
+                    <div class="hero-actions">
+                        <a href="#projects" class="btn btn-primary">
+                            <i class="fas fa-eye"></i>
+                            View Projects
+                        </a>
+                        <a href="#contact" class="btn btn-secondary">
+                            <i class="fas fa-paper-plane"></i>
+                            Get in Touch
+                        </a>
+                    </div>
+                    
+                    <div class="hero-stats">
+                        <div class="stat">
+                            <div class="stat-number">50+</div>
+                            <div class="stat-label">Projects Secured</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-number">100%</div>
+                            <div class="stat-label">Security Success</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-number">24/7</div>
+                            <div class="stat-label">Response Time</div>
+                        </div>
+                    </div>
                 </div>
                 
-                <h1 class="hero-title">
-                    <span class="title-line">CYBERFUNCTION</span>
-                    <span class="title-line accent">_EMMANUEL</span>
-                </h1>
-                
-                <div class="hero-subtitle">
-                    <span class="subtitle-text">DevSecOps Engineer | BlackHat Enthusiast</span>
-                    <span class="subtitle-text">IoT Security Architect | Penetration Tester</span>
-                </div>
-                
-                <div class="hero-stats">
-                    <div class="stat-item">
-                        <div class="stat-value" data-count="150">0</div>
-                        <div class="stat-label">SECURED SYSTEMS</div>
+                <div class="hero-visual">
+                    <div class="terminal">
+                        <div class="terminal-header">
+                            <div class="terminal-dots">
+                                <div class="terminal-dot dot-red"></div>
+                                <div class="terminal-dot dot-yellow"></div>
+                                <div class="terminal-dot dot-green"></div>
+                            </div>
+                            <div class="terminal-title">security@cyberfunction:~</div>
+                        </div>
+                        <div class="terminal-body" id="terminal-body">
+                            <!-- Terminal content will be populated by JS -->
+                        </div>
                     </div>
-                    <div class="stat-item">
-                        <div class="stat-value" data-count="42">0</div>
-                        <div class="stat-label">VULNERABILITIES FOUND</div>
-                    </div>
-                    <div class="stat-item">
-                        <div class="stat-value" data-count="99">0</div>
-                        <div class="stat-label">SUCCESS RATE</div>
-                    </div>
-                </div>
-                
-                <div class="hero-cta">
-                    <a href="#projects" class="cyber-btn primary">
-                        <i class="fas fa-eye"></i>
-                        <span>VIEW OPERATIONS</span>
-                    </a>
-                    <a href="#contact" class="cyber-btn secondary">
-                        <i class="fas fa-satellite-dish"></i>
-                        <span>ESTABLISH CONTACT</span>
-                    </a>
                 </div>
             </div>
         </div>
-        
-        <!-- Hero Scan Line -->
-        <div class="scan-line"></div>
-        
-        <!-- Hero Particles -->
-        <div class="hero-particles"></div>
     </section>
     
     <!-- About Section -->
-    <section id="about" class="cyber-section">
-        <div class="section-header">
-            <h2 class="section-title">
-                <span class="title-number">01</span>
-                <span class="title-text">OPERATOR <span class="accent">IDENTITY</span></span>
-            </h2>
-            <div class="section-subtitle">
-                BEHIND THE ENCRYPTION | BEYOND THE CODE
+    <section id="about" class="section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-number">About Me</span>
+                <h2 class="section-title">The Mind Behind the Security</h2>
+                <p class="section-subtitle">
+                    Combining technical expertise with strategic security thinking to build resilient digital systems.
+                </p>
             </div>
-        </div>
-        
-        <div class="about-grid">
-            <!-- Bio Card -->
-            <div class="bio-card">
-                <div class="card-header">
-                    <h3><i class="fas fa-fingerprint"></i> BIO-METRICS</h3>
-                    <span class="clearance-badge">CLEARANCE: TOP SECRET</span>
+            
+            <div class="about-content">
+                <div class="about-image">
+                    <div class="image-wrapper">
+                        <img src="https://images.unsplash.com/photo-1542831371-29b0f74f9713?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" alt="Security Operations">
+                        <div class="image-badge">
+                            <i class="fas fa-user-secret"></i>
+                            Security Clearance: Level 5
+                        </div>
+                    </div>
                 </div>
                 
-                <div class="card-body">
-                    <p class="bio-text">
-                        Specializing in <span class="highlight">penetration testing</span>, Python-based security tools, and 
-                        <span class="highlight">IoT security architecture</span>. Former team lead for intrusion detection 
-                        systems at E-Warn Pvt, with hands-on experience in national-level security infrastructure.
+                <div class="about-text">
+                    <h3>DevSecOps Engineer & Security Architect</h3>
+                    <p>
+                        With extensive experience in penetration testing, network security, and secure application development, 
+                        I specialize in identifying vulnerabilities and implementing robust security solutions for enterprise systems.
+                    </p>
+                    <p>
+                        My approach combines technical depth with strategic thinking, ensuring security is integrated throughout 
+                        the development lifecycle rather than being an afterthought.
                     </p>
                     
-                    <div class="bio-mission">
-                        <h4><i class="fas fa-bullseye"></i> MISSION STATEMENT</h4>
-                        <p>
-                            To engineer <span class="highlight">secure, accessible technology</span> while empowering underserved 
-                            communities through <span class="highlight">ethical hacking education</span> and security awareness.
-                        </p>
-                    </div>
-                    
-                    <div class="bio-tags">
-                        <span class="bio-tag"><i class="fas fa-shield-alt"></i> Security-First Mindset</span>
-                        <span class="bio-tag"><i class="fas fa-code"></i> Full-Stack Expertise</span>
-                        <span class="bio-tag"><i class="fas fa-network-wired"></i> Network Defense</span>
-                        <span class="bio-tag"><i class="fas fa-user-secret"></i> Ethical Hacking</span>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Timeline -->
-            <div class="timeline-card">
-                <div class="card-header">
-                    <h3><i class="fas fa-history"></i> OPERATIONAL TIMELINE</h3>
-                </div>
-                
-                <div class="timeline">
-                    <div class="timeline-item">
-                        <div class="timeline-date">2024 - PRESENT</div>
-                        <div class="timeline-content">
-                            <h4>FREELANCE SECURITY CONSULTANT</h4>
-                            <p>Providing cybersecurity assessments and secure development consulting for various clients.</p>
+                    <div class="about-features">
+                        <div class="feature">
+                            <i class="fas fa-shield-alt"></i>
+                            <span>Penetration Testing</span>
                         </div>
-                    </div>
-                    
-                    <div class="timeline-item">
-                        <div class="timeline-date">2023</div>
-                        <div class="timeline-content">
-                            <h4>E-WARN PVT | SECURITY TEAM LEAD</h4>
-                            <p>Led intrusion detection system development and deployment for national infrastructure.</p>
+                        <div class="feature">
+                            <i class="fas fa-network-wired"></i>
+                            <span>Network Security</span>
                         </div>
-                    </div>
-                    
-                    <div class="timeline-item">
-                        <div class="timeline-date">2022</div>
-                        <div class="timeline-content">
-                            <h4>NATIONAL INSTITUTE OF TECHNOLOGY | INTERN</h4>
-                            <p>Specialized in IoT communication protocols and smart surveillance systems.</p>
+                        <div class="feature">
+                            <i class="fas fa-code"></i>
+                            <span>Secure Development</span>
                         </div>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Skills Preview -->
-            <div class="skills-preview">
-                <div class="skill-meter">
-                    <div class="skill-info">
-                        <span>PENETRATION TESTING</span>
-                        <span>92%</span>
-                    </div>
-                    <div class="meter-bar">
-                        <div class="meter-fill" style="width: 92%"></div>
-                    </div>
-                </div>
-                
-                <div class="skill-meter">
-                    <div class="skill-info">
-                        <span>WEB APPLICATION SECURITY</span>
-                        <span>88%</span>
-                    </div>
-                    <div class="meter-bar">
-                        <div class="meter-fill" style="width: 88%"></div>
-                    </div>
-                </div>
-                
-                <div class="skill-meter">
-                    <div class="skill-info">
-                        <span>NETWORK DEFENSE</span>
-                        <span>85%</span>
-                    </div>
-                    <div class="meter-bar">
-                        <div class="meter-fill" style="width: 85%"></div>
-                    </div>
-                </div>
-                
-                <div class="skill-meter">
-                    <div class="skill-info">
-                        <span>INCIDENT RESPONSE</span>
-                        <span>90%</span>
-                    </div>
-                    <div class="meter-bar">
-                        <div class="meter-fill" style="width: 90%"></div>
+                        <div class="feature">
+                            <i class="fas fa-cloud"></i>
+                            <span>Cloud Security</span>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -753,108 +1199,29 @@
     </section>
     
     <!-- Skills Section -->
-    <section id="skills" class="cyber-section">
-        <div class="section-header">
-            <h2 class="section-title">
-                <span class="title-number">02</span>
-                <span class="title-text">TACTICAL <span class="accent">ARSENAL</span></span>
-            </h2>
-            <div class="section-subtitle">
-                TOOLS, TECHNIQUES & TECHNOLOGIES
+    <section id="skills" class="section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-number">Expertise</span>
+                <h2 class="section-title">Technical Arsenal</h2>
+                <p class="section-subtitle">
+                    Comprehensive skills across security domains and modern technologies.
+                </p>
             </div>
-        </div>
-        
-        <div class="skills-container">
-            <!-- Network Visualization -->
-            <div class="network-viz" id="network-viz"></div>
             
-            <!-- Skills Grid -->
             <div class="skills-grid">
-                <!-- Skill cards will be injected here by JavaScript -->
-            </div>
-        </div>
-    </section>
-    
-    <!-- Projects Section -->
-    <section id="projects" class="cyber-section">
-        <div class="section-header">
-            <h2 class="section-title">
-                <span class="title-number">03</span>
-                <span class="title-text">CLASSIFIED <span class="accent">OPERATIONS</span></span>
-            </h2>
-            <div class="section-subtitle">
-                DEPLOYED SOLUTIONS & SECRET MISSIONS
-            </div>
-        </div>
-        
-        <div class="projects-slider">
-            <div class="slider-container" id="projects-slider">
-                <!-- Project slides will be injected here -->
-            </div>
-            
-            <div class="slider-controls">
-                <button class="slider-btn prev" id="prev-project">
-                    <i class="fas fa-chevron-left"></i>
-                </button>
-                <div class="slider-dots" id="slider-dots"></div>
-                <button class="slider-btn next" id="next-project">
-                    <i class="fas fa-chevron-right"></i>
-                </button>
-            </div>
-        </div>
-    </section>
-    
-    <!-- Contact Section -->
-    <section id="contact" class="cyber-section">
-        <div class="section-header">
-            <h2 class="section-title">
-                <span class="title-number">04</span>
-                <span class="title-text">ESTABLISH <span class="accent">CONTACT</span></span>
-            </h2>
-            <div class="section-subtitle">
-                SECURE CHANNEL ACTIVATED
-            </div>
-        </div>
-        
-        <div class="contact-grid">
-            <!-- Contact Methods -->
-            <div class="contact-methods">
-                <div class="contact-card">
-                    <div class="contact-icon">
-                        <i class="fas fa-envelope"></i>
+                <div class="skill-category">
+                    <h4><i class="fas fa-lock"></i> Security & Defense</h4>
+                    <div class="skill-item">
+                        <div class="skill-header">
+                            <span class="skill-name">Penetration Testing</span>
+                            <span class="skill-percentage">95%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" data-width="95"></div>
+                        </div>
                     </div>
-                    <h3>ENCRYPTED MAIL</h3>
-                    <p>Secure end-to-end encrypted communication</p>
-                    <a href="mailto:secure@cyberfunction.dev" class="contact-link">
-                        <i class="fas fa-external-link-alt"></i> INITIATE
-                    </a>
-                </div>
-                
-                <div class="contact-card">
-                    <div class="contact-icon">
-                        <i class="fas fa-satellite"></i>
-                    </div>
-                    <h3>DIRECT TRANSMISSION</h3>
-                    <p>Real-time secure messaging</p>
-                    <a href="#" class="contact-link" id="direct-chat">
-                        <i class="fas fa-comment-dots"></i> OPEN CHANNEL
-                    </a>
-                </div>
-                
-                <div class="contact-card">
-                    <div class="contact-icon">
-                        <i class="fas fa-file-contract"></i>
-                    </div>
-                    <h3>CONTRACT OPS</h3>
-                    <p>For classified operations and partnerships</p>
-                    <a href="#" class="contact-link">
-                        <i class="fas fa-handshake"></i> REQUEST BRIEF
-                    </a>
-                </div>
-            </div>
-            
-            <!-- Contact Form -->
-            <div class="contact-form-wrapper">
-                <form id="cyber-form" class="cyber-form">
-                    <div class="form-header">
-                        <h3><i class="fas fa-key"></i> SECURE MESSAGE TRANSMISSION</h3
+                    <div class="skill-item">
+                        <div class="skill-header">
+                            <span class="skill-name">Vulnerability Assessment</span>
+                            <span class="skill-percentage">92%
