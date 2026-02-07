@@ -1,1015 +1,1025 @@
-// === QUANTUM MODE ACTIVATION === //
-class QuantumRenderer {
+// ================================================
+// CYBERFUNCTION PORTFOLIO - NEXT LEVEL JAVASCRIPT
+// Version 0.0.1 | Elite Security Operations
+// ================================================
+
+class CyberPortfolio {
     constructor() {
-        this.canvas = document.createElement('canvas');
-        this.ctx = this.canvas.getContext('2d');
-        this.particles = [];
-        this.wires = [];
-        this.isActive = false;
         this.init();
     }
 
-    init() {
-        this.canvas.style.cssText = `
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: 9998;
-            opacity: 0;
-            transition: opacity 0.5s;
-        `;
-        document.body.appendChild(this.canvas);
-        this.resize();
-        window.addEventListener('resize', () => this.resize());
+    async init() {
+        console.log('%c⚡ CYBER SYSTEMS INITIALIZING...', 'color: #00ff88; font-family: "JetBrains Mono"; font-size: 16px; font-weight: bold;');
+        
+        // Initialize modules in sequence
+        await this.initializeLoading();
+        await this.initializeCursor();
+        await this.initializeMatrix();
+        await this.initializeTheme();
+        await this.initializeNavigation();
+        await this.initializeTerminal();
+        await this.initializeParticles();
+        await this.initializeSkills();
+        await this.initializeProjects();
+        await this.initializeContact();
+        await this.initializeAnimations();
+        await this.initializeAudio();
+        await this.initializeNotifications();
+        
+        this.showNotification('CYBER SYSTEMS', 'All systems operational. Welcome to OASIS.', 'success');
+        console.log('%c✅ CYBER SYSTEMS READY', 'color: #00ff88; font-family: "JetBrains Mono"; font-size: 14px;');
     }
 
-    resize() {
-        this.canvas.width = window.innerWidth;
-        this.canvas.height = window.innerHeight;
-    }
-
-    activate() {
-        this.isActive = true;
-        this.canvas.style.opacity = '0.7';
-        this.createParticleField();
-        this.animate();
-    }
-
-    deactivate() {
-        this.isActive = false;
-        this.canvas.style.opacity = '0';
-        this.particles = [];
-        this.wires = [];
-    }
-
-    createParticleField() {
-        // Create quantum particles
-        for (let i = 0; i < 150; i++) {
-            this.particles.push({
-                x: Math.random() * this.canvas.width,
-                y: Math.random() * this.canvas.height,
-                vx: (Math.random() - 0.5) * 2,
-                vy: (Math.random() - 0.5) * 2,
-                radius: Math.random() * 2 + 1,
-                color: `hsl(${Math.random() * 60 + 200}, 100%, ${Math.random() * 30 + 60}%)`,
-                connections: []
-            });
-        }
-
-        // Create quantum entanglement wires
-        for (let i = 0; i < 50; i++) {
-            this.wires.push({
-                p1: Math.floor(Math.random() * this.particles.length),
-                p2: Math.floor(Math.random() * this.particles.length),
-                opacity: Math.random() * 0.3 + 0.1,
-                pulse: 0
-            });
-        }
-    }
-
-    animate() {
-        if (!this.isActive) return;
-
-        this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
-
-        // Update and draw particles
-        this.particles.forEach(p => {
-            p.x += p.vx;
-            p.y += p.vy;
-
-            // Bounce off walls
-            if (p.x < 0 || p.x > this.canvas.width) p.vx *= -1;
-            if (p.y < 0 || p.y > this.canvas.height) p.vy *= -1;
-
-            // Draw particle
-            this.ctx.beginPath();
-            this.ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
-            this.ctx.fillStyle = p.color;
-            this.ctx.fill();
-
-            // Glow effect
-            const gradient = this.ctx.createRadialGradient(
-                p.x, p.y, 0,
-                p.x, p.y, p.radius * 3
-            );
-            gradient.addColorStop(0, p.color);
-            gradient.addColorStop(1, 'transparent');
-            
-            this.ctx.beginPath();
-            this.ctx.arc(p.x, p.y, p.radius * 3, 0, Math.PI * 2);
-            this.ctx.fillStyle = gradient;
-            this.ctx.fill();
-        });
-
-        // Draw entanglement wires
-        this.wires.forEach(w => {
-            w.pulse = (w.pulse + 0.05) % (Math.PI * 2);
-            const p1 = this.particles[w.p1];
-            const p2 = this.particles[w.p2];
-            const distance = Math.sqrt(Math.pow(p2.x - p1.x, 2) + Math.pow(p2.y - p1.y, 2));
-
-            if (distance < 200) {
-                const opacity = w.opacity * (0.5 + Math.sin(w.pulse) * 0.3);
+    // ================= LOADING SYSTEM =================
+    async initializeLoading() {
+        const loadingScreen = document.getElementById('loading-screen');
+        const loadingText = document.getElementById('loading-text');
+        
+        if (!loadingScreen) return;
+        
+        const loadingPhases = [
+            '>_ BOOTING CYBER SYSTEMS...',
+            '>_ LOADING SECURITY PROTOCOLS...',
+            '>_ INITIALIZING QUANTUM ENGINE...',
+            '>_ SCANNING FOR THREATS...',
+            '>_ ACTIVATING DEFENSE SYSTEMS...',
+            '>_ SYSTEMS READY...'
+        ];
+        
+        let phase = 0;
+        const phaseInterval = setInterval(() => {
+            if (phase < loadingPhases.length) {
+                loadingText.textContent = loadingPhases[phase];
+                phase++;
+            } else {
+                clearInterval(phaseInterval);
                 
-                this.ctx.beginPath();
-                this.ctx.moveTo(p1.x, p1.y);
-                this.ctx.lineTo(p2.x, p2.y);
-                this.ctx.strokeStyle = `rgba(99, 102, 241, ${opacity})`;
-                this.ctx.lineWidth = 1;
-                this.ctx.stroke();
-
-                // Draw pulse along wire
-                const pulsePos = 0.5 + Math.sin(w.pulse) * 0.3;
-                const pulseX = p1.x + (p2.x - p1.x) * pulsePos;
-                const pulseY = p1.y + (p2.y - p1.y) * pulsePos;
-
-                this.ctx.beginPath();
-                this.ctx.arc(pulseX, pulseY, 3, 0, Math.PI * 2);
-                this.ctx.fillStyle = `rgba(255, 255, 255, ${0.7 + Math.sin(w.pulse) * 0.3})`;
-                this.ctx.fill();
+                // Add completion animation
+                gsap.to(loadingScreen, {
+                    opacity: 0,
+                    duration: 1,
+                    ease: "power2.inOut",
+                    onComplete: () => {
+                        loadingScreen.style.display = 'none';
+                        document.body.classList.remove('loading');
+                        document.body.classList.add('loaded');
+                        
+                        // Initialize GSAP animations
+                        this.initializeGSAPAnimations();
+                    }
+                });
             }
-        });
-
-        requestAnimationFrame(() => this.animate());
-    }
-}
-
-// === CYBER 3D TERMINAL === //
-class CyberTerminal3D {
-    constructor(containerId) {
-        this.container = document.getElementById(containerId);
-        this.scene = null;
-        this.camera = null;
-        this.renderer = null;
-        this.cubes = [];
-        this.texts = ['CYBER', 'OASIS', 'HACK', 'DEFENSE', 'CODE', 'SECURE'];
-        this.init();
+        }, 300);
     }
 
-    init() {
-        if (!this.container) return;
-
-        // Create Three.js scene
-        this.scene = new THREE.Scene();
-        this.camera = new THREE.PerspectiveCamera(
-            75,
-            this.container.clientWidth / this.container.clientHeight,
-            0.1,
-            1000
-        );
-        this.camera.position.z = 20;
-
-        this.renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
-        this.renderer.setSize(this.container.clientWidth, this.container.clientHeight);
-        this.renderer.setClearColor(0x000000, 0);
-        this.container.appendChild(this.renderer.domElement);
-
-        // Create floating cubes with cyber text
-        const geometry = new THREE.BoxGeometry(3, 3, 3);
+    // ================= CYBER CURSOR =================
+    initializeCursor() {
+        const cursor = document.getElementById('cyber-cursor');
+        const cursorRing = document.getElementById('cursor-ring');
+        const cursorDot = document.getElementById('cursor-dot');
         
-        this.texts.forEach((text, i) => {
-            const material = new THREE.MeshPhongMaterial({
-                color: 0x6366f1,
-                emissive: 0x1e293b,
-                specular: 0xffffff,
-                shininess: 100,
-                wireframe: i % 2 === 0
+        if (!cursor || !cursorRing || !cursorDot) return;
+        
+        let mouseX = 0;
+        let mouseY = 0;
+        let ringX = 0;
+        let ringY = 0;
+        let dotX = 0;
+        let dotY = 0;
+        
+        // Track mouse position
+        document.addEventListener('mousemove', (e) => {
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+        });
+        
+        // Interactive elements
+        const interactiveElements = document.querySelectorAll('a, button, .skill-card, .project-slide, .nav-link');
+        
+        interactiveElements.forEach(el => {
+            el.addEventListener('mouseenter', () => {
+                cursor.style.transform = 'scale(1.5)';
+                cursor.style.borderColor = '#ff0066';
+                cursorRing.style.transform = 'scale(1.8)';
+                cursorRing.style.borderColor = 'rgba(255, 0, 102, 0.5)';
             });
-
-            const cube = new THREE.Mesh(geometry, material);
             
-            // Position in a sphere
-            const phi = Math.acos(-1 + (2 * i) / this.texts.length);
-            const theta = Math.sqrt(this.texts.length * Math.PI) * phi;
-            
-            cube.position.x = 10 * Math.cos(theta) * Math.sin(phi);
-            cube.position.y = 10 * Math.sin(theta) * Math.sin(phi);
-            cube.position.z = 10 * Math.cos(phi);
-            
-            cube.userData = { originalPosition: cube.position.clone(), text: text };
-            this.cubes.push(cube);
-            this.scene.add(cube);
+            el.addEventListener('mouseleave', () => {
+                cursor.style.transform = 'scale(1)';
+                cursor.style.borderColor = '#00ff88';
+                cursorRing.style.transform = 'scale(1)';
+                cursorRing.style.borderColor = 'rgba(0, 255, 136, 0.3)';
+            });
         });
-
-        // Add lights
-        const ambientLight = new THREE.AmbientLight(0x404040);
-        this.scene.add(ambientLight);
-
-        const directionalLight = new THREE.DirectionalLight(0xffffff, 1);
-        directionalLight.position.set(10, 10, 5);
-        this.scene.add(directionalLight);
-
-        // Add text sprites
-        this.createTextSprites();
-
-        // Handle window resize
-        window.addEventListener('resize', () => this.onWindowResize());
-
-        // Start animation
-        this.animate();
-    }
-
-    createTextSprites() {
-        const canvas = document.createElement('canvas');
-        const context = canvas.getContext('2d');
         
-        this.cubes.forEach((cube, i) => {
-            canvas.width = 256;
-            canvas.height = 128;
+        // Click effect
+        document.addEventListener('click', (e) => {
+            cursor.style.transform = 'scale(0.8)';
+            setTimeout(() => {
+                cursor.style.transform = 'scale(1)';
+            }, 100);
             
-            context.clearRect(0, 0, canvas.width, canvas.height);
-            context.fillStyle = '#6366f1';
-            context.font = 'bold 40px "Courier New", monospace';
-            context.textAlign = 'center';
-            context.textBaseline = 'middle';
-            context.fillText(this.texts[i], canvas.width / 2, canvas.height / 2);
+            // Ripple effect
+            this.createRipple(e.clientX, e.clientY);
+        });
+        
+        // Animation loop
+        const animateCursor = () => {
+            // Smooth follow for ring (laggy effect)
+            ringX += (mouseX - ringX) * 0.1;
+            ringY += (mouseY - ringY) * 0.1;
             
-            const texture = new THREE.CanvasTexture(canvas);
-            const spriteMaterial = new THREE.SpriteMaterial({ map: texture });
-            const sprite = new THREE.Sprite(spriteMaterial);
-            sprite.scale.set(4, 2, 1);
-            sprite.position.copy(cube.position).add(new THREE.Vector3(0, 4, 0));
+            // Snappy follow for dot
+            dotX += (mouseX - dotX) * 0.3;
+            dotY += (mouseY - dotY) * 0.3;
             
-            cube.userData.sprite = sprite;
-            this.scene.add(sprite);
+            // Update positions
+            cursor.style.left = `${mouseX - 12}px`;
+            cursor.style.top = `${mouseY - 12}px`;
+            
+            cursorRing.style.left = `${ringX - 24}px`;
+            cursorRing.style.top = `${ringY - 24}px`;
+            
+            cursorDot.style.left = `${dotX - 2}px`;
+            cursorDot.style.top = `${dotY - 2}px`;
+            
+            requestAnimationFrame(animateCursor);
+        };
+        
+        animateCursor();
+    }
+
+    createRipple(x, y) {
+        const ripple = document.createElement('div');
+        ripple.style.cssText = `
+            position: fixed;
+            width: 20px;
+            height: 20px;
+            border: 2px solid #00ff88;
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 9999;
+            left: ${x - 10}px;
+            top: ${y - 10}px;
+            transform: scale(0);
+            opacity: 0.8;
+        `;
+        
+        document.body.appendChild(ripple);
+        
+        const animation = ripple.animate([
+            { transform: 'scale(0)', opacity: 0.8 },
+            { transform: 'scale(3)', opacity: 0 }
+        ], {
+            duration: 600,
+            easing: 'cubic-bezier(0.4, 0, 0.2, 1)'
+        });
+        
+        animation.onfinish = () => ripple.remove();
+    }
+
+    // ================= MATRIX BACKGROUND =================
+    initializeMatrix() {
+        const canvas = document.getElementById('matrix-bg');
+        if (!canvas) return;
+        
+        const ctx = canvas.getContext('2d');
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+        
+        const chars = "01アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワヲン";
+        const fontSize = 14;
+        const columns = canvas.width / fontSize;
+        
+        const drops = [];
+        for (let i = 0; i < columns; i++) {
+            drops[i] = 1;
+        }
+        
+        let lastTime = 0;
+        const fps = 30;
+        const interval = 1000 / fps;
+        
+        const drawMatrix = (timestamp) => {
+            if (timestamp - lastTime < interval) {
+                requestAnimationFrame(drawMatrix);
+                return;
+            }
+            
+            lastTime = timestamp;
+            
+            // Semi-transparent black to create fade effect
+            ctx.fillStyle = 'rgba(10, 10, 15, 0.05)';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            
+            ctx.font = `${fontSize}px "JetBrains Mono"`;
+            
+            for (let i = 0; i < drops.length; i++) {
+                // Random character
+                const char = chars[Math.floor(Math.random() * chars.length)];
+                
+                // Gradient color based on position
+                const gradient = ctx.createLinearGradient(0, drops[i] * fontSize, 0, (drops[i] + 1) * fontSize);
+                gradient.addColorStop(0, '#00ff88');
+                gradient.addColorStop(0.5, '#0088ff');
+                gradient.addColorStop(1, '#00ff88');
+                
+                ctx.fillStyle = gradient;
+                
+                // Draw character
+                ctx.fillText(char, i * fontSize, drops[i] * fontSize);
+                
+                // Reset drop when it reaches bottom
+                if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+                    drops[i] = 0;
+                }
+                
+                drops[i]++;
+            }
+            
+            requestAnimationFrame(drawMatrix);
+        };
+        
+        drawMatrix();
+        
+        // Resize handler
+        window.addEventListener('resize', () => {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
         });
     }
 
-    onWindowResize() {
-        this.camera.aspect = this.container.clientWidth / this.container.clientHeight;
-        this.camera.updateProjectionMatrix();
-        this.renderer.setSize(this.container.clientWidth, this.container.clientHeight);
+    // ================= THEME SYSTEM =================
+    initializeTheme() {
+        const themeToggle = document.getElementById('theme-toggle');
+        if (!themeToggle) return;
+        
+        // Load saved theme
+        const savedTheme = localStorage.getItem('cyber-theme') || 'dark';
+        document.documentElement.setAttribute('data-theme', savedTheme);
+        themeToggle.checked = savedTheme === 'light';
+        
+        // Toggle theme
+        themeToggle.addEventListener('change', (e) => {
+            const theme = e.target.checked ? 'light' : 'dark';
+            document.documentElement.setAttribute('data-theme', theme);
+            localStorage.setItem('cyber-theme', theme);
+            
+            this.showNotification('THEME', `Switched to ${theme} mode`, 'info');
+        });
     }
 
-    animate() {
-        requestAnimationFrame(() => this.animate());
+    // ================= NAVIGATION SYSTEM =================
+    initializeNavigation() {
+        // Mobile menu toggle
+        const navToggle = document.getElementById('nav-toggle');
+        const navMenu = document.querySelector('.nav-menu');
+        
+        if (navToggle && navMenu) {
+            navToggle.addEventListener('click', () => {
+                navToggle.classList.toggle('active');
+                navMenu.classList.toggle('active');
+                
+                // Animate menu
+                if (navMenu.classList.contains('active')) {
+                    gsap.fromTo(navMenu.children, 
+                        { y: -20, opacity: 0 },
+                        { y: 0, opacity: 1, stagger: 0.1, duration: 0.3 }
+                    );
+                }
+            });
+        }
+        
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', (e) => {
+                e.preventDefault();
+                
+                const targetId = anchor.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const target = document.querySelector(targetId);
+                if (!target) return;
+                
+                // Close mobile menu if open
+                if (navMenu && navMenu.classList.contains('active')) {
+                    navToggle.classList.remove('active');
+                    navMenu.classList.remove('active');
+                }
+                
+                // Smooth scroll
+                window.scrollTo({
+                    top: target.offsetTop - 80,
+                    behavior: 'smooth'
+                });
+                
+                // Update active nav link
+                document.querySelectorAll('.nav-link').forEach(link => {
+                    link.classList.remove('active');
+                });
+                anchor.classList.add('active');
+            });
+        });
+        
+        // Update active section on scroll
+        const sections = document.querySelectorAll('.cyber-section');
+        const navLinks = document.querySelectorAll('.nav-link');
+        const scrollDots = document.querySelectorAll('.scroll-dot');
+        
+        const observerOptions = {
+            root: null,
+            rootMargin: '-20% 0px -70% 0px',
+            threshold: 0
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const id = entry.target.getAttribute('id');
+                    
+                    // Update nav links
+                    navLinks.forEach(link => {
+                        link.classList.toggle('active', link.getAttribute('href') === `#${id}`);
+                    });
+                    
+                    // Update scroll dots
+                    scrollDots.forEach(dot => {
+                        dot.classList.toggle('active', dot.dataset.section === id);
+                    });
+                    
+                    // Animate section entry
+                    if (!entry.target.classList.contains('animated')) {
+                        entry.target.classList.add('animated');
+                        gsap.fromTo(entry.target,
+                            { y: 50, opacity: 0 },
+                            { y: 0, opacity: 1, duration: 0.8, ease: 'power2.out' }
+                        );
+                    }
+                }
+            });
+        }, observerOptions);
+        
+        sections.forEach(section => observer.observe(section));
+        
+        // Scroll dots click
+        scrollDots.forEach(dot => {
+            dot.addEventListener('click', () => {
+                const section = document.getElementById(dot.dataset.section);
+                if (section) {
+                    window.scrollTo({
+                        top: section.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    }
 
-        // Rotate cubes
-        this.cubes.forEach((cube, i) => {
-            cube.rotation.x += 0.01;
-            cube.rotation.y += 0.01;
+    // ================= TERMINAL SYSTEM =================
+    initializeTerminal() {
+        const terminalOutput = document.getElementById('terminal-output');
+        if (!terminalOutput) return;
+        
+        const terminalLines = [
+            '> whoami',
+            'Cyberfunction_Emmanuel',
+            '',
+            '> system_status --check',
+            '✓ Security Protocols: ACTIVE',
+            '✓ Quantum Engine: ONLINE',
+            '✓ Defense Systems: ARMED',
+            '✓ Network: SECURE',
+            '',
+            '> current_role',
+            '// Security Architect',
+            '// Penetration Tester',
+            '// DevSecOps Engineer',
+            '// IoT Security Specialist',
+            '',
+            '> mission_statement',
+            '"Securing digital frontiers with elite expertise."',
+            '',
+            '> last_login',
+            'Access granted: ' + new Date().toLocaleString(),
+            '',
+            '> welcome_message --display',
+            'System ready. Type "help" for commands.'
+        ];
+        
+        let lineIndex = 0;
+        let charIndex = 0;
+        let currentLine = '';
+        
+        const typeLine = () => {
+            if (lineIndex >= terminalLines.length) {
+                // Start blinking cursor
+                setInterval(() => {
+                    const cursor = document.querySelector('.terminal-body .cursor');
+                    if (cursor) cursor.style.opacity = cursor.style.opacity === '0' ? '1' : '0';
+                }, 500);
+                return;
+            }
             
-            // Gentle floating motion
-            cube.position.y = cube.userData.originalPosition.y + Math.sin(Date.now() * 0.001 + i) * 0.5;
+            currentLine = terminalLines[lineIndex];
             
-            // Update sprite position
-            if (cube.userData.sprite) {
-                cube.userData.sprite.position.copy(cube.position).add(new THREE.Vector3(0, 4, 0));
+            const typeChar = () => {
+                if (charIndex < currentLine.length) {
+                    terminalOutput.textContent += currentLine.charAt(charIndex);
+                    charIndex++;
+                    setTimeout(typeChar, Math.random() * 30 + 20);
+                } else {
+                    // End of line
+                    terminalOutput.textContent += '\n';
+                    lineIndex++;
+                    charIndex = 0;
+                    setTimeout(typeLine, Math.random() * 300 + 200);
+                }
+            };
+            
+            typeChar();
+        };
+        
+        // Start typing after a delay
+        setTimeout(typeLine, 1000);
+        
+        // Terminal commands
+        document.addEventListener('keydown', (e) => {
+            if (e.key === '`') { // Backtick opens debug console
+                this.showDebugConsole();
+                e.preventDefault();
             }
         });
-
-        this.renderer.render(this.scene, this.camera);
-    }
-}
-
-// === INTERACTIVE NETWORK VISUALIZER === //
-class NetworkVisualizer {
-    constructor() {
-        this.nodes = [];
-        this.connections = [];
-        this.activeNodes = new Set();
-        this.init();
     }
 
-    init() {
-        // Create skill nodes
-        const skills = ['Pentesting', 'Networking', 'WebSec', 'Cryptography', 'Forensics', 'ReverseEng', 'CloudSec', 'IoT'];
+    // ================= PARTICLE SYSTEM =================
+    initializeParticles() {
+        const container = document.getElementById('particles');
+        if (!container) return;
         
-        skills.forEach((skill, i) => {
-            const node = document.createElement('div');
-            node.className = 'network-node';
-            node.textContent = skill;
-            node.dataset.skill = skill.toLowerCase();
+        const particleCount = window.innerWidth < 768 ? 30 : 80;
+        const colors = ['#00ff88', '#0088ff', '#ff0066', '#00d9ff'];
+        
+        for (let i = 0; i < particleCount; i++) {
+            const particle = document.createElement('div');
+            particle.className = 'particle';
             
-            const angle = (i / skills.length) * Math.PI * 2;
-            const radius = 200;
+            // Random properties
+            const size = Math.random() * 4 + 1;
+            const color = colors[Math.floor(Math.random() * colors.length)];
+            const x = Math.random() * 100;
+            const y = Math.random() * 100;
+            const duration = Math.random() * 20 + 10;
             
-            node.style.cssText = `
+            particle.style.cssText = `
                 position: absolute;
-                width: 80px;
-                height: 80px;
-                background: linear-gradient(135deg, #6366f1, #8b5cf6);
+                width: ${size}px;
+                height: ${size}px;
+                background: ${color};
                 border-radius: 50%;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                color: white;
-                font-weight: bold;
-                cursor: pointer;
-                transform: translate(-50%, -50%);
-                left: 50%;
-                top: 50%;
-                margin-left: ${Math.cos(angle) * radius}px;
-                margin-top: ${Math.sin(angle) * radius}px;
-                transition: all 0.3s ease;
-                z-index: 10;
-                box-shadow: 0 10px 30px rgba(99, 102, 241, 0.3);
+                left: ${x}vw;
+                top: ${y}vh;
+                pointer-events: none;
+                z-index: 1;
+                filter: blur(${size / 2}px);
+                opacity: ${Math.random() * 0.5 + 0.1};
             `;
             
-            node.addEventListener('mouseenter', () => this.highlightNode(skill));
-            node.addEventListener('mouseleave', () => this.resetNodes());
+            container.appendChild(particle);
             
-            document.querySelector('.skills-section').appendChild(node);
-            this.nodes.push({
-                element: node,
-                skill: skill,
-                angle: angle,
-                radius: radius
+            // Animate particle
+            gsap.to(particle, {
+                x: `+=${(Math.random() - 0.5) * 100}`,
+                y: `+=${(Math.random() - 0.5) * 100}`,
+                duration: duration,
+                repeat: -1,
+                yoyo: true,
+                ease: "sine.inOut"
             });
-        });
+            
+            // Pulsing opacity
+            gsap.to(particle, {
+                opacity: Math.random() * 0.3 + 0.1,
+                duration: Math.random() * 3 + 2,
+                repeat: -1,
+                yoyo: true,
+                ease: "sine.inOut"
+            });
+        }
+    }
 
-        // Create canvas for connections
-        this.canvas = document.createElement('canvas');
-        this.ctx = this.canvas.getContext('2d');
-        this.canvas.style.cssText = `
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: 1;
-        `;
-        document.querySelector('.skills-section').appendChild(this.canvas);
-        this.resizeCanvas();
+    // ================= SKILLS SYSTEM =================
+    initializeSkills() {
+        const skillsGrid = document.querySelector('.skills-grid');
+        if (!skillsGrid) return;
+        
+        const skills = [
+            { icon: 'fab fa-html5', name: 'HTML5', value: 95, color: '#e34f26' },
+            { icon: 'fab fa-css3-alt', name: 'CSS3 / SCSS', value: 90, color: '#264de4' },
+            { icon: 'fab fa-js', name: 'JavaScript', value: 88, color: '#f7df1e' },
+            { icon: 'fab fa-python', name: 'Python Security', value: 92, color: '#3776ab' },
+            { icon: 'fas fa-user-secret', name: 'Penetration Testing', value: 85, color: '#00ff88' },
+            { icon: 'fas fa-shield-alt', name: 'Network Security', value: 87, color: '#0088ff' },
+            { icon: 'fas fa-cloud', name: 'Cloud Security', value: 80, color: '#ff9500' },
+            { icon: 'fas fa-bug', name: 'Vulnerability Assessment', value: 90, color: '#ff0066' },
+            { icon: 'fas fa-code', name: 'Secure Coding', value: 88, color: '#00d9ff' },
+            { icon: 'fas fa-network-wired', name: 'IoT Security', value: 82, color: '#9d00ff' },
+            { icon: 'fas fa-database', name: 'Database Security', value: 85, color: '#00cc99' },
+            { icon: 'fas fa-mobile-alt', name: 'Mobile Security', value: 78, color: '#ff66cc' }
+        ];
+        
+        skills.forEach(skill => {
+            const card = document.createElement('div');
+            card.className = 'skill-card';
+            
+            card.innerHTML = `
+                <i class="${skill.icon}"></i>
+                <h3>${skill.name}</h3>
+                <div class="skill-progress">
+                    <div class="progress-info">
+                        <span class="progress-label">Proficiency</span>
+                        <span class="progress-value">0%</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 0%; background: ${skill.color}"></div>
+                    </div>
+                </div>
+            `;
+            
+            skillsGrid.appendChild(card);
+            
+            // Animate skill bar on scroll
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const fill = card.querySelector('.progress-fill');
+                        const value = card.querySelector('.progress-value');
+                        
+                        gsap.to(fill, {
+                            width: `${skill.value}%`,
+                            duration: 1.5,
+                            ease: "power2.out",
+                            onUpdate: () => {
+                                const width = parseFloat(fill.style.width);
+                                value.textContent = `${Math.round(width)}%`;
+                            }
+                        });
+                        
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.5 });
+            
+            observer.observe(card);
+        });
+        
+        // Network visualization
+        this.initializeNetworkViz();
+    }
+
+    initializeNetworkViz() {
+        const vizContainer = document.getElementById('network-viz');
+        if (!vizContainer) return;
+        
+        const canvas = document.createElement('canvas');
+        canvas.width = vizContainer.clientWidth;
+        canvas.height = vizContainer.clientHeight;
+        vizContainer.appendChild(canvas);
+        
+        const ctx = canvas.getContext('2d');
+        const nodes = [];
+        const connections = [];
+        
+        // Create nodes (skills)
+        const skillCount = 12;
+        for (let i = 0; i < skillCount; i++) {
+            const angle = (i / skillCount) * Math.PI * 2;
+            const radius = Math.min(canvas.width, canvas.height) * 0.3;
+            const x = canvas.width / 2 + Math.cos(angle) * radius;
+            const y = canvas.height / 2 + Math.sin(angle) * radius;
+            
+            nodes.push({
+                x, y,
+                radius: 8,
+                color: `hsl(${(i * 30) % 360}, 100%, 65%)`,
+                pulse: Math.random() * Math.PI * 2
+            });
+        }
         
         // Create connections
-        this.createConnections();
-        
-        // Animate
-        this.animate();
-    }
-
-    resizeCanvas() {
-        this.canvas.width = this.canvas.parentElement.clientWidth;
-        this.canvas.height = this.canvas.parentElement.clientHeight;
-    }
-
-    createConnections() {
-        // Create random connections between nodes
-        for (let i = 0; i < this.nodes.length; i++) {
-            for (let j = i + 1; j < this.nodes.length; j++) {
-                if (Math.random() > 0.7) {
-                    this.connections.push({
-                        node1: i,
-                        node2: j,
+        for (let i = 0; i < nodes.length; i++) {
+            for (let j = i + 1; j < nodes.length; j++) {
+                if (Math.random() > 0.6) {
+                    connections.push({
+                        from: i,
+                        to: j,
                         strength: Math.random(),
                         pulse: Math.random() * Math.PI * 2
                     });
                 }
             }
         }
-    }
-
-    highlightNode(skill) {
-        this.activeNodes.add(skill);
         
-        this.nodes.forEach(node => {
-            if (this.activeNodes.has(node.skill)) {
-                node.element.style.transform = `translate(-50%, -50%) scale(1.2)`;
-                node.element.style.boxShadow = `0 0 40px rgba(99, 102, 241, 0.6)`;
-                node.element.style.background = `linear-gradient(135deg, #8b5cf6, #ec4899)`;
-            }
-        });
-    }
-
-    resetNodes() {
-        this.activeNodes.clear();
-        
-        this.nodes.forEach(node => {
-            node.element.style.transform = `translate(-50%, -50%) scale(1)`;
-            node.element.style.boxShadow = `0 10px 30px rgba(99, 102, 241, 0.3)`;
-            node.element.style.background = `linear-gradient(135deg, #6366f1, #8b5cf6)`;
-        });
-    }
-
-    animate() {
-        this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
-        
-        const centerX = this.canvas.width / 2;
-        const centerY = this.canvas.height / 2;
-        
-        // Draw connections
-        this.connections.forEach(conn => {
-            const node1 = this.nodes[conn.node1];
-            const node2 = this.nodes[conn.node2];
+        const animate = () => {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
             
-            conn.pulse += 0.05;
-            const alpha = 0.2 + Math.sin(conn.pulse) * 0.1;
+            // Draw connections
+            connections.forEach(conn => {
+                const from = nodes[conn.from];
+                const to = nodes[conn.to];
+                
+                conn.pulse += 0.02;
+                const alpha = 0.1 + Math.sin(conn.pulse) * 0.05;
+                
+                ctx.beginPath();
+                ctx.moveTo(from.x, from.y);
+                ctx.lineTo(to.x, to.y);
+                ctx.strokeStyle = `rgba(0, 255, 136, ${alpha})`;
+                ctx.lineWidth = 1;
+                ctx.stroke();
+                
+                // Data flow dots
+                const progress = (Math.sin(conn.pulse) + 1) / 2;
+                const dotX = from.x + (to.x - from.x) * progress;
+                const dotY = from.y + (to.y - from.y) * progress;
+                
+                ctx.beginPath();
+                ctx.arc(dotX, dotY, 2, 0, Math.PI * 2);
+                ctx.fillStyle = '#00ff88';
+                ctx.fill();
+            });
             
-            this.ctx.beginPath();
-            this.ctx.moveTo(
-                centerX + Math.cos(node1.angle) * node1.radius,
-                centerY + Math.sin(node1.angle) * node1.radius
-            );
-            this.ctx.lineTo(
-                centerX + Math.cos(node2.angle) * node2.radius,
-                centerY + Math.sin(node2.angle) * node2.radius
-            );
-            
-            // Gradient for active connections
-            if (this.activeNodes.has(node1.skill) || this.activeNodes.has(node2.skill)) {
-                const gradient = this.ctx.createLinearGradient(
-                    centerX + Math.cos(node1.angle) * node1.radius,
-                    centerY + Math.sin(node1.angle) * node1.radius,
-                    centerX + Math.cos(node2.angle) * node2.radius,
-                    centerY + Math.sin(node2.angle) * node2.radius
+            // Draw nodes
+            nodes.forEach(node => {
+                node.pulse += 0.05;
+                const scale = 1 + Math.sin(node.pulse) * 0.2;
+                
+                // Glow
+                const gradient = ctx.createRadialGradient(
+                    node.x, node.y, 0,
+                    node.x, node.y, node.radius * 3
                 );
-                gradient.addColorStop(0, 'rgba(236, 72, 153, 0.8)');
-                gradient.addColorStop(1, 'rgba(139, 92, 246, 0.8)');
-                this.ctx.strokeStyle = gradient;
-            } else {
-                this.ctx.strokeStyle = `rgba(99, 102, 241, ${alpha})`;
+                gradient.addColorStop(0, node.color);
+                gradient.addColorStop(1, 'transparent');
+                
+                ctx.beginPath();
+                ctx.arc(node.x, node.y, node.radius * 3, 0, Math.PI * 2);
+                ctx.fillStyle = gradient;
+                ctx.fill();
+                
+                // Node
+                ctx.beginPath();
+                ctx.arc(node.x, node.y, node.radius * scale, 0, Math.PI * 2);
+                ctx.fillStyle = node.color;
+                ctx.fill();
+                
+                ctx.beginPath();
+                ctx.arc(node.x, node.y, node.radius * scale, 0, Math.PI * 2);
+                ctx.strokeStyle = '#ffffff';
+                ctx.lineWidth = 1;
+                ctx.stroke();
+            });
+            
+            requestAnimationFrame(animate);
+        };
+        
+        animate();
+        
+        // Resize handler
+        window.addEventListener('resize', () => {
+            canvas.width = vizContainer.clientWidth;
+            canvas.height = vizContainer.clientHeight;
+        });
+    }
+
+    // ================= PROJECTS SYSTEM =================
+    initializeProjects() {
+        const slider = document.getElementById('projects-slider');
+        const dots = document.getElementById('slider-dots');
+        const prevBtn = document.getElementById('prev-project');
+        const nextBtn = document.getElementById('next-project');
+        
+        if (!slider) return;
+        
+        const projects = [
+            {
+                title: 'Project Oasis',
+                description: 'A secure portfolio platform showcasing cybersecurity expertise and modern web development practices with advanced security features.',
+                image: 'https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80',
+                badge: 'OPEN SOURCE',
+                tech: ['HTML5', 'CSS3', 'JavaScript', 'Security'],
+                demo: '#',
+                code: '#'
+            },
+            {
+                title: 'Quantum Firewall',
+                description: 'Advanced network security system with AI-powered threat detection and real-time monitoring capabilities.',
+                image: 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80',
+                badge: 'CLASSIFIED',
+                tech: ['Python', 'AI/ML', 'Network', 'Security'],
+                demo: '#',
+                code: '#'
+            },
+            {
+                title: 'IoT Security Suite',
+                description: 'Comprehensive security framework for Internet of Things devices with encryption and anomaly detection.',
+                image: 'https://images.unsplash.com/photo-1518709268805-4e9042af2176?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80',
+                badge: 'IN DEVELOPMENT',
+                tech: ['IoT', 'Python', 'Encryption', 'Security'],
+                demo: '#',
+                code: '#'
+            },
+            {
+                title: 'PenTest Toolkit',
+                description: 'Collection of custom penetration testing tools and scripts for security assessments.',
+                image: 'https://images.unsplash.com/photo-1563013544-824ae1b704d3?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80',
+                badge: 'PRIVATE',
+                tech: ['Python', 'Bash', 'Security', 'Testing'],
+                demo: '#',
+                code: '#'
+            }
+        ];
+        
+        // Create slides
+        projects.forEach((project, index) => {
+            const slide = document.createElement('div');
+            slide.className = 'project-slide';
+            slide.dataset.index = index;
+            
+            slide.innerHTML = `
+                <img src="${project.image}" alt="${project.title}" class="project-image">
+                <span class="project-badge">${project.badge}</span>
+                <div class="project-content">
+                    <h3 class="project-title">${project.title}</h3>
+                    <p class="project-desc">${project.description}</p>
+                    <div class="project-tech">
+                        ${project.tech.map(tech => `<span class="tech-tag">${tech}</span>`).join('')}
+                    </div>
+                    <div class="project-links">
+                        <a href="${project.demo}" class="project-link link-demo">
+                            <i class="fas fa-external-link-alt"></i> View Demo
+                        </a>
+                        <a href="${project.code}" class="project-link link-code">
+                            <i class="fab fa-github"></i> Source Code
+                        </a>
+                    </div>
+                </div>
+            `;
+            
+            slider.appendChild(slide);
+            
+            // Create dot
+            const dot = document.createElement('div');
+            dot.className = `slider-dot ${index === 0 ? 'active' : ''}`;
+            dot.dataset.index = index;
+            dots.appendChild(dot);
+            
+            // Dot click handler
+            dot.addEventListener('click', () => {
+                this.scrollToProject(index);
+            });
+        });
+        
+        // Navigation
+        let currentIndex = 0;
+        
+        const scrollToProject = (index) => {
+            currentIndex = index;
+            const slideWidth = slider.children[0].offsetWidth + 32; // width + gap
+            slider.scrollTo({
+                left: index * slideWidth,
+                behavior: 'smooth'
+            });
+            
+            // Update active dot
+            document.querySelectorAll('.slider-dot').forEach((dot, i) => {
+                dot.classList.toggle('active', i === index);
+            });
+        };
+        
+        this.scrollToProject = scrollToProject;
+        
+        // Button handlers
+        if (prevBtn) {
+            prevBtn.addEventListener('click', () => {
+                const newIndex = (currentIndex - 1 + projects.length) % projects.length;
+                scrollToProject(newIndex);
+            });
+        }
+        
+        if (nextBtn) {
+            nextBtn.addEventListener('click', () => {
+                const newIndex = (currentIndex + 1) % projects.length;
+                scrollToProject(newIndex);
+            });
+        }
+        
+        // Auto-scroll (optional)
+        // setInterval(() => {
+        //     const newIndex = (currentIndex + 1) % projects.length;
+        //     scrollToProject(newIndex);
+        // }, 5000);
+    }
+
+    // ================= CONTACT SYSTEM =================
+    initializeContact() {
+        const contactForm = document.getElementById('cyber-form');
+        const directChat = document.getElementById('direct-chat');
+        
+        if (contactForm) {
+            contactForm.addEventListener('submit', async (e) => {
+                e.preventDefault();
+                
+                const formData = new FormData(contactForm);
+                const data = Object.fromEntries(formData);
+                
+                // Simulate form submission
+                this.showNotification('TRANSMISSION', 'Encrypting message...', 'info');
+                
+                setTimeout(() => {
+                    this.showNotification('SUCCESS', 'Message transmitted securely', 'success');
+                    contactForm.reset();
+                    
+                    // Visual feedback
+                    gsap.fromTo(contactForm,
+                        { boxShadow: '0 0 0 0 rgba(0, 255, 136, 0)' },
+                        { 
+                            boxShadow: '0 0 30px 10px rgba(0, 255, 136, 0.3)',
+                            duration: 0.5,
+                            repeat: 1,
+                            yoyo: true 
+                        }
+                    );
+                }, 1500);
+            });
+        }
+        
+        if (directChat) {
+            directChat.addEventListener('click', (e) => {
+                e.preventDefault();
+                this.showChatInterface();
+            });
+        }
+    }
+
+    showChatInterface() {
+        const chatHTML = `
+            <div class="cyber-chat-overlay">
+                <div class="cyber-chat">
+                    <div class="chat-header">
+                        <h3><i class="fas fa-satellite"></i> SECURE CHAT</h3>
+                        <button class="chat-close"><i class="fas fa-times"></i></button>
+                    </div>
+                    <div class="chat-messages">
+                        <div class="message system">
+                            <span class="timestamp">[SYSTEM]</span>
+                            <span class="text">Secure channel established. Messages are end-to-end encrypted.</span>
+                        </div>
+                        <div class="message system">
+                            <span class="timestamp">[SYSTEM]</span>
+                            <span class="text">Type your message below to initiate contact.</span>
+                        </div>
+                    </div>
+                    <div class="chat-input">
+                        <input type="text" placeholder="Type encrypted message..." id="chat-message">
+                        <button id="send-chat"><i class="fas fa-paper-plane"></i></button>
+                    </div>
+                </div>
+            </div>
+        `;
+        
+        const chatOverlay = document.createElement('div');
+        chatOverlay.innerHTML = chatHTML;
+        document.body.appendChild(chatOverlay);
+        
+        // Add CSS for chat
+        const chatStyle = document.createElement('style');
+        chatStyle.textContent = `
+            .cyber-chat-overlay {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: rgba(10, 10, 15, 0.95);
+                backdrop-filter: blur(10px);
+                z-index: 10000;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                animation: fadeIn 0.3s ease;
             }
             
-            this.ctx.lineWidth = 2;
-            this.ctx.stroke();
-        });
-        
-        requestAnimationFrame(() => this.animate());
-    }
-}
-
-// === AI VOICE ASSISTANT === //
-class CyberVoiceAssistant {
-    constructor() {
-        this.isListening = false;
-        this.recognition = null;
-        this.responses = {
-            'hello': 'Greetings, I am your cyber security assistant. How can I help you?',
-            'skills': 'My skills include penetration testing, network security, web application security, and cryptography.',
-            'projects': 'Check out my projects section to see my latest work in cybersecurity.',
-            'contact': 'You can reach me through the contact form or connect on LinkedIn.',
-            'cyber': 'Cybersecurity is not just a job, it\'s a mindset. Always stay vigilant.',
-            'hack': 'Ethical hacking helps secure systems. Remember: with great power comes great responsibility.'
-        };
-        this.init();
-    }
-
-    init() {
-        if ('webkitSpeechRecognition' in window || 'SpeechRecognition' in window) {
-            const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
-            this.recognition = new SpeechRecognition();
-            this.recognition.continuous = false;
-            this.recognition.interimResults = false;
-            this.recognition.lang = 'en-US';
-
-            this.recognition.onresult = (event) => {
-                const transcript = event.results[0][0].transcript.toLowerCase();
-                this.processCommand(transcript);
-            };
-
-            this.recognition.onerror = (event) => {
-                console.log('Speech recognition error:', event.error);
-                this.showResponse('Voice command failed. Please try again.');
-            };
-
-            // Create UI
-            this.createUI();
-        }
-    }
-
-    createUI() {
-        const assistantBtn = document.createElement('button');
-        assistantBtn.id = 'cyber-assistant';
-        assistantBtn.innerHTML = '🎤';
-        assistantBtn.title = 'Cyber Voice Assistant';
-        
-        assistantBtn.style.cssText = `
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, #6366f1, #8b5cf6);
-            border: none;
-            color: white;
-            font-size: 24px;
-            cursor: pointer;
-            z-index: 10000;
-            box-shadow: 0 10px 30px rgba(99, 102, 241, 0.4);
-            transition: all 0.3s ease;
-        `;
-
-        assistantBtn.addEventListener('mouseenter', () => {
-            assistantBtn.style.transform = 'scale(1.1)';
-            assistantBtn.style.boxShadow = '0 15px 40px rgba(99, 102, 241, 0.6)';
-        });
-
-        assistantBtn.addEventListener('mouseleave', () => {
-            assistantBtn.style.transform = 'scale(1)';
-            assistantBtn.style.boxShadow = '0 10px 30px rgba(99, 102, 241, 0.4)';
-        });
-
-        assistantBtn.addEventListener('click', () => this.toggleListening());
-        
-        document.body.appendChild(assistantBtn);
-
-        // Create response box
-        this.responseBox = document.createElement('div');
-        this.responseBox.id = 'assistant-response';
-        this.responseBox.style.cssText = `
-            position: fixed;
-            bottom: 100px;
-            right: 30px;
-            width: 300px;
-            padding: 20px;
-            background: rgba(30, 41, 59, 0.95);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(99, 102, 241, 0.3);
-            border-radius: 15px;
-            color: white;
-            font-family: 'Courier New', monospace;
-            display: none;
-            z-index: 10000;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-        `;
-        
-        document.body.appendChild(this.responseBox);
-    }
-
-    toggleListening() {
-        if (this.isListening) {
-            this.stopListening();
-        } else {
-            this.startListening();
-        }
-    }
-
-    startListening() {
-        this.isListening = true;
-        this.recognition.start();
-        this.showResponse('🎤 Listening... Say "hello", "skills", "projects", or "cyber"');
-        
-        const btn = document.getElementById('cyber-assistant');
-        btn.style.background = 'linear-gradient(135deg, #ef4444, #ec4899)';
-        btn.innerHTML = '●';
-        btn.style.animation = 'pulse 1s infinite';
-    }
-
-    stopListening() {
-        this.isListening = false;
-        this.recognition.stop();
-        
-        const btn = document.getElementById('cyber-assistant');
-        btn.style.background = 'linear-gradient(135deg, #6366f1, #8b5cf6)';
-        btn.innerHTML = '🎤';
-        btn.style.animation = 'none';
-        
-        this.hideResponse();
-    }
-
-    processCommand(command) {
-        let response = 'I heard: "' + command + '". ';
-        
-        for (const [key, value] of Object.entries(this.responses)) {
-            if (command.includes(key)) {
-                response = value;
-                break;
-            }
-        }
-        
-        this.showResponse(response);
-        this.speak(response);
-        this.stopListening();
-    }
-
-    showResponse(text) {
-        this.responseBox.textContent = text;
-        this.responseBox.style.display = 'block';
-        
-        setTimeout(() => {
-            this.responseBox.style.display = 'none';
-        }, 5000);
-    }
-
-    hideResponse() {
-        this.responseBox.style.display = 'none';
-    }
-
-    speak(text) {
-        if ('speechSynthesis' in window) {
-            const utterance = new SpeechSynthesisUtterance(text);
-            utterance.rate = 1.0;
-            utterance.pitch = 1.0;
-            utterance.volume = 0.8;
-            speechSynthesis.speak(utterance);
-        }
-    }
-}
-
-// === REAL-TIME CYBER DASHBOARD === //
-class CyberDashboard {
-    constructor() {
-        this.metrics = {
-            threats: 0,
-            protected: 100,
-            activity: 50,
-            response: 95
-        };
-        this.init();
-    }
-
-    init() {
-        // Create dashboard container
-        const dashboard = document.createElement('div');
-        dashboard.id = 'cyber-dashboard';
-        dashboard.innerHTML = `
-            <div class="dashboard-header">
-                <h3><i class="fas fa-shield-alt"></i> SECURITY DASHBOARD</h3>
-                <div class="dashboard-status">LIVE</div>
-            </div>
-            <div class="metrics-grid">
-                <div class="metric-card" data-metric="threats">
-                    <div class="metric-icon">⚠️</div>
-                    <div class="metric-value">0</div>
-                    <div class="metric-label">Active Threats</div>
-                    <div class="metric-trend"></div>
-                </div>
-                <div class="metric-card" data-metric="protected">
-                    <div class="metric-icon">🛡️</div>
-                    <div class="metric-value">100%</div>
-                    <div class="metric-label">Systems Protected</div>
-                    <div class="metric-trend"></div>
-                </div>
-                <div class="metric-card" data-metric="activity">
-                    <div class="metric-icon">📊</div>
-                    <div class="metric-value">50%</div>
-                    <div class="metric-label">Network Activity</div>
-                    <div class="metric-trend"></div>
-                </div>
-                <div class="metric-card" data-metric="response">
-                    <div class="metric-icon">⚡</div>
-                    <div class="metric-value">95ms</div>
-                    <div class="metric-label">Avg Response Time</div>
-                    <div class="metric-trend"></div>
-                </div>
-            </div>
-            <div class="dashboard-footer">
-                <div class="scan-progress">
-                    <div class="scan-bar"></div>
-                </div>
-                <div class="scan-text">Continuous Security Scan</div>
-            </div>
-        `;
-
-        dashboard.style.cssText = `
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            width: 350px;
-            background: rgba(15, 23, 42, 0.95);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(99, 102, 241, 0.3);
-            border-radius: 15px;
-            padding: 20px;
-            color: white;
-            font-family: 'Courier New', monospace;
-            z-index: 9999;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-            transform: translateY(-100px);
-            opacity: 0;
-            transition: all 0.5s ease;
-        `;
-
-        document.body.appendChild(dashboard);
-
-        // Add CSS for dashboard
-        const style = document.createElement('style');
-        style.textContent = `
-            #cyber-dashboard {
-                font-family: 'Segoe UI', 'Courier New', monospace;
+            .cyber-chat {
+                width: 90%;
+                max-width: 500px;
+                background: rgba(26, 26, 46, 0.95);
+                border: 1px solid #00ff88;
+                border-radius: 12px;
+                overflow: hidden;
+                box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
             }
             
-            .dashboard-header {
+            .chat-header {
+                padding: 1rem;
+                background: rgba(0, 0, 0, 0.3);
+                border-bottom: 1px solid #00ff88;
                 display: flex;
                 justify-content: space-between;
                 align-items: center;
-                margin-bottom: 20px;
-                padding-bottom: 10px;
-                border-bottom: 1px solid rgba(99, 102, 241, 0.3);
             }
             
-            .dashboard-header h3 {
-                margin: 0;
-                font-size: 16px;
-                color: #94a3b8;
+            .chat-header h3 {
+                color: #00ff88;
+                font-family: 'JetBrains Mono', monospace;
+                font-size: 1rem;
+                display: flex;
+                align-items: center;
+                gap: 10px;
             }
             
-            .dashboard-status {
-                background: #10b981;
+            .chat-close {
+                background: none;
+                border: none;
                 color: white;
-                padding: 4px 12px;
-                border-radius: 12px;
-                font-size: 12px;
+                font-size: 1.2rem;
+                cursor: pointer;
+                transition: color 0.3s ease;
+            }
+            
+            .chat-close:hover {
+                color: #ff0066;
+            }
+            
+            .chat-messages {
+                padding: 1rem;
+                height: 300px;
+                overflow-y: auto;
+            }
+            
+            .message {
+                margin-bottom: 1rem;
+                padding: 0.5rem 1rem;
+                border-radius: 8px;
+                background: rgba(0, 255, 136, 0.1);
+                border: 1px solid rgba(0, 255, 136, 0.2);
+            }
+            
+            .message.system {
+                background: rgba(0, 136, 255, 0.1);
+                border-color: rgba(0, 136, 255, 0.2);
+            }
+            
+            .timestamp {
+                color: #00ff88;
+                font-family: 'JetBrains Mono', monospace;
+                font-size: 0.8rem;
+                margin-right: 10px;
+            }
+            
+            .text {
+                color: white;
+                font-size: 0.9rem;
+            }
+            
+            .chat-input {
+                display: flex;
+                padding: 1rem;
+                border-top: 1px solid rgba(0, 255, 136, 0.2);
+                background: rgba(0, 0, 0, 0.3);
+            }
+            
+            #chat-message {
+                flex: 1;
+                background: rgba(255, 255, 255, 0.05);
+                border: 1px solid rgba(0, 255, 136, 0.3);
+                border-radius: 6px;
+                padding: 0.75rem;
+                color: white;
+                font-family: 'JetBrains Mono', monospace;
+                font-size: 0.9rem;
+            }
+            
+            #chat-message:focus {
+                outline: none;
+                border-color: #00ff88;
+                box-shadow: 0 0 10px rgba(0, 255, 136, 0.3);
+            }
+            
+            #send-chat {
+                background: #00ff88;
+                color: #0a0a0f;
+                border: none;
+                border-radius: 6px;
+                padding: 0 1.5rem;
+                margin-left: 1rem;
+                cursor: pointer;
                 font-weight: bold;
-                animation: pulse 2s infinite;
-            }
-            
-            .metrics-grid {
-                display: grid;
-                grid-template-columns: repeat(2, 1fr);
-                gap: 15px;
-                margin-bottom: 20px;
-            }
-            
-            .metric-card {
-                background: rgba(30, 41, 59, 0.8);
-                border-radius: 10px;
-                padding: 15px;
-                text-align: center;
-                border: 1px solid rgba(99, 102, 241, 0.1);
                 transition: all 0.3s ease;
             }
             
-            .metric-card:hover {
-                border-color: rgba(99, 102, 241, 0.5);
+            #send-chat:hover {
+                background: #00d9ff;
                 transform: translateY(-2px);
             }
-            
-            .metric-icon {
-                font-size: 24px;
-                margin-bottom: 10px;
-            }
-            
-            .metric-value {
-                font-size: 24px;
-                font-weight: bold;
-                color: #6366f1;
-                margin-bottom: 5px;
-            }
-            
-            .metric-label {
-                font-size: 12px;
-                color: #94a3b8;
-            }
-            
-            .dashboard-footer {
-                margin-top: 20px;
-            }
-            
-            .scan-progress {
-                height: 4px;
-                background: rgba(255, 255, 255, 0.1);
-                border-radius: 2px;
-                overflow: hidden;
-                margin-bottom: 10px;
-            }
-            
-            .scan-bar {
-                height: 100%;
-                background: linear-gradient(90deg, #6366f1, #8b5cf6);
-                width: 60%;
-                animation: scan 2s infinite linear;
-            }
-            
-            .scan-text {
-                font-size: 12px;
-                color: #94a3b8;
-                text-align: center;
-            }
-            
-            @keyframes scan {
-                0% { transform: translateX(-100%); }
-                100% { transform: translateX(100%); }
-            }
-            
-            @keyframes pulse {
-                0%, 100% { opacity: 1; }
-                50% { opacity: 0.7; }
-            }
         `;
-        document.head.appendChild(style);
-
-        // Show dashboard with animation
-        setTimeout(() => {
-            dashboard.style.transform = 'translateY(0)';
-            dashboard.style.opacity = '1';
-        }, 1000);
-
-        // Start updating metrics
-        this.startMetricsUpdate();
-    }
-
-    startMetricsUpdate() {
-        setInterval(() => {
-            // Simulate random metric changes
-            this.metrics.threats = Math.floor(Math.random() * 5);
-            this.metrics.protected = 95 + Math.floor(Math.random() * 5);
-            this.metrics.activity = 40 + Math.floor(Math.random() * 20);
-            this.metrics.response = 80 + Math.floor(Math.random() * 40);
-
-            this.updateDashboard();
-        }, 3000);
-    }
-
-    updateDashboard() {
-        const threatsElem = document.querySelector('[data-metric="threats"] .metric-value');
-        const protectedElem = document.querySelector('[data-metric="protected"] .metric-value');
-        const activityElem = document.querySelector('[data-metric="activity"] .metric-value');
-        const responseElem = document.querySelector('[data-metric="response"] .metric-value');
-
-        if (threatsElem) threatsElem.textContent = this.metrics.threats;
-        if (protectedElem) protectedElem.textContent = `${this.metrics.protected}%`;
-        if (activityElem) activityElem.textContent = `${this.metrics.activity}%`;
-        if (responseElem) responseElem.textContent = `${this.metrics.response}ms`;
-
-        // Add animation class for updates
-        [threatsElem, protectedElem, activityElem, responseElem].forEach(elem => {
-            if (elem) {
-                elem.classList.add('metric-update');
-                setTimeout(() => elem.classList.remove('metric-update'), 300);
-            }
-        });
-    }
-}
-
-// === INITIALIZE ALL ADVANCED FEATURES === //
-function initializeAdvancedFeatures() {
-    console.log('🚀 Initializing Advanced Cyber Portfolio Features...');
-    
-    // 1. Quantum Renderer
-    const quantumRenderer = new QuantumRenderer();
-    
-    // 2. 3D Terminal (requires Three.js)
-    if (typeof THREE !== 'undefined') {
-        const cyberTerminal = new CyberTerminal3D('hero-section');
-    }
-    
-    // 3. Network Visualizer
-    const networkViz = new NetworkVisualizer();
-    
-    // 4. Voice Assistant
-    const voiceAssistant = new CyberVoiceAssistant();
-    
-    // 5. Cyber Dashboard
-    const cyberDashboard = new CyberDashboard();
-    
-    // 6. Add Quantum Mode Toggle
-    const quantumToggle = document.createElement('button');
-    quantumToggle.id = 'quantum-mode';
-    quantumToggle.innerHTML = '🌌';
-    quantumToggle.title = 'Activate Quantum Mode';
-    quantumToggle.style.cssText = `
-        position: fixed;
-        bottom: 100px;
-        right: 30px;
-        width: 50px;
-        height: 50px;
-        border-radius: 50%;
-        background: linear-gradient(135deg, #0ea5e9, #06b6d4);
-        border: none;
-        color: white;
-        font-size: 20px;
-        cursor: pointer;
-        z-index: 10000;
-        box-shadow: 0 10px 30px rgba(14, 165, 233, 0.4);
-        transition: all 0.3s ease;
-    `;
-    
-    quantumToggle.addEventListener('click', () => {
-        if (quantumRenderer.isActive) {
-            quantumRenderer.deactivate();
-            quantumToggle.style.background = 'linear-gradient(135deg, #0ea5e9, #06b6d4)';
-        } else {
-            quantumRenderer.activate();
-            quantumToggle.style.background = 'linear-gradient(135deg, #ec4899, #f97316)';
-        }
-    });
-    
-    document.body.appendChild(quantumToggle);
-    
-    console.log('✅ Advanced features initialized!');
-}
-
-// === ENHANCED SCROLL EFFECTS === //
-function initializeEnhancedScroll() {
-    let lastScroll = 0;
-    const heroSection = document.querySelector('.hero');
-    
-    window.addEventListener('scroll', () => {
-        const currentScroll = window.pageYOffset;
-        const scrollPercent = (currentScroll / document.body.scrollHeight) * 100;
-        
-        // Parallax effects for hero section
-        if (heroSection) {
-            heroSection.style.transform = `translateY(${currentScroll * 0.5}px)`;
-            heroSection.style.opacity = `${1 - (currentScroll / 500)}`;
-        }
-        
-        // Scroll progress indicator
-        const progressBar = document.querySelector('.scroll-progress') || createScrollProgress();
-        progressBar.style.width = `${scrollPercent}%`;
-        
-        lastScroll = currentScroll;
-    });
-}
-
-function createScrollProgress() {
-    const progress = document.createElement('div');
-    progress.className = 'scroll-progress';
-    progress.style.cssText = `
-        position: fixed;
-        top: 0;
-        left: 0;
-        height: 3px;
-        background: linear-gradient(90deg, #6366f1, #8b5cf6);
-        z-index: 10001;
-        width: 0%;
-        transition: width 0.1s ease;
-    `;
-    document.body.appendChild(progress);
-    return progress;
-}
-
-// === ADDITIONAL CSS FOR ADVANCED FEATURES === //
-const advancedStyles = `
-    /* Cyber Typography */
-    @font-face {
-        font-family: 'Cyber';
-        src: url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&display=swap');
-    }
-    
-    /* Enhanced Animations */
-    @keyframes cyberPulse {
-        0%, 100% { 
-            box-shadow: 0 0 20px rgba(99, 102, 241, 0.5),
-                       0 0 40px rgba(139, 92, 246, 0.3);
-        }
-        50% { 
-            box-shadow: 0 0 30px rgba(99, 102, 241, 0.8),
-                       0 0 60px rgba(139, 92, 246, 0.5),
-                       0 0 80px rgba(236, 72, 153, 0.3);
-        }
-    }
-    
-    @keyframes matrixRain {
-        0% {
-            background-position: 0% 0%;
-        }
-        100% {
-            background-position: 0% 100%;
-        }
-    }
-    
-    /* Cyber Cursor */
-    .cyber-cursor {
-        width: 20px;
-        height: 20px;
-        border: 2px solid #6366f1;
-        border-radius: 50%;
-        position: fixed;
-        pointer-events: none;
-        z-index: 10000;
-        mix-blend-mode: difference;
-        transition: transform 0.1s;
-    }
-    
-    .cyber-cursor-trail {
-        width: 40px;
-        height: 40px;
-        border: 1px solid rgba(99, 102, 241, 0.5);
-        border-radius: 50%;
-        position: fixed;
-        pointer-events: none;
-        z-index: 9999;
-        transition: all 0.3s ease;
-    }
-    
-    /* Network Visualization */
-    .skills-section {
-        position: relative;
-        overflow: hidden;
-        min-height: 600px;
-    }
-    
-    /* Metric Update Animation */
-    .metric-update {
-        animation: metricUpdate 0.3s ease;
-    }
-    
-    @keyframes metricUpdate {
-        0% { transform: scale(1); }
-        50% { transform: scale(1.1); }
-        100% { transform: scale(1); }
-    }
-    
-    /* Quantum Mode Indicator */
-    #quantum-mode.active {
-        animation: quantumPulse 1s infinite alternate;
-    }
-    
-    @keyframes quantumPulse {
-        from {
-            box-shadow: 0 0 20px rgba(236, 72, 153, 0.6),
-                       0 0 40px rgba(236, 72, 153, 0.4),
-                       0 0 60px rgba(236, 72, 153, 0.2);
-        }
-        to {
-            box-shadow: 0 0 30px rgba(236, 72, 153, 0.8),
-                       0 0 60px rgba(236, 72, 153, 0.6),
-                       0 0 90px rgba(236, 72, 153, 0.
+        document.head
