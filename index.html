@@ -257,14 +257,93 @@
         <!-- More project cards can be added here -->
     </div>
 </section>
+<!-- Contact Section -->
+<section id="contact" class="section contact-section">
+    <div class="section-header">
+        <h2 class="section-title">Get In <span class="highlight">Touch</span></h2>
+        <p class="section-subtitle">Let's discuss opportunities or just say hello</p>
+    </div>
     
+    <div class="contact-container">
+        <div class="contact-info">
+            <div class="contact-card">
+                <div class="contact-icon">
+                    <i class="fas fa-paper-plane"></i>
+                </div>
+                <h3>Quick Response</h3>
+                <p>I aim to respond within 1-2 business days</p>
+            </div>
+            
+            <div class="contact-card">
+                <div class="contact-icon">
+                    <i class="fas fa-handshake"></i>
+                </div>
+                <h3>Open for Collaboration</h3>
+                <p>Interested in open-source projects and partnerships</p>
+            </div>
+            
+            <div class="contact-card">
+                <div class="contact-icon">
+                    <i class="fas fa-code"></i>
+                </div>
+                <h3>Tech Discussions</h3>
+                <p>Let's talk about development, security, and innovation</p>
+            </div>
+        </div>
+        
+        <div class="contact-form-container">
+            <form action="https://formspree.io/f/mpqlybgj" method="POST" class="modern-form">
+                <div class="form-header">
+                    <h3>Send a Message</h3>
+                    <p>Fill out the form below and I'll get back to you soon</p>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="name">
+                            <i class="fas fa-user"></i> Your Name
+                        </label>
+                        <input type="text" id="name" name="name" placeholder="John Doe" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">
+                            <i class="fas fa-envelope"></i> Email Address
+                        </label>
+                        <input type="email" id="email" name="email" placeholder="john@example.com" required>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="message">
+                        <i class="fas fa-comment-alt"></i> Your Message
+                    </label>
+                    <textarea id="message" name="message" rows="5" 
+                              placeholder="Hi, I'd like to discuss..." required></textarea>
+                </div>
+                
+                <div class="form-footer">
+                    <p class="response-time">
+                        <i class="fas fa-clock"></i> Typically responds within 1-2 business days
+                    </p>
+                    <button type="submit" class="submit-btn">
+                        <span>Send Message</span>
+                        <i class="fas fa-paper-plane"></i>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
+
+    <!--contact section --
     <section id="contact" class="section"
         <h2>Contact Me</section</h2>
     <div class="contact-wrapper">
         <div class="contact-info">
             <p> Feel free to reach out for collaborations or just to say hi!</p>
     <h3>This section is still under development !!</h3>
-    <!--form-->
+    <!--form--
     
     <form
   action="https://formspree.io/f/mpqlybgj"
@@ -407,6 +486,7 @@ document.getElementById('contact-form').addEventListener('submit', async functio
 
 </body>
 </html>
+
 
 
 
