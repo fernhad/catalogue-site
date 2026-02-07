@@ -16,93 +16,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
 </head>
-    <!-- new section added for contact form #AFTER I DONT WANT FEEDBACK
-     <script>
-document.addEventListener('DOMContentLoaded', function() {
-  const form = document.querySelector('.contact-form');
-  const submitBtn = form?.querySelector('.submit-btn');
-  const messageDiv = document.getElementById('form-message');
-  
-  if (!form || !submitBtn) return;
-  
-  form.addEventListener('submit', async function(e) {
-    e.preventDefault();
     
-    // Show loading state
-    const buttonText = submitBtn.querySelector('.button-text');
-    const originalText = buttonText.textContent;
-    buttonText.textContent = 'Sending...';
-    submitBtn.disabled = true;
-    
-    // Hide previous messages
-    if (messageDiv) {
-      messageDiv.style.display = 'none';
-    }
-    
-    try {
-      const formData = new FormData(form);
-      const response = await fetch(form.action, {
-        method: 'POST',
-        body: formData,
-        headers: {
-          'Accept': 'application/json'
-        }
-      });
-      
-      if (response.ok) {
-        // Success
-        if (messageDiv) {
-          messageDiv.textContent = '🎉 Thank you! Your message has been sent successfully.';
-          messageDiv.className = 'form-message success';
-          messageDiv.style.display = 'block';
-        }
-        form.reset();
-        
-        // Reset form labels
-        form.querySelectorAll('.form-input, .form-textarea').forEach(input => {
-          input.value = '';
-          input.dispatchEvent(new Event('input'));
-        });
-        
-        // Show success state for 3 seconds
-        buttonText.textContent = '✓ Sent!';
-        submitBtn.style.background = 'linear-gradient(135deg, #10b981 0%, #059669 100%)';
-        
-        setTimeout(() => {
-          buttonText.textContent = originalText;
-          submitBtn.style.background = '';
-        }, 3000);
-      } else {
-        throw new Error('Form submission failed');
-      }
-    } catch (error) {
-      // Error
-      if (messageDiv) {
-        messageDiv.textContent = '⚠️ Oops! Something went wrong. Please try again or email me directly.';
-        messageDiv.className = 'form-message error';
-        messageDiv.style.display = 'block';
-      }
-      
-      // Show error state
-      buttonText.textContent = '✗ Try Again';
-      submitBtn.style.background = 'linear-gradient(135deg, #ef4444 0%, #dc2626 100%)';
-      
-      setTimeout(() => {
-        buttonText.textContent = originalText;
-        submitBtn.style.background = '';
-      }, 3000);
-    } finally {
-      submitBtn.disabled = false;
-      
-      // Auto-hide message after 5 seconds
-      if (messageDiv) {
-        setTimeout(() => {
-          messageDiv.style.display = 'none';
-        }, 5000);
-      }
-    }
-  });
-});
 </script-->
     
 <body>
@@ -261,32 +175,97 @@ document.addEventListener('DOMContentLoaded', function() {
             <div class="progress" style="width: 83%"></div>
         </div>
     </div>
+    </div>
+        
     </section>
 
-    <!-- Projects Section -->
+    <!-- Projects Section --
     <section id="projects" class="section">
         <h2>Featured Projects</h2>
         <div class="projects-grid">
-            <!-- Customize each project: image, title, description, links -->
+            <!-- Customize each project: image, title, description, links --
             <article class="project-card">
                 <img src="project1.jpg" alt="Project 1" loading="lazy"> <!-- Replace image -->
-                <div class="project-info">
-                    <h3>Project Oasis Beta 1.0.0</h3> <!-- Your project name -->
+                <!--<div class="project-info">
+                    <h3>Project Oasis Beta 1.0.0</h3> <!-- Your project name --
                     <p>As a member and supporter of open-source community, 
                         I have dedicated my few hours to develop this catalogue
                         where I can showcase some of the skills I have.
-                    </p> <!-- Description -->
-                    <a href="#" class="project-link">Live Demo</a> <!-- Add actual URL -->
-                    <a href="#" class="project-link">GitHub</a> <!-- Add actual URL -->
+                    </p> <!-- Description --
+                    <a href="#" class="project-link">Live Demo</a> <!-- Add actual URL --
+                    <a href="#" class="project-link">GitHub</a> <!-- Add actual URL --
                 </div>
             </article>
-            <!-- this block for dynamic projects -->
+            <!-- this block for dynamic projects --
         </div>
     </section>
 
     <!-- Contact Section -->
+
+    <!-- Projects Section -->
+<section id="projects" class="section projects-section">
+    <div class="section-header">
+        <h2 class="section-title">Featured <span class="highlight">Projects</span></h2>
+        <p class="section-subtitle">Showcasing my journey through code and creativity</p>
+    </div>
+    
+    <div class="projects-grid">
+        <!-- Project Card 1 -->
+        <article class="project-card">
+            <div class="project-image-container">
+                <div class="project-tag">Open Source</div>
+                <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" 
+                     alt="Code editor showing React components" 
+                     class="project-image"
+                     loading="lazy">
+                <div class="project-overlay"></div>
+            </div>
+            
+            <div class="project-content">
+                <div class="project-meta">
+                    <span class="project-date">2024</span>
+                    <span class="project-category">Full Stack</span>
+                </div>
+                
+                <h3 class="project-title">Project Oasis Beta 1.0.0</h3>
+                
+                <p class="project-description">
+                    As a passionate supporter of the open-source community, I dedicated 
+                    significant time to developing this catalog platform. It showcases 
+                    modern web development practices while serving as a portfolio 
+                    for my technical skills.
+                </p>
+                
+                <div class="tech-stack">
+                    <span class="tech-tag">HTML5</span>
+                    <span class="tech-tag">CSS3</span>
+                    <span class="tech-tag">JavaScript</span>
+                    <span class="tech-tag">GitHub Pages</span>
+                </div>
+                
+                <div class="project-links">
+                    <a href="#" class="project-link primary-link">
+                        <i class="fas fa-external-link-alt"></i> Live Demo
+                    </a>
+                    <a href="#" class="project-link secondary-link">
+                        <i class="fab fa-github"></i> View Code
+                    </a>
+                </div>
+            </div>
+        </article>
+        
+        <!-- More project cards can be added here -->
+    </div>
+</section>
+    
+    <section id="contact" class="section"
+        <h2>Contact Me</section</h2>
+    <div class="contact-wrapper">
+        <div class="contact-info">
+            <p> Feel free to reach out for collaborations or just to say hi!</p>
     <h3>This section is still under development !!</h3>
     <!--form-->
+    
     <form
   action="https://formspree.io/f/mpqlybgj"
   class="fs-form"
@@ -310,187 +289,6 @@ document.addEventListener('DOMContentLoaded', function() {
     <button class="fs-button" type="submit">Send</button>
   </div>
 </form>
-
-    <!--form
-  action="https://formspree.io/f/mvzqwqkb"
-  class="fs-form"
-  target="_top"
-  method="POST"
->
-  <!-- Hidden fields for Formspree configuration --
-  <input type="hidden" name="_subject" value="New message from your website">
-  <input type="text" name="_gotcha" style="display:none">
-  
-  <!-- Visible form fields --
-  <div class="fs-field">
-    <label class="fs-label" for="full-name">Full Name</label>
-    <input class="fs-input" id="full-name" name="full-name" required>
-  </div>
-  
-  <div class="fs-field">
-    <label class="fs-label" for="email">Email Address</label>
-    <input class="fs-input" id="email" name="email" type="email" required>
-  </div>
-  
-  <div class="fs-field">
-    <label class="fs-label" for="message">Your Message</label>
-    <textarea class="fs-textarea" id="message" name="message" required></textarea>
-  </div>
-  
-  <div class="fs-button-group">
-    <button class="fs-button" type="submit">Send Message</button>
-  </div>
-</form>
-    <!--form 
-      action="https://formspree.io/f/mvzqwqkb" 
-      method="POST" 
-      class="contact-form"
-    >
-      <!-- Formspree hidden fields --
-      <input type="hidden" name="_subject" value="New message from your portfolio">
-      <input type="hidden" name="_replyto" value="%email%">
-      <input type="text" name="_gotcha" style="display:none">
-      
-      <div class="form-row">
-        <div class="form-group">
-          <div class="input-container">
-            <input 
-              type="text" 
-              id="full-name" 
-              name="full-name" 
-              class="form-input"
-              required
-            >
-            <label for="full-name" class="form-label">
-              <span class="label-text">Your Name</span>
-              <span class="required">*</span>
-            </label>
-            <div class="input-underline"></div>
-          </div>
-        </div>
-        
-        <div class="form-group">
-          <div class="input-container">
-            <input 
-              type="email" 
-              id="email" 
-              name="email" 
-              class="form-input"
-              required
-            >
-            <label for="email" class="form-label">
-              <span class="label-text">Email Address</span>
-              <span class="required">*</span>
-            </label>
-            <div class="input-underline"></div>
-          </div>
-        </div>
-      </div>
-      
-      <div class="form-group">
-        <div class="input-container">
-          <textarea 
-            id="message" 
-            name="message" 
-            class="form-textarea"
-            rows="5"
-            required
-          ></textarea>
-          <label for="message" class="form-label">
-            <span class="label-text">Your Message</span>
-            <span class="required">*</span>
-          </label>
-          <div class="textarea-underline"></div>
-        </div>
-      </div>
-      
-      <div class="form-submit">
-        <button type="submit" class="submit-button">
-          <span class="button-text">Send Message</span>
-          <span class="button-icon">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
-              <path d="M22 2L11 13" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-              <path d="M22 2L15 22L11 13L2 9L22 2Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-          </span>
-        </button>
-        
-        
-      </div>
-      
-      <!-- Success/Error message container --
-      <div id="form-message" class="form-message" style="display: none;"></div>
-    </form>
-
-    
-  <!--div class="fs-field">
-    div>
-  <div class="fs-button-group"-->
-    <!--button class="fs-button" type="submit">Submit</button>
-  </div>
-</form-->
-    
-
-   <!-- <section id="contact" class="section">
-        <h2>Get in Touch</h2>
-        <!-- Form action needs a backend URL if you want it functional -->
-        <!-- Email link -->
-        <!--form id="contact-form" action="https://formspree.io/f/xojlned" method="POST">
-            <div class="form-group">
-                <label for="name">Your name here</label>
-                <input type="text" id="name" name="name" required pattern="[A-Za-z\s]{2,50}" title="Name should only contain letters and spaces, 2–50 characters">
-            </div>
-            <div class="form-group">
-                <label for="email">Enter your Email here</label>
-                <input type="email" id="email" name="email"  required >
-            </div>
-            <div class="form-group">
-                <label for="message">You can message us!</label>
-                <textarea id="message" name="message" rows="5" required minlength="10" maxlength="500" title="Message must be between 10 and 500 characters"></textarea>
-            </div>
-                <button type="submit" class="btn submit-btn">Send</button>
-
-            <success/Error Messages ->
-            <div id="form-status" style="display:none; margin-top: 20px; padding: 10px; border-radius: 5px;"></div>
-    </form-->
-
-
-    <!--form--
-<form
-  action="https://formspree.io/f/mvzqwqkb"
-  class="fs-form"
-  target="_top"
-  method="POST"
->
-  <!-- Hidden fields for Formspree configuration --
-  <input type="hidden" name="_subject" value="New message from your website">
-  <input type="hidden" name="_replyto" value="%email%">
-  <input type="text" name="_gotcha" style="display:none">
-  
-  <!-- Visible form fields --
-  <div class="fs-field">
-    <label class="fs-label" for="full-name">Full Name</label>
-    <input class="fs-input" id="full-name" name="full-name" required>
-  </div>
-  
-  <div class="fs-field">
-    <label class="fs-label" for="email">Email Address</label>
-    <input class="fs-input" id="email" name="email" type="email" required>
-  </div>
-  
-  <div class="fs-field">
-    <label class="fs-label" for="message">Your Message</label>
-    <textarea class="fs-textarea" id="message" name="message" required></textarea>
-  </div>
-  
-  <div class="fs-button-group">
-    <button class="fs-button" type="submit">Send Message</button>
-      
-      <p class="form-note">I'll respond within 24 hours</p>
-      <p><a href="mailto:spiritfancy@protom.me"> spiritfancy@proton.me</a></p>
-  </div>
-    </form-->
-    
     
     </section>
 
@@ -609,6 +407,7 @@ document.getElementById('contact-form').addEventListener('submit', async functio
 
 </body>
 </html>
+
 
 
 
