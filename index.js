@@ -382,65 +382,85 @@ class CyberPortfolio {
         
         const terminalLines = [
             '> whoami',
-            'Cyberfunction_Emmanuel',
+            'Cyberfunction — B.Tech Year 3 | IoT · Security · Data Intelligence',
             '',
             '> system_status --check',
-            '✓ Security Protocols: ACTIVE',
-            '✓ Quantum Engine: ONLINE',
-            '✓ Defense Systems: ARMED',
-            '✓ Network: SECURE',
+            '✓ MQTT Broker: ACTIVE',
+            '✓ IoT Pipeline: ONLINE',
+            '✓ Network Defense: ARMED',
+            '✓ Deep Learning Engine: READY',
             '',
-            '> current_role',
-            '// Security Architect',
-            '// Penetration Tester',
-            '// DevSecOps Engineer',
-            '// IoT Security Specialist',
+            '> current_focus',
+            '// Secure Edge Computing',
+            '// IoT Network Hardening',
+            '// Forensic Deep Learning Systems',
+            '// Real-time Data Pipelines',
             '',
-            '> mission_statement',
-            '"Securing digital frontiers with elite expertise."',
+            '> tech_stack --list',
+            'Python | MQTT | Bluetooth | Bash',
+            'PostgreSQL | MongoDB | Deep Learning',
             '',
-            '> last_login',
+            '> status',
+            ' Seeking internship: Network Defense & Intelligent Monitoring',
             'Access granted: ' + new Date().toLocaleString(),
             '',
-            '> welcome_message --display',
-            'System ready. Type "help" for commands.'
+            '> _'
         ];
         
+        const getLineColor = (line) => {
+            if (line.startsWith('>')) return '#00ff88';
+            if (line.startsWith('✓')) return '#10b981';
+            if (line.startsWith('//')) return '#7c3aed';
+            if (line.startsWith('..')) return '#f59e0b';
+            if (line.startsWith('Access')) return '#06b6d4';
+            if (line === '') return null;
+            return '#cbd5e1';
+        };
+
         let lineIndex = 0;
         let charIndex = 0;
-        let currentLine = '';
-        
+        let currentSpan = null;
+
         const typeLine = () => {
             if (lineIndex >= terminalLines.length) {
-                // Start blinking cursor
-                setInterval(() => {
-                    const cursor = document.querySelector('.terminal-body .cursor');
-                    if (cursor) cursor.style.opacity = cursor.style.opacity === '0' ? '1' : '0';
-                }, 500);
+                const cursor = document.createElement('span');
+                cursor.textContent = '█';
+                cursor.style.cssText = 'color:#00ff88;animation:blink 1s infinite;';
+                terminalOutput.appendChild(cursor);
                 return;
             }
-            
-            currentLine = terminalLines[lineIndex];
-            
+
+            const currentLine = terminalLines[lineIndex];
+
+            if (currentLine === '') {
+                terminalOutput.appendChild(document.createElement('br'));
+                terminalOutput.appendChild(document.createElement('br'));
+                lineIndex++;
+                setTimeout(typeLine, 100);
+                return;
+            }
+
+            const color = getLineColor(currentLine);
+            currentSpan = document.createElement('span');
+            currentSpan.style.cssText = `color:${color};display:block;font-family:'JetBrains Mono',monospace;font-size:0.9rem;line-height:1.8;text-shadow:0 0 8px ${color}55;`;
+            terminalOutput.appendChild(currentSpan);
+
             const typeChar = () => {
                 if (charIndex < currentLine.length) {
-                    terminalOutput.textContent += currentLine.charAt(charIndex);
+                    currentSpan.textContent += currentLine.charAt(charIndex);
                     charIndex++;
-                    setTimeout(typeChar, Math.random() * 30 + 20);
+                    setTimeout(typeChar, currentLine.startsWith('>') ? Math.random() * 60 + 40 : Math.random() * 25 + 10);
                 } else {
-                    // End of line
-                    terminalOutput.textContent += '\n';
                     lineIndex++;
                     charIndex = 0;
-                    setTimeout(typeLine, Math.random() * 300 + 200);
+                    setTimeout(typeLine, currentLine.startsWith('>') ? 400 : 150);
                 }
             };
-            
+
             typeChar();
         };
-        
-        // Start typing after a delay
-        setTimeout(typeLine, 1000);
+
+        setTimeout(typeLine, 800);
         
         // Terminal commands
         document.addEventListener('keydown', (e) => {
@@ -513,18 +533,18 @@ class CyberPortfolio {
         if (!skillsGrid) return;
         
         const skills = [
-            { icon: 'fab fa-html5', name: 'HTML5', value: 95, color: '#e34f26' },
-            { icon: 'fab fa-css3-alt', name: 'CSS3 / SCSS', value: 90, color: '#264de4' },
-            { icon: 'fab fa-js', name: 'JavaScript', value: 88, color: '#f7df1e' },
-            { icon: 'fab fa-python', name: 'Python Security', value: 92, color: '#3776ab' },
-            { icon: 'fas fa-user-secret', name: 'Penetration Testing', value: 85, color: '#00ff88' },
-            { icon: 'fas fa-shield-alt', name: 'Network Security', value: 87, color: '#0088ff' },
-            { icon: 'fas fa-cloud', name: 'Cloud Security', value: 80, color: '#ff9500' },
-            { icon: 'fas fa-bug', name: 'Vulnerability Assessment', value: 90, color: '#ff0066' },
-            { icon: 'fas fa-code', name: 'Secure Coding', value: 88, color: '#00d9ff' },
-            { icon: 'fas fa-network-wired', name: 'IoT Security', value: 82, color: '#9d00ff' },
-            { icon: 'fas fa-database', name: 'Database Security', value: 85, color: '#00cc99' },
-            { icon: 'fas fa-mobile-alt', name: 'Mobile Security', value: 78, color: '#ff66cc' }
+            { icon: 'fab fa-python', name: 'Python', value: 92, color: '#3776ab' },
+            { icon: 'fas fa-network-wired', name: 'MQTT Protocol', value: 90, color: '#00ff88' },
+            { icon: 'fas fa-bluetooth-b', name: 'Bluetooth / BLE', value: 82, color: '#0088ff' },
+            { icon: 'fas fa-terminal', name: 'Bash Scripting', value: 88, color: '#f7df1e' },
+            { icon: 'fas fa-database', name: 'PostgreSQL', value: 85, color: '#336791' },
+            { icon: 'fas fa-leaf', name: 'MongoDB', value: 83, color: '#00cc99' },
+            { icon: 'fas fa-brain', name: 'Deep Learning', value: 83, color: '#ff0066' },
+            { icon: 'fas fa-shield-alt', name: 'Network Defense', value: 88, color: '#00d9ff' },
+            { icon: 'fas fa-microchip', name: 'Edge Computing', value: 80, color: '#9d00ff' },
+            { icon: 'fas fa-lock', name: 'IoT Security', value: 85, color: '#ff9500' },
+            { icon: 'fas fa-chart-line', name: 'Data Pipelines', value: 87, color: '#00ff88' },
+            { icon: 'fas fa-bug', name: 'Vulnerability Assessment', value: 92, color: '#ff66cc' }
         ];
         
         skills.forEach(skill => {
@@ -707,8 +727,8 @@ class CyberPortfolio {
                 image: 'https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80',
                 badge: 'OPEN SOURCE',
                 tech: ['HTML5', 'CSS3', 'JavaScript', 'Security'],
-                demo: '#',
-                code: '#'
+                demo: 'https://github.com/0bin-yang?tab=repositories',
+                code: 'https://github.com/0bin-yang?tab=repositories'
             },
             {
                 title: 'Quantum Firewall',
@@ -716,8 +736,8 @@ class CyberPortfolio {
                 image: 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80',
                 badge: 'CLASSIFIED',
                 tech: ['Python', 'AI/ML', 'Network', 'Security'],
-                demo: '#',
-                code: '#'
+                demo: 'https://github.com/0bin-yang?tab=repositories',
+                code: 'https://github.com/0bin-yang?tab=repositories'
             },
             {
                 title: 'IoT Security Suite',
@@ -725,8 +745,8 @@ class CyberPortfolio {
                 image: 'https://images.unsplash.com/photo-1518709268805-4e9042af2176?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80',
                 badge: 'IN DEVELOPMENT',
                 tech: ['IoT', 'Python', 'Encryption', 'Security'],
-                demo: '#',
-                code: '#'
+                demo: 'https://github.com/0bin-yang?tab=repositories',
+                code: 'https://github.com/0bin-yang?tab=repositories'
             },
             {
                 title: 'PenTest Toolkit',
@@ -734,8 +754,8 @@ class CyberPortfolio {
                 image: 'https://images.unsplash.com/photo-1563013544-824ae1b704d3?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80',
                 badge: 'PRIVATE',
                 tech: ['Python', 'Bash', 'Security', 'Testing'],
-                demo: '#',
-                code: '#'
+                demo: 'https://github.com/0bin-yang?tab=repositories',
+                code: 'https://github.com/0bin-yang?tab=repositories'
             }
         ];
         
