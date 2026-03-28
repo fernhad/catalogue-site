@@ -1252,5 +1252,16 @@ body::before {
     display: flex;
     gap: 1rem;
 }
-
-.sl
+.slider-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    cursor: pointer;
+    transition: var(--transition-smooth);
+}
+.slider-dot.active {
+    background: var(--cyber-primary);
+    border-color: var(--cyber-primary);
+}
