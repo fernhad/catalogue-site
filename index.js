@@ -382,7 +382,8 @@ class CyberPortfolio {
         
         const terminalLines = [
             '> whoami',
-            'Comp Sc & Eng final year student, also like to call myself IoT Engineer',
+            'Comp Sc & Eng final year student', 
+            'also like to call myself IoT Engineer',
             '',
             '> system_status --check',
             '✓ MQTT Broker: ACTIVE',
