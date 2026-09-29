@@ -382,7 +382,7 @@ class CyberPortfolio {
         
         const terminalLines = [
             '> whoami',
-            'Cyberfunction — B.Tech Year 3 | IoT · Security · Data Intelligence',
+            'Comp Sc & Eng final year student, also like to call myself IoT Engineer',
             '',
             '> system_status --check',
             '✓ MQTT Broker: ACTIVE',
@@ -398,10 +398,10 @@ class CyberPortfolio {
             '',
             '> tech_stack --list',
             'Python | MQTT | Bluetooth | Bash',
-            'PostgreSQL | MongoDB | Deep Learning',
+            'PostgreSQL | Pytorch | Deep Learning',
             '',
             '> status',
-            ' Seeking internship: Network Defense & Intelligent Monitoring',
+            ' Seeking internship: Network Defense & Intelligent Monitoring or any other related one',
             'Access granted: ' + new Date().toLocaleString(),
             '',
             '> _'
